@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.activity.TbAdminActivityMainMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    <id column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="activity_title" property="activityTitle" jdbcType="VARCHAR" />
+    <result column="module_id" property="moduleId" jdbcType="INTEGER" />
+    <result column="module_name" property="moduleName" jdbcType="VARCHAR" />
+    <result column="activity_type" property="activityType" jdbcType="INTEGER" />
+    <result column="eff_time" property="effTime" jdbcType="TIMESTAMP" />
+    <result column="exp_time" property="expTime" jdbcType="TIMESTAMP" />
+    <result column="activity_state" property="activityState" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="isneed_verify" property="isneedVerify" jdbcType="INTEGER" />
+    <result column="isneed_reg" property="isneedReg" jdbcType="INTEGER" />
+    <result column="end_sign_time" property="endSignTime" jdbcType="TIMESTAMP" />
+    <result column="start_sign_time" property="startSignTime" jdbcType="TIMESTAMP" />
+    <result column="islimit_goodtype" property="islimitGoodtype" jdbcType="INTEGER" />
+    <result column="islimit_shop" property="islimitShop" jdbcType="INTEGER" />
+    <result column="advertise_pic" property="advertisePic" jdbcType="VARCHAR" />
+    <result column="activity_tags" property="activityTags" jdbcType="VARCHAR" />
+    <result column="activity_no" property="activityNo" jdbcType="VARCHAR" />
+    <result column="issend_shut_msg" property="issendShutMsg" jdbcType="INTEGER" />
+    <result column="limit_apply_times" property="limitApplyTimes" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.model.mysql.activity.TbAdminActivityMain" extends="BaseResultMap" >
+    <result column="activity_desc" property="activityDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    activity_id, uuid, app_id, activity_title, module_id, module_name, activity_type, 
+    eff_time, exp_time, activity_state, update_time, create_time, isneed_verify, isneed_reg, 
+    end_sign_time, start_sign_time, islimit_goodtype, islimit_shop, advertise_pic, activity_tags, 
+    activity_no, issend_shut_msg, limit_apply_times
+  </sql>
+  <sql id="Blob_Column_List" >
+    activity_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_admin_activity_main
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_admin_activity_main
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    insert into tb_admin_activity_main (activity_id, uuid, app_id, 
+      activity_title, module_id, module_name, 
+      activity_type, eff_time, exp_time, 
+      activity_state, update_time, create_time, 
+      isneed_verify, isneed_reg, end_sign_time, 
+      start_sign_time, islimit_goodtype, islimit_shop, 
+      advertise_pic, activity_tags, activity_no, 
+      issend_shut_msg, limit_apply_times, activity_desc
+      )
+    values (#{activityId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{activityTitle,jdbcType=VARCHAR}, #{moduleId,jdbcType=INTEGER}, #{moduleName,jdbcType=VARCHAR}, 
+      #{activityType,jdbcType=INTEGER}, #{effTime,jdbcType=TIMESTAMP}, #{expTime,jdbcType=TIMESTAMP}, 
+      #{activityState,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isneedVerify,jdbcType=INTEGER}, #{isneedReg,jdbcType=INTEGER}, #{endSignTime,jdbcType=TIMESTAMP}, 
+      #{startSignTime,jdbcType=TIMESTAMP}, #{islimitGoodtype,jdbcType=INTEGER}, #{islimitShop,jdbcType=INTEGER}, 
+      #{advertisePic,jdbcType=VARCHAR}, #{activityTags,jdbcType=VARCHAR}, #{activityNo,jdbcType=VARCHAR}, 
+      #{issendShutMsg,jdbcType=INTEGER}, #{limitApplyTimes,jdbcType=INTEGER}, #{activityDesc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    insert into tb_admin_activity_main
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="activityTitle != null" >
+        activity_title,
+      </if>
+      <if test="moduleId != null" >
+        module_id,
+      </if>
+      <if test="moduleName != null" >
+        module_name,
+      </if>
+      <if test="activityType != null" >
+        activity_type,
+      </if>
+      <if test="effTime != null" >
+        eff_time,
+      </if>
+      <if test="expTime != null" >
+        exp_time,
+      </if>
+      <if test="activityState != null" >
+        activity_state,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isneedVerify != null" >
+        isneed_verify,
+      </if>
+      <if test="isneedReg != null" >
+        isneed_reg,
+      </if>
+      <if test="endSignTime != null" >
+        end_sign_time,
+      </if>
+      <if test="startSignTime != null" >
+        start_sign_time,
+      </if>
+      <if test="islimitGoodtype != null" >
+        islimit_goodtype,
+      </if>
+      <if test="islimitShop != null" >
+        islimit_shop,
+      </if>
+      <if test="advertisePic != null" >
+        advertise_pic,
+      </if>
+      <if test="activityTags != null" >
+        activity_tags,
+      </if>
+      <if test="activityNo != null" >
+        activity_no,
+      </if>
+      <if test="issendShutMsg != null" >
+        issend_shut_msg,
+      </if>
+      <if test="limitApplyTimes != null" >
+        limit_apply_times,
+      </if>
+      <if test="activityDesc != null" >
+        activity_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="activityTitle != null" >
+        #{activityTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null" >
+        #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityType != null" >
+        #{activityType,jdbcType=INTEGER},
+      </if>
+      <if test="effTime != null" >
+        #{effTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expTime != null" >
+        #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityState != null" >
+        #{activityState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isneedVerify != null" >
+        #{isneedVerify,jdbcType=INTEGER},
+      </if>
+      <if test="isneedReg != null" >
+        #{isneedReg,jdbcType=INTEGER},
+      </if>
+      <if test="endSignTime != null" >
+        #{endSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startSignTime != null" >
+        #{startSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="islimitGoodtype != null" >
+        #{islimitGoodtype,jdbcType=INTEGER},
+      </if>
+      <if test="islimitShop != null" >
+        #{islimitShop,jdbcType=INTEGER},
+      </if>
+      <if test="advertisePic != null" >
+        #{advertisePic,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTags != null" >
+        #{activityTags,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNo != null" >
+        #{activityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="issendShutMsg != null" >
+        #{issendShutMsg,jdbcType=INTEGER},
+      </if>
+      <if test="limitApplyTimes != null" >
+        #{limitApplyTimes,jdbcType=INTEGER},
+      </if>
+      <if test="activityDesc != null" >
+        #{activityDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    update tb_admin_activity_main
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="activityTitle != null" >
+        activity_title = #{activityTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleId != null" >
+        module_id = #{moduleId,jdbcType=INTEGER},
+      </if>
+      <if test="moduleName != null" >
+        module_name = #{moduleName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityType != null" >
+        activity_type = #{activityType,jdbcType=INTEGER},
+      </if>
+      <if test="effTime != null" >
+        eff_time = #{effTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expTime != null" >
+        exp_time = #{expTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityState != null" >
+        activity_state = #{activityState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isneedVerify != null" >
+        isneed_verify = #{isneedVerify,jdbcType=INTEGER},
+      </if>
+      <if test="isneedReg != null" >
+        isneed_reg = #{isneedReg,jdbcType=INTEGER},
+      </if>
+      <if test="endSignTime != null" >
+        end_sign_time = #{endSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startSignTime != null" >
+        start_sign_time = #{startSignTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="islimitGoodtype != null" >
+        islimit_goodtype = #{islimitGoodtype,jdbcType=INTEGER},
+      </if>
+      <if test="islimitShop != null" >
+        islimit_shop = #{islimitShop,jdbcType=INTEGER},
+      </if>
+      <if test="advertisePic != null" >
+        advertise_pic = #{advertisePic,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTags != null" >
+        activity_tags = #{activityTags,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNo != null" >
+        activity_no = #{activityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="issendShutMsg != null" >
+        issend_shut_msg = #{issendShutMsg,jdbcType=INTEGER},
+      </if>
+      <if test="limitApplyTimes != null" >
+        limit_apply_times = #{limitApplyTimes,jdbcType=INTEGER},
+      </if>
+      <if test="activityDesc != null" >
+        activity_desc = #{activityDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    update tb_admin_activity_main
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      activity_title = #{activityTitle,jdbcType=VARCHAR},
+      module_id = #{moduleId,jdbcType=INTEGER},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      activity_type = #{activityType,jdbcType=INTEGER},
+      eff_time = #{effTime,jdbcType=TIMESTAMP},
+      exp_time = #{expTime,jdbcType=TIMESTAMP},
+      activity_state = #{activityState,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isneed_verify = #{isneedVerify,jdbcType=INTEGER},
+      isneed_reg = #{isneedReg,jdbcType=INTEGER},
+      end_sign_time = #{endSignTime,jdbcType=TIMESTAMP},
+      start_sign_time = #{startSignTime,jdbcType=TIMESTAMP},
+      islimit_goodtype = #{islimitGoodtype,jdbcType=INTEGER},
+      islimit_shop = #{islimitShop,jdbcType=INTEGER},
+      advertise_pic = #{advertisePic,jdbcType=VARCHAR},
+      activity_tags = #{activityTags,jdbcType=VARCHAR},
+      activity_no = #{activityNo,jdbcType=VARCHAR},
+      issend_shut_msg = #{issendShutMsg,jdbcType=INTEGER},
+      limit_apply_times = #{limitApplyTimes,jdbcType=INTEGER},
+      activity_desc = #{activityDesc,jdbcType=LONGVARCHAR}
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.activity.TbAdminActivityMain" >
+    update tb_admin_activity_main
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      activity_title = #{activityTitle,jdbcType=VARCHAR},
+      module_id = #{moduleId,jdbcType=INTEGER},
+      module_name = #{moduleName,jdbcType=VARCHAR},
+      activity_type = #{activityType,jdbcType=INTEGER},
+      eff_time = #{effTime,jdbcType=TIMESTAMP},
+      exp_time = #{expTime,jdbcType=TIMESTAMP},
+      activity_state = #{activityState,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      isneed_verify = #{isneedVerify,jdbcType=INTEGER},
+      isneed_reg = #{isneedReg,jdbcType=INTEGER},
+      end_sign_time = #{endSignTime,jdbcType=TIMESTAMP},
+      start_sign_time = #{startSignTime,jdbcType=TIMESTAMP},
+      islimit_goodtype = #{islimitGoodtype,jdbcType=INTEGER},
+      islimit_shop = #{islimitShop,jdbcType=INTEGER},
+      advertise_pic = #{advertisePic,jdbcType=VARCHAR},
+      activity_tags = #{activityTags,jdbcType=VARCHAR},
+      activity_no = #{activityNo,jdbcType=VARCHAR},
+      issend_shut_msg = #{issendShutMsg,jdbcType=INTEGER},
+      limit_apply_times = #{limitApplyTimes,jdbcType=INTEGER}
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+</mapper>

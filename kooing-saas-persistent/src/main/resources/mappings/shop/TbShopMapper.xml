@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.shop.TbShopMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.shop.TbShop" >
+    <id column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="store_name" property="storeName" jdbcType="CHAR" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_name" property="memberName" jdbcType="CHAR" />
+    <result column="seller_name" property="sellerName" jdbcType="CHAR" />
+    <result column="sc_id" property="scId" jdbcType="INTEGER" />
+    <result column="store_company_name" property="storeCompanyName" jdbcType="CHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="area_info" property="areaInfo" jdbcType="VARCHAR" />
+    <result column="store_address" property="storeAddress" jdbcType="VARCHAR" />
+    <result column="store_zip" property="storeZip" jdbcType="CHAR" />
+    <result column="store_state" property="storeState" jdbcType="INTEGER" />
+    <result column="store_close_info" property="storeCloseInfo" jdbcType="VARCHAR" />
+    <result column="store_sort" property="storeSort" jdbcType="INTEGER" />
+    <result column="store_time" property="storeTime" jdbcType="CHAR" />
+    <result column="store_end_time" property="storeEndTime" jdbcType="CHAR" />
+    <result column="store_label" property="storeLabel" jdbcType="CHAR" />
+    <result column="store_introduction" property="storeIntroduction" jdbcType="VARCHAR" />
+    <result column="store_banner" property="storeBanner" jdbcType="CHAR" />
+    <result column="store_avatar" property="storeAvatar" jdbcType="CHAR" />
+    <result column="store_keywords" property="storeKeywords" jdbcType="VARCHAR" />
+    <result column="store_description" property="storeDescription" jdbcType="CHAR" />
+    <result column="store_wx" property="storeWx" jdbcType="VARCHAR" />
+    <result column="store_qq" property="storeQq" jdbcType="CHAR" />
+    <result column="store_ww" property="storeWw" jdbcType="CHAR" />
+    <result column="store_phone" property="storePhone" jdbcType="CHAR" />
+    <result column="store_domain" property="storeDomain" jdbcType="CHAR" />
+    <result column="store_domain_times" property="storeDomainTimes" jdbcType="INTEGER" />
+    <result column="store_recommend" property="storeRecommend" jdbcType="INTEGER" />
+    <result column="store_theme" property="storeTheme" jdbcType="CHAR" />
+    <result column="store_credit" property="storeCredit" jdbcType="INTEGER" />
+    <result column="store_quality_mark" property="storeQualityMark" jdbcType="REAL" />
+    <result column="store_service_mark" property="storeServiceMark" jdbcType="REAL" />
+    <result column="store_logistics_mark" property="storeLogisticsMark" jdbcType="REAL" />
+    <result column="new_goods_number" property="newGoodsNumber" jdbcType="INTEGER" />
+    <result column="goods_number" property="goodsNumber" jdbcType="INTEGER" />
+    <result column="store_collect" property="storeCollect" jdbcType="INTEGER" />
+    <result column="store_stamp" property="storeStamp" jdbcType="CHAR" />
+    <result column="store_printdesc" property="storePrintdesc" jdbcType="VARCHAR" />
+    <result column="store_sales" property="storeSales" jdbcType="INTEGER" />
+    <result column="store_workingtime" property="storeWorkingtime" jdbcType="CHAR" />
+    <result column="store_free_price" property="storeFreePrice" jdbcType="DECIMAL" />
+    <result column="store_decoration_switch" property="storeDecorationSwitch" jdbcType="INTEGER" />
+    <result column="store_decoration_only" property="storeDecorationOnly" jdbcType="INTEGER" />
+    <result column="store_decoration_image_count" property="storeDecorationImageCount" jdbcType="INTEGER" />
+    <result column="live_store_name" property="liveStoreName" jdbcType="CHAR" />
+    <result column="live_store_address" property="liveStoreAddress" jdbcType="CHAR" />
+    <result column="live_store_tel" property="liveStoreTel" jdbcType="CHAR" />
+    <result column="live_store_bus" property="liveStoreBus" jdbcType="CHAR" />
+    <result column="is_own_shop" property="isOwnShop" jdbcType="INTEGER" />
+    <result column="bind_all_gc" property="bindAllGc" jdbcType="INTEGER" />
+    <result column="store_vrcode_prefix" property="storeVrcodePrefix" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.model.mysql.shop.TbShopWithBLOBs" extends="BaseResultMap" >
+    <result column="store_zy" property="storeZy" jdbcType="LONGVARCHAR" />
+    <result column="store_slide" property="storeSlide" jdbcType="LONGVARCHAR" />
+    <result column="store_slide_url" property="storeSlideUrl" jdbcType="LONGVARCHAR" />
+    <result column="store_presales" property="storePresales" jdbcType="LONGVARCHAR" />
+    <result column="store_aftersales" property="storeAftersales" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    store_id, uuid, app_id, store_name, grade_id, member_id, member_name, seller_name, 
+    sc_id, store_company_name, longitude, latitude, area_info, store_address, store_zip, 
+    store_state, store_close_info, store_sort, store_time, store_end_time, store_label, 
+    store_introduction, store_banner, store_avatar, store_keywords, store_description, 
+    store_wx, store_qq, store_ww, store_phone, store_domain, store_domain_times, store_recommend, 
+    store_theme, store_credit, store_quality_mark, store_service_mark, store_logistics_mark, 
+    new_goods_number, goods_number, store_collect, store_stamp, store_printdesc, store_sales, 
+    store_workingtime, store_free_price, store_decoration_switch, store_decoration_only, 
+    store_decoration_image_count, live_store_name, live_store_address, live_store_tel, 
+    live_store_bus, is_own_shop, bind_all_gc, store_vrcode_prefix
+  </sql>
+  <sql id="Blob_Column_List" >
+    store_zy, store_slide, store_slide_url, store_presales, store_aftersales
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_shop
+    where store_id = #{storeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop
+    where store_id = #{storeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.shop.TbShopWithBLOBs" >
+    insert into tb_shop (store_id, uuid, app_id, 
+      store_name, grade_id, member_id, 
+      member_name, seller_name, sc_id, 
+      store_company_name, longitude, latitude, 
+      area_info, store_address, store_zip, 
+      store_state, store_close_info, store_sort, 
+      store_time, store_end_time, store_label, 
+      store_introduction, store_banner, store_avatar, 
+      store_keywords, store_description, store_wx, 
+      store_qq, store_ww, store_phone, 
+      store_domain, store_domain_times, store_recommend, 
+      store_theme, store_credit, store_quality_mark, 
+      store_service_mark, store_logistics_mark, new_goods_number, 
+      goods_number, store_collect, store_stamp, 
+      store_printdesc, store_sales, store_workingtime, 
+      store_free_price, store_decoration_switch, 
+      store_decoration_only, store_decoration_image_count, 
+      live_store_name, live_store_address, live_store_tel, 
+      live_store_bus, is_own_shop, bind_all_gc, 
+      store_vrcode_prefix, store_zy, store_slide, 
+      store_slide_url, store_presales, store_aftersales
+      )
+    values (#{storeId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{storeName,jdbcType=CHAR}, #{gradeId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{memberName,jdbcType=CHAR}, #{sellerName,jdbcType=CHAR}, #{scId,jdbcType=INTEGER}, 
+      #{storeCompanyName,jdbcType=CHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{areaInfo,jdbcType=VARCHAR}, #{storeAddress,jdbcType=VARCHAR}, #{storeZip,jdbcType=CHAR}, 
+      #{storeState,jdbcType=INTEGER}, #{storeCloseInfo,jdbcType=VARCHAR}, #{storeSort,jdbcType=INTEGER}, 
+      #{storeTime,jdbcType=CHAR}, #{storeEndTime,jdbcType=CHAR}, #{storeLabel,jdbcType=CHAR}, 
+      #{storeIntroduction,jdbcType=VARCHAR}, #{storeBanner,jdbcType=CHAR}, #{storeAvatar,jdbcType=CHAR}, 
+      #{storeKeywords,jdbcType=VARCHAR}, #{storeDescription,jdbcType=CHAR}, #{storeWx,jdbcType=VARCHAR}, 
+      #{storeQq,jdbcType=CHAR}, #{storeWw,jdbcType=CHAR}, #{storePhone,jdbcType=CHAR}, 
+      #{storeDomain,jdbcType=CHAR}, #{storeDomainTimes,jdbcType=INTEGER}, #{storeRecommend,jdbcType=INTEGER}, 
+      #{storeTheme,jdbcType=CHAR}, #{storeCredit,jdbcType=INTEGER}, #{storeQualityMark,jdbcType=REAL}, 
+      #{storeServiceMark,jdbcType=REAL}, #{storeLogisticsMark,jdbcType=REAL}, #{newGoodsNumber,jdbcType=INTEGER}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{storeCollect,jdbcType=INTEGER}, #{storeStamp,jdbcType=CHAR}, 
+      #{storePrintdesc,jdbcType=VARCHAR}, #{storeSales,jdbcType=INTEGER}, #{storeWorkingtime,jdbcType=CHAR}, 
+      #{storeFreePrice,jdbcType=DECIMAL}, #{storeDecorationSwitch,jdbcType=INTEGER}, 
+      #{storeDecorationOnly,jdbcType=INTEGER}, #{storeDecorationImageCount,jdbcType=INTEGER}, 
+      #{liveStoreName,jdbcType=CHAR}, #{liveStoreAddress,jdbcType=CHAR}, #{liveStoreTel,jdbcType=CHAR}, 
+      #{liveStoreBus,jdbcType=CHAR}, #{isOwnShop,jdbcType=INTEGER}, #{bindAllGc,jdbcType=INTEGER}, 
+      #{storeVrcodePrefix,jdbcType=CHAR}, #{storeZy,jdbcType=LONGVARCHAR}, #{storeSlide,jdbcType=LONGVARCHAR}, 
+      #{storeSlideUrl,jdbcType=LONGVARCHAR}, #{storePresales,jdbcType=LONGVARCHAR}, #{storeAftersales,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.shop.TbShopWithBLOBs" >
+    insert into tb_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="gradeId != null" >
+        grade_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="sellerName != null" >
+        seller_name,
+      </if>
+      <if test="scId != null" >
+        sc_id,
+      </if>
+      <if test="storeCompanyName != null" >
+        store_company_name,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="areaInfo != null" >
+        area_info,
+      </if>
+      <if test="storeAddress != null" >
+        store_address,
+      </if>
+      <if test="storeZip != null" >
+        store_zip,
+      </if>
+      <if test="storeState != null" >
+        store_state,
+      </if>
+      <if test="storeCloseInfo != null" >
+        store_close_info,
+      </if>
+      <if test="storeSort != null" >
+        store_sort,
+      </if>
+      <if test="storeTime != null" >
+        store_time,
+      </if>
+      <if test="storeEndTime != null" >
+        store_end_time,
+      </if>
+      <if test="storeLabel != null" >
+        store_label,
+      </if>
+      <if test="storeIntroduction != null" >
+        store_introduction,
+      </if>
+      <if test="storeBanner != null" >
+        store_banner,
+      </if>
+      <if test="storeAvatar != null" >
+        store_avatar,
+      </if>
+      <if test="storeKeywords != null" >
+        store_keywords,
+      </if>
+      <if test="storeDescription != null" >
+        store_description,
+      </if>
+      <if test="storeWx != null" >
+        store_wx,
+      </if>
+      <if test="storeQq != null" >
+        store_qq,
+      </if>
+      <if test="storeWw != null" >
+        store_ww,
+      </if>
+      <if test="storePhone != null" >
+        store_phone,
+      </if>
+      <if test="storeDomain != null" >
+        store_domain,
+      </if>
+      <if test="storeDomainTimes != null" >
+        store_domain_times,
+      </if>
+      <if test="storeRecommend != null" >
+        store_recommend,
+      </if>
+      <if test="storeTheme != null" >
+        store_theme,
+      </if>
+      <if test="storeCredit != null" >
+        store_credit,
+      </if>
+      <if test="storeQualityMark != null" >
+        store_quality_mark,
+      </if>
+      <if test="storeServiceMark != null" >
+        store_service_mark,
+      </if>
+      <if test="storeLogisticsMark != null" >
+        store_logistics_mark,
+      </if>
+      <if test="newGoodsNumber != null" >
+        new_goods_number,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="storeCollect != null" >
+        store_collect,
+      </if>
+      <if test="storeStamp != null" >
+        store_stamp,
+      </if>
+      <if test="storePrintdesc != null" >
+        store_printdesc,
+      </if>
+      <if test="storeSales != null" >
+        store_sales,
+      </if>
+      <if test="storeWorkingtime != null" >
+        store_workingtime,
+      </if>
+      <if test="storeFreePrice != null" >
+        store_free_price,
+      </if>
+      <if test="storeDecorationSwitch != null" >
+        store_decoration_switch,
+      </if>
+      <if test="storeDecorationOnly != null" >
+        store_decoration_only,
+      </if>
+      <if test="storeDecorationImageCount != null" >
+        store_decoration_image_count,
+      </if>
+      <if test="liveStoreName != null" >
+        live_store_name,
+      </if>
+      <if test="liveStoreAddress != null" >
+        live_store_address,
+      </if>
+      <if test="liveStoreTel != null" >
+        live_store_tel,
+      </if>
+      <if test="liveStoreBus != null" >
+        live_store_bus,
+      </if>
+      <if test="isOwnShop != null" >
+        is_own_shop,
+      </if>
+      <if test="bindAllGc != null" >
+        bind_all_gc,
+      </if>
+      <if test="storeVrcodePrefix != null" >
+        store_vrcode_prefix,
+      </if>
+      <if test="storeZy != null" >
+        store_zy,
+      </if>
+      <if test="storeSlide != null" >
+        store_slide,
+      </if>
+      <if test="storeSlideUrl != null" >
+        store_slide_url,
+      </if>
+      <if test="storePresales != null" >
+        store_presales,
+      </if>
+      <if test="storeAftersales != null" >
+        store_aftersales,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="gradeId != null" >
+        #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="sellerName != null" >
+        #{sellerName,jdbcType=CHAR},
+      </if>
+      <if test="scId != null" >
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCompanyName != null" >
+        #{storeCompanyName,jdbcType=CHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="areaInfo != null" >
+        #{areaInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddress != null" >
+        #{storeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeZip != null" >
+        #{storeZip,jdbcType=CHAR},
+      </if>
+      <if test="storeState != null" >
+        #{storeState,jdbcType=INTEGER},
+      </if>
+      <if test="storeCloseInfo != null" >
+        #{storeCloseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeSort != null" >
+        #{storeSort,jdbcType=INTEGER},
+      </if>
+      <if test="storeTime != null" >
+        #{storeTime,jdbcType=CHAR},
+      </if>
+      <if test="storeEndTime != null" >
+        #{storeEndTime,jdbcType=CHAR},
+      </if>
+      <if test="storeLabel != null" >
+        #{storeLabel,jdbcType=CHAR},
+      </if>
+      <if test="storeIntroduction != null" >
+        #{storeIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="storeBanner != null" >
+        #{storeBanner,jdbcType=CHAR},
+      </if>
+      <if test="storeAvatar != null" >
+        #{storeAvatar,jdbcType=CHAR},
+      </if>
+      <if test="storeKeywords != null" >
+        #{storeKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDescription != null" >
+        #{storeDescription,jdbcType=CHAR},
+      </if>
+      <if test="storeWx != null" >
+        #{storeWx,jdbcType=VARCHAR},
+      </if>
+      <if test="storeQq != null" >
+        #{storeQq,jdbcType=CHAR},
+      </if>
+      <if test="storeWw != null" >
+        #{storeWw,jdbcType=CHAR},
+      </if>
+      <if test="storePhone != null" >
+        #{storePhone,jdbcType=CHAR},
+      </if>
+      <if test="storeDomain != null" >
+        #{storeDomain,jdbcType=CHAR},
+      </if>
+      <if test="storeDomainTimes != null" >
+        #{storeDomainTimes,jdbcType=INTEGER},
+      </if>
+      <if test="storeRecommend != null" >
+        #{storeRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="storeTheme != null" >
+        #{storeTheme,jdbcType=CHAR},
+      </if>
+      <if test="storeCredit != null" >
+        #{storeCredit,jdbcType=INTEGER},
+      </if>
+      <if test="storeQualityMark != null" >
+        #{storeQualityMark,jdbcType=REAL},
+      </if>
+      <if test="storeServiceMark != null" >
+        #{storeServiceMark,jdbcType=REAL},
+      </if>
+      <if test="storeLogisticsMark != null" >
+        #{storeLogisticsMark,jdbcType=REAL},
+      </if>
+      <if test="newGoodsNumber != null" >
+        #{newGoodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="storeCollect != null" >
+        #{storeCollect,jdbcType=INTEGER},
+      </if>
+      <if test="storeStamp != null" >
+        #{storeStamp,jdbcType=CHAR},
+      </if>
+      <if test="storePrintdesc != null" >
+        #{storePrintdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="storeSales != null" >
+        #{storeSales,jdbcType=INTEGER},
+      </if>
+      <if test="storeWorkingtime != null" >
+        #{storeWorkingtime,jdbcType=CHAR},
+      </if>
+      <if test="storeFreePrice != null" >
+        #{storeFreePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="storeDecorationSwitch != null" >
+        #{storeDecorationSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="storeDecorationOnly != null" >
+        #{storeDecorationOnly,jdbcType=INTEGER},
+      </if>
+      <if test="storeDecorationImageCount != null" >
+        #{storeDecorationImageCount,jdbcType=INTEGER},
+      </if>
+      <if test="liveStoreName != null" >
+        #{liveStoreName,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreAddress != null" >
+        #{liveStoreAddress,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreTel != null" >
+        #{liveStoreTel,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreBus != null" >
+        #{liveStoreBus,jdbcType=CHAR},
+      </if>
+      <if test="isOwnShop != null" >
+        #{isOwnShop,jdbcType=INTEGER},
+      </if>
+      <if test="bindAllGc != null" >
+        #{bindAllGc,jdbcType=INTEGER},
+      </if>
+      <if test="storeVrcodePrefix != null" >
+        #{storeVrcodePrefix,jdbcType=CHAR},
+      </if>
+      <if test="storeZy != null" >
+        #{storeZy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeSlide != null" >
+        #{storeSlide,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeSlideUrl != null" >
+        #{storeSlideUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storePresales != null" >
+        #{storePresales,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeAftersales != null" >
+        #{storeAftersales,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.shop.TbShopWithBLOBs" >
+    update tb_shop
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="gradeId != null" >
+        grade_id = #{gradeId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="sellerName != null" >
+        seller_name = #{sellerName,jdbcType=CHAR},
+      </if>
+      <if test="scId != null" >
+        sc_id = #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="storeCompanyName != null" >
+        store_company_name = #{storeCompanyName,jdbcType=CHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="areaInfo != null" >
+        area_info = #{areaInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeAddress != null" >
+        store_address = #{storeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="storeZip != null" >
+        store_zip = #{storeZip,jdbcType=CHAR},
+      </if>
+      <if test="storeState != null" >
+        store_state = #{storeState,jdbcType=INTEGER},
+      </if>
+      <if test="storeCloseInfo != null" >
+        store_close_info = #{storeCloseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeSort != null" >
+        store_sort = #{storeSort,jdbcType=INTEGER},
+      </if>
+      <if test="storeTime != null" >
+        store_time = #{storeTime,jdbcType=CHAR},
+      </if>
+      <if test="storeEndTime != null" >
+        store_end_time = #{storeEndTime,jdbcType=CHAR},
+      </if>
+      <if test="storeLabel != null" >
+        store_label = #{storeLabel,jdbcType=CHAR},
+      </if>
+      <if test="storeIntroduction != null" >
+        store_introduction = #{storeIntroduction,jdbcType=VARCHAR},
+      </if>
+      <if test="storeBanner != null" >
+        store_banner = #{storeBanner,jdbcType=CHAR},
+      </if>
+      <if test="storeAvatar != null" >
+        store_avatar = #{storeAvatar,jdbcType=CHAR},
+      </if>
+      <if test="storeKeywords != null" >
+        store_keywords = #{storeKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDescription != null" >
+        store_description = #{storeDescription,jdbcType=CHAR},
+      </if>
+      <if test="storeWx != null" >
+        store_wx = #{storeWx,jdbcType=VARCHAR},
+      </if>
+      <if test="storeQq != null" >
+        store_qq = #{storeQq,jdbcType=CHAR},
+      </if>
+      <if test="storeWw != null" >
+        store_ww = #{storeWw,jdbcType=CHAR},
+      </if>
+      <if test="storePhone != null" >
+        store_phone = #{storePhone,jdbcType=CHAR},
+      </if>
+      <if test="storeDomain != null" >
+        store_domain = #{storeDomain,jdbcType=CHAR},
+      </if>
+      <if test="storeDomainTimes != null" >
+        store_domain_times = #{storeDomainTimes,jdbcType=INTEGER},
+      </if>
+      <if test="storeRecommend != null" >
+        store_recommend = #{storeRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="storeTheme != null" >
+        store_theme = #{storeTheme,jdbcType=CHAR},
+      </if>
+      <if test="storeCredit != null" >
+        store_credit = #{storeCredit,jdbcType=INTEGER},
+      </if>
+      <if test="storeQualityMark != null" >
+        store_quality_mark = #{storeQualityMark,jdbcType=REAL},
+      </if>
+      <if test="storeServiceMark != null" >
+        store_service_mark = #{storeServiceMark,jdbcType=REAL},
+      </if>
+      <if test="storeLogisticsMark != null" >
+        store_logistics_mark = #{storeLogisticsMark,jdbcType=REAL},
+      </if>
+      <if test="newGoodsNumber != null" >
+        new_goods_number = #{newGoodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="storeCollect != null" >
+        store_collect = #{storeCollect,jdbcType=INTEGER},
+      </if>
+      <if test="storeStamp != null" >
+        store_stamp = #{storeStamp,jdbcType=CHAR},
+      </if>
+      <if test="storePrintdesc != null" >
+        store_printdesc = #{storePrintdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="storeSales != null" >
+        store_sales = #{storeSales,jdbcType=INTEGER},
+      </if>
+      <if test="storeWorkingtime != null" >
+        store_workingtime = #{storeWorkingtime,jdbcType=CHAR},
+      </if>
+      <if test="storeFreePrice != null" >
+        store_free_price = #{storeFreePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="storeDecorationSwitch != null" >
+        store_decoration_switch = #{storeDecorationSwitch,jdbcType=INTEGER},
+      </if>
+      <if test="storeDecorationOnly != null" >
+        store_decoration_only = #{storeDecorationOnly,jdbcType=INTEGER},
+      </if>
+      <if test="storeDecorationImageCount != null" >
+        store_decoration_image_count = #{storeDecorationImageCount,jdbcType=INTEGER},
+      </if>
+      <if test="liveStoreName != null" >
+        live_store_name = #{liveStoreName,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreAddress != null" >
+        live_store_address = #{liveStoreAddress,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreTel != null" >
+        live_store_tel = #{liveStoreTel,jdbcType=CHAR},
+      </if>
+      <if test="liveStoreBus != null" >
+        live_store_bus = #{liveStoreBus,jdbcType=CHAR},
+      </if>
+      <if test="isOwnShop != null" >
+        is_own_shop = #{isOwnShop,jdbcType=INTEGER},
+      </if>
+      <if test="bindAllGc != null" >
+        bind_all_gc = #{bindAllGc,jdbcType=INTEGER},
+      </if>
+      <if test="storeVrcodePrefix != null" >
+        store_vrcode_prefix = #{storeVrcodePrefix,jdbcType=CHAR},
+      </if>
+      <if test="storeZy != null" >
+        store_zy = #{storeZy,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeSlide != null" >
+        store_slide = #{storeSlide,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeSlideUrl != null" >
+        store_slide_url = #{storeSlideUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storePresales != null" >
+        store_presales = #{storePresales,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storeAftersales != null" >
+        store_aftersales = #{storeAftersales,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where store_id = #{storeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.shop.TbShopWithBLOBs" >
+    update tb_shop
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      store_name = #{storeName,jdbcType=CHAR},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      member_name = #{memberName,jdbcType=CHAR},
+      seller_name = #{sellerName,jdbcType=CHAR},
+      sc_id = #{scId,jdbcType=INTEGER},
+      store_company_name = #{storeCompanyName,jdbcType=CHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      area_info = #{areaInfo,jdbcType=VARCHAR},
+      store_address = #{storeAddress,jdbcType=VARCHAR},
+      store_zip = #{storeZip,jdbcType=CHAR},
+      store_state = #{storeState,jdbcType=INTEGER},
+      store_close_info = #{storeCloseInfo,jdbcType=VARCHAR},
+      store_sort = #{storeSort,jdbcType=INTEGER},
+      store_time = #{storeTime,jdbcType=CHAR},
+      store_end_time = #{storeEndTime,jdbcType=CHAR},
+      store_label = #{storeLabel,jdbcType=CHAR},
+      store_introduction = #{storeIntroduction,jdbcType=VARCHAR},
+      store_banner = #{storeBanner,jdbcType=CHAR},
+      store_avatar = #{storeAvatar,jdbcType=CHAR},
+      store_keywords = #{storeKeywords,jdbcType=VARCHAR},
+      store_description = #{storeDescription,jdbcType=CHAR},
+      store_wx = #{storeWx,jdbcType=VARCHAR},
+      store_qq = #{storeQq,jdbcType=CHAR},
+      store_ww = #{storeWw,jdbcType=CHAR},
+      store_phone = #{storePhone,jdbcType=CHAR},
+      store_domain = #{storeDomain,jdbcType=CHAR},
+      store_domain_times = #{storeDomainTimes,jdbcType=INTEGER},
+      store_recommend = #{storeRecommend,jdbcType=INTEGER},
+      store_theme = #{storeTheme,jdbcType=CHAR},
+      store_credit = #{storeCredit,jdbcType=INTEGER},
+      store_quality_mark = #{storeQualityMark,jdbcType=REAL},
+      store_service_mark = #{storeServiceMark,jdbcType=REAL},
+      store_logistics_mark = #{storeLogisticsMark,jdbcType=REAL},
+      new_goods_number = #{newGoodsNumber,jdbcType=INTEGER},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      store_collect = #{storeCollect,jdbcType=INTEGER},
+      store_stamp = #{storeStamp,jdbcType=CHAR},
+      store_printdesc = #{storePrintdesc,jdbcType=VARCHAR},
+      store_sales = #{storeSales,jdbcType=INTEGER},
+      store_workingtime = #{storeWorkingtime,jdbcType=CHAR},
+      store_free_price = #{storeFreePrice,jdbcType=DECIMAL},
+      store_decoration_switch = #{storeDecorationSwitch,jdbcType=INTEGER},
+      store_decoration_only = #{storeDecorationOnly,jdbcType=INTEGER},
+      store_decoration_image_count = #{storeDecorationImageCount,jdbcType=INTEGER},
+      live_store_name = #{liveStoreName,jdbcType=CHAR},
+      live_store_address = #{liveStoreAddress,jdbcType=CHAR},
+      live_store_tel = #{liveStoreTel,jdbcType=CHAR},
+      live_store_bus = #{liveStoreBus,jdbcType=CHAR},
+      is_own_shop = #{isOwnShop,jdbcType=INTEGER},
+      bind_all_gc = #{bindAllGc,jdbcType=INTEGER},
+      store_vrcode_prefix = #{storeVrcodePrefix,jdbcType=CHAR},
+      store_zy = #{storeZy,jdbcType=LONGVARCHAR},
+      store_slide = #{storeSlide,jdbcType=LONGVARCHAR},
+      store_slide_url = #{storeSlideUrl,jdbcType=LONGVARCHAR},
+      store_presales = #{storePresales,jdbcType=LONGVARCHAR},
+      store_aftersales = #{storeAftersales,jdbcType=LONGVARCHAR}
+    where store_id = #{storeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.shop.TbShop" >
+    update tb_shop
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      store_name = #{storeName,jdbcType=CHAR},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      member_name = #{memberName,jdbcType=CHAR},
+      seller_name = #{sellerName,jdbcType=CHAR},
+      sc_id = #{scId,jdbcType=INTEGER},
+      store_company_name = #{storeCompanyName,jdbcType=CHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      area_info = #{areaInfo,jdbcType=VARCHAR},
+      store_address = #{storeAddress,jdbcType=VARCHAR},
+      store_zip = #{storeZip,jdbcType=CHAR},
+      store_state = #{storeState,jdbcType=INTEGER},
+      store_close_info = #{storeCloseInfo,jdbcType=VARCHAR},
+      store_sort = #{storeSort,jdbcType=INTEGER},
+      store_time = #{storeTime,jdbcType=CHAR},
+      store_end_time = #{storeEndTime,jdbcType=CHAR},
+      store_label = #{storeLabel,jdbcType=CHAR},
+      store_introduction = #{storeIntroduction,jdbcType=VARCHAR},
+      store_banner = #{storeBanner,jdbcType=CHAR},
+      store_avatar = #{storeAvatar,jdbcType=CHAR},
+      store_keywords = #{storeKeywords,jdbcType=VARCHAR},
+      store_description = #{storeDescription,jdbcType=CHAR},
+      store_wx = #{storeWx,jdbcType=VARCHAR},
+      store_qq = #{storeQq,jdbcType=CHAR},
+      store_ww = #{storeWw,jdbcType=CHAR},
+      store_phone = #{storePhone,jdbcType=CHAR},
+      store_domain = #{storeDomain,jdbcType=CHAR},
+      store_domain_times = #{storeDomainTimes,jdbcType=INTEGER},
+      store_recommend = #{storeRecommend,jdbcType=INTEGER},
+      store_theme = #{storeTheme,jdbcType=CHAR},
+      store_credit = #{storeCredit,jdbcType=INTEGER},
+      store_quality_mark = #{storeQualityMark,jdbcType=REAL},
+      store_service_mark = #{storeServiceMark,jdbcType=REAL},
+      store_logistics_mark = #{storeLogisticsMark,jdbcType=REAL},
+      new_goods_number = #{newGoodsNumber,jdbcType=INTEGER},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      store_collect = #{storeCollect,jdbcType=INTEGER},
+      store_stamp = #{storeStamp,jdbcType=CHAR},
+      store_printdesc = #{storePrintdesc,jdbcType=VARCHAR},
+      store_sales = #{storeSales,jdbcType=INTEGER},
+      store_workingtime = #{storeWorkingtime,jdbcType=CHAR},
+      store_free_price = #{storeFreePrice,jdbcType=DECIMAL},
+      store_decoration_switch = #{storeDecorationSwitch,jdbcType=INTEGER},
+      store_decoration_only = #{storeDecorationOnly,jdbcType=INTEGER},
+      store_decoration_image_count = #{storeDecorationImageCount,jdbcType=INTEGER},
+      live_store_name = #{liveStoreName,jdbcType=CHAR},
+      live_store_address = #{liveStoreAddress,jdbcType=CHAR},
+      live_store_tel = #{liveStoreTel,jdbcType=CHAR},
+      live_store_bus = #{liveStoreBus,jdbcType=CHAR},
+      is_own_shop = #{isOwnShop,jdbcType=INTEGER},
+      bind_all_gc = #{bindAllGc,jdbcType=INTEGER},
+      store_vrcode_prefix = #{storeVrcodePrefix,jdbcType=CHAR}
+    where store_id = #{storeId,jdbcType=INTEGER}
+  </update>
+</mapper>

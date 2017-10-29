@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.foods.TbFoodsRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.foods.TbFoodsRecommend" >
+    <id column="recommend_id" property="recommendId" jdbcType="BIGINT" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="every_meel_type" property="everyMeelType" jdbcType="INTEGER" />
+    <result column="recommend_date" property="recommendDate" jdbcType="DATE" />
+    <result column="recommend_ids" property="recommendIds" jdbcType="VARCHAR" />
+    <result column="recommend_type" property="recommendType" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recommend_id, add_time, every_meel_type, recommend_date, recommend_ids, recommend_type, 
+    app_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_foods_recommend
+    where recommend_id = #{recommendId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_foods_recommend
+    where recommend_id = #{recommendId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.foods.TbFoodsRecommend" >
+    insert into tb_foods_recommend (recommend_id, add_time, every_meel_type, 
+      recommend_date, recommend_ids, recommend_type, 
+      app_id)
+    values (#{recommendId,jdbcType=BIGINT}, #{addTime,jdbcType=TIMESTAMP}, #{everyMeelType,jdbcType=INTEGER}, 
+      #{recommendDate,jdbcType=DATE}, #{recommendIds,jdbcType=VARCHAR}, #{recommendType,jdbcType=INTEGER}, 
+      #{appId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.foods.TbFoodsRecommend" >
+    insert into tb_foods_recommend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recommendId != null" >
+        recommend_id,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="everyMeelType != null" >
+        every_meel_type,
+      </if>
+      <if test="recommendDate != null" >
+        recommend_date,
+      </if>
+      <if test="recommendIds != null" >
+        recommend_ids,
+      </if>
+      <if test="recommendType != null" >
+        recommend_type,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recommendId != null" >
+        #{recommendId,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="everyMeelType != null" >
+        #{everyMeelType,jdbcType=INTEGER},
+      </if>
+      <if test="recommendDate != null" >
+        #{recommendDate,jdbcType=DATE},
+      </if>
+      <if test="recommendIds != null" >
+        #{recommendIds,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendType != null" >
+        #{recommendType,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.foods.TbFoodsRecommend" >
+    update tb_foods_recommend
+    <set >
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="everyMeelType != null" >
+        every_meel_type = #{everyMeelType,jdbcType=INTEGER},
+      </if>
+      <if test="recommendDate != null" >
+        recommend_date = #{recommendDate,jdbcType=DATE},
+      </if>
+      <if test="recommendIds != null" >
+        recommend_ids = #{recommendIds,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendType != null" >
+        recommend_type = #{recommendType,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where recommend_id = #{recommendId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.foods.TbFoodsRecommend" >
+    update tb_foods_recommend
+    set add_time = #{addTime,jdbcType=TIMESTAMP},
+      every_meel_type = #{everyMeelType,jdbcType=INTEGER},
+      recommend_date = #{recommendDate,jdbcType=DATE},
+      recommend_ids = #{recommendIds,jdbcType=VARCHAR},
+      recommend_type = #{recommendType,jdbcType=INTEGER},
+      app_id = #{appId,jdbcType=INTEGER}
+    where recommend_id = #{recommendId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.foods.TbFoodsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.foods.TbFoodsType" >
+    <id column="ft_id" property="ftId" jdbcType="INTEGER" />
+    <result column="_name" property="name" jdbcType="VARCHAR" />
+    <result column="_level" property="level" jdbcType="INTEGER" />
+    <result column="upper_id" property="upperId" jdbcType="INTEGER" />
+    <result column="image_name" property="imageName" jdbcType="VARCHAR" />
+    <result column="order_Num" property="orderNum" jdbcType="INTEGER" />
+    <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+    <result column="_createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="_updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ft_id, _name, _level, upper_id, image_name, order_Num, del_flag, _createTime, _updateTime, 
+    remark, app_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_foods_type
+    where ft_id = #{ftId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_foods_type
+    where ft_id = #{ftId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.foods.TbFoodsType" >
+    insert into tb_foods_type (ft_id, _name, _level, 
+      upper_id, image_name, order_Num, 
+      del_flag, _createTime, _updateTime, 
+      remark, app_id)
+    values (#{ftId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{upperId,jdbcType=INTEGER}, #{imageName,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}, 
+      #{delFlag,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{appId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.foods.TbFoodsType" >
+    insert into tb_foods_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ftId != null" >
+        ft_id,
+      </if>
+      <if test="name != null" >
+        _name,
+      </if>
+      <if test="level != null" >
+        _level,
+      </if>
+      <if test="upperId != null" >
+        upper_id,
+      </if>
+      <if test="imageName != null" >
+        image_name,
+      </if>
+      <if test="orderNum != null" >
+        order_Num,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+      <if test="createtime != null" >
+        _createTime,
+      </if>
+      <if test="updatetime != null" >
+        _updateTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ftId != null" >
+        #{ftId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="upperId != null" >
+        #{upperId,jdbcType=INTEGER},
+      </if>
+      <if test="imageName != null" >
+        #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.foods.TbFoodsType" >
+    update tb_foods_type
+    <set >
+      <if test="name != null" >
+        _name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        _level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="upperId != null" >
+        upper_id = #{upperId,jdbcType=INTEGER},
+      </if>
+      <if test="imageName != null" >
+        image_name = #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        order_Num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        _createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        _updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ft_id = #{ftId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.foods.TbFoodsType" >
+    update tb_foods_type
+    set _name = #{name,jdbcType=VARCHAR},
+      _level = #{level,jdbcType=INTEGER},
+      upper_id = #{upperId,jdbcType=INTEGER},
+      image_name = #{imageName,jdbcType=VARCHAR},
+      order_Num = #{orderNum,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      _createTime = #{createtime,jdbcType=TIMESTAMP},
+      _updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=INTEGER}
+    where ft_id = #{ftId,jdbcType=INTEGER}
+  </update>
+</mapper>

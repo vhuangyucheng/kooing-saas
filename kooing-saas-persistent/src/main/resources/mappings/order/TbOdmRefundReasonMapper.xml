@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.order.TbOdmRefundReasonMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.order.TbOdmRefundReason" >
+    <id column="reason_id" property="reasonId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="refund_type" property="refundType" jdbcType="INTEGER" />
+    <result column="reason_info" property="reasonInfo" jdbcType="CHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reason_id, uuid, app_id, refund_type, reason_info, sort, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_odm_refund_reason
+    where reason_id = #{reasonId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_odm_refund_reason
+    where reason_id = #{reasonId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.order.TbOdmRefundReason" >
+    insert into tb_odm_refund_reason (reason_id, uuid, app_id, 
+      refund_type, reason_info, sort, 
+      update_time)
+    values (#{reasonId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{refundType,jdbcType=INTEGER}, #{reasonInfo,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.order.TbOdmRefundReason" >
+    insert into tb_odm_refund_reason
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reasonId != null" >
+        reason_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="refundType != null" >
+        refund_type,
+      </if>
+      <if test="reasonInfo != null" >
+        reason_info,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reasonId != null" >
+        #{reasonId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="refundType != null" >
+        #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="reasonInfo != null" >
+        #{reasonInfo,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.order.TbOdmRefundReason" >
+    update tb_odm_refund_reason
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="refundType != null" >
+        refund_type = #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="reasonInfo != null" >
+        reason_info = #{reasonInfo,jdbcType=CHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where reason_id = #{reasonId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.order.TbOdmRefundReason" >
+    update tb_odm_refund_reason
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      refund_type = #{refundType,jdbcType=INTEGER},
+      reason_info = #{reasonInfo,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where reason_id = #{reasonId,jdbcType=INTEGER}
+  </update>
+</mapper>

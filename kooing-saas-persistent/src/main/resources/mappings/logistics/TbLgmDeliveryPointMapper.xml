@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.logistics.TbLgmDeliveryPointMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.logistics.TbLgmDeliveryPoint" >
+    <id column="dlyp_id" property="dlypId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="dlyp_name" property="dlypName" jdbcType="CHAR" />
+    <result column="dlyp_passwd" property="dlypPasswd" jdbcType="CHAR" />
+    <result column="dlyp_truename" property="dlypTruename" jdbcType="CHAR" />
+    <result column="dlyp_mobile" property="dlypMobile" jdbcType="CHAR" />
+    <result column="dlyp_telephony" property="dlypTelephony" jdbcType="CHAR" />
+    <result column="dlyp_address_name" property="dlypAddressName" jdbcType="CHAR" />
+    <result column="dlyp_area_2" property="dlypArea2" jdbcType="INTEGER" />
+    <result column="dlyp_area_3" property="dlypArea3" jdbcType="INTEGER" />
+    <result column="dlyp_area_info" property="dlypAreaInfo" jdbcType="VARCHAR" />
+    <result column="dlyp_address" property="dlypAddress" jdbcType="VARCHAR" />
+    <result column="dlyp_idcard" property="dlypIdcard" jdbcType="CHAR" />
+    <result column="dlyp_idcard_image" property="dlypIdcardImage" jdbcType="VARCHAR" />
+    <result column="dlyp_addtime" property="dlypAddtime" jdbcType="TIMESTAMP" />
+    <result column="dlyp_state" property="dlypState" jdbcType="INTEGER" />
+    <result column="dlyp_fail_reason" property="dlypFailReason" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dlyp_id, uuid, app_id, dlyp_name, dlyp_passwd, dlyp_truename, dlyp_mobile, dlyp_telephony, 
+    dlyp_address_name, dlyp_area_2, dlyp_area_3, dlyp_area_info, dlyp_address, dlyp_idcard, 
+    dlyp_idcard_image, dlyp_addtime, dlyp_state, dlyp_fail_reason, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_lgm_delivery_point
+    where dlyp_id = #{dlypId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_lgm_delivery_point
+    where dlyp_id = #{dlypId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryPoint" >
+    insert into tb_lgm_delivery_point (dlyp_id, uuid, app_id, 
+      dlyp_name, dlyp_passwd, dlyp_truename, 
+      dlyp_mobile, dlyp_telephony, dlyp_address_name, 
+      dlyp_area_2, dlyp_area_3, dlyp_area_info, 
+      dlyp_address, dlyp_idcard, dlyp_idcard_image, 
+      dlyp_addtime, dlyp_state, dlyp_fail_reason, 
+      update_time)
+    values (#{dlypId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{dlypName,jdbcType=CHAR}, #{dlypPasswd,jdbcType=CHAR}, #{dlypTruename,jdbcType=CHAR}, 
+      #{dlypMobile,jdbcType=CHAR}, #{dlypTelephony,jdbcType=CHAR}, #{dlypAddressName,jdbcType=CHAR}, 
+      #{dlypArea2,jdbcType=INTEGER}, #{dlypArea3,jdbcType=INTEGER}, #{dlypAreaInfo,jdbcType=VARCHAR}, 
+      #{dlypAddress,jdbcType=VARCHAR}, #{dlypIdcard,jdbcType=CHAR}, #{dlypIdcardImage,jdbcType=VARCHAR}, 
+      #{dlypAddtime,jdbcType=TIMESTAMP}, #{dlypState,jdbcType=INTEGER}, #{dlypFailReason,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryPoint" >
+    insert into tb_lgm_delivery_point
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dlypId != null" >
+        dlyp_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="dlypName != null" >
+        dlyp_name,
+      </if>
+      <if test="dlypPasswd != null" >
+        dlyp_passwd,
+      </if>
+      <if test="dlypTruename != null" >
+        dlyp_truename,
+      </if>
+      <if test="dlypMobile != null" >
+        dlyp_mobile,
+      </if>
+      <if test="dlypTelephony != null" >
+        dlyp_telephony,
+      </if>
+      <if test="dlypAddressName != null" >
+        dlyp_address_name,
+      </if>
+      <if test="dlypArea2 != null" >
+        dlyp_area_2,
+      </if>
+      <if test="dlypArea3 != null" >
+        dlyp_area_3,
+      </if>
+      <if test="dlypAreaInfo != null" >
+        dlyp_area_info,
+      </if>
+      <if test="dlypAddress != null" >
+        dlyp_address,
+      </if>
+      <if test="dlypIdcard != null" >
+        dlyp_idcard,
+      </if>
+      <if test="dlypIdcardImage != null" >
+        dlyp_idcard_image,
+      </if>
+      <if test="dlypAddtime != null" >
+        dlyp_addtime,
+      </if>
+      <if test="dlypState != null" >
+        dlyp_state,
+      </if>
+      <if test="dlypFailReason != null" >
+        dlyp_fail_reason,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dlypId != null" >
+        #{dlypId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="dlypName != null" >
+        #{dlypName,jdbcType=CHAR},
+      </if>
+      <if test="dlypPasswd != null" >
+        #{dlypPasswd,jdbcType=CHAR},
+      </if>
+      <if test="dlypTruename != null" >
+        #{dlypTruename,jdbcType=CHAR},
+      </if>
+      <if test="dlypMobile != null" >
+        #{dlypMobile,jdbcType=CHAR},
+      </if>
+      <if test="dlypTelephony != null" >
+        #{dlypTelephony,jdbcType=CHAR},
+      </if>
+      <if test="dlypAddressName != null" >
+        #{dlypAddressName,jdbcType=CHAR},
+      </if>
+      <if test="dlypArea2 != null" >
+        #{dlypArea2,jdbcType=INTEGER},
+      </if>
+      <if test="dlypArea3 != null" >
+        #{dlypArea3,jdbcType=INTEGER},
+      </if>
+      <if test="dlypAreaInfo != null" >
+        #{dlypAreaInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypAddress != null" >
+        #{dlypAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypIdcard != null" >
+        #{dlypIdcard,jdbcType=CHAR},
+      </if>
+      <if test="dlypIdcardImage != null" >
+        #{dlypIdcardImage,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypAddtime != null" >
+        #{dlypAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlypState != null" >
+        #{dlypState,jdbcType=INTEGER},
+      </if>
+      <if test="dlypFailReason != null" >
+        #{dlypFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryPoint" >
+    update tb_lgm_delivery_point
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="dlypName != null" >
+        dlyp_name = #{dlypName,jdbcType=CHAR},
+      </if>
+      <if test="dlypPasswd != null" >
+        dlyp_passwd = #{dlypPasswd,jdbcType=CHAR},
+      </if>
+      <if test="dlypTruename != null" >
+        dlyp_truename = #{dlypTruename,jdbcType=CHAR},
+      </if>
+      <if test="dlypMobile != null" >
+        dlyp_mobile = #{dlypMobile,jdbcType=CHAR},
+      </if>
+      <if test="dlypTelephony != null" >
+        dlyp_telephony = #{dlypTelephony,jdbcType=CHAR},
+      </if>
+      <if test="dlypAddressName != null" >
+        dlyp_address_name = #{dlypAddressName,jdbcType=CHAR},
+      </if>
+      <if test="dlypArea2 != null" >
+        dlyp_area_2 = #{dlypArea2,jdbcType=INTEGER},
+      </if>
+      <if test="dlypArea3 != null" >
+        dlyp_area_3 = #{dlypArea3,jdbcType=INTEGER},
+      </if>
+      <if test="dlypAreaInfo != null" >
+        dlyp_area_info = #{dlypAreaInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypAddress != null" >
+        dlyp_address = #{dlypAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypIdcard != null" >
+        dlyp_idcard = #{dlypIdcard,jdbcType=CHAR},
+      </if>
+      <if test="dlypIdcardImage != null" >
+        dlyp_idcard_image = #{dlypIdcardImage,jdbcType=VARCHAR},
+      </if>
+      <if test="dlypAddtime != null" >
+        dlyp_addtime = #{dlypAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dlypState != null" >
+        dlyp_state = #{dlypState,jdbcType=INTEGER},
+      </if>
+      <if test="dlypFailReason != null" >
+        dlyp_fail_reason = #{dlypFailReason,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dlyp_id = #{dlypId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryPoint" >
+    update tb_lgm_delivery_point
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      dlyp_name = #{dlypName,jdbcType=CHAR},
+      dlyp_passwd = #{dlypPasswd,jdbcType=CHAR},
+      dlyp_truename = #{dlypTruename,jdbcType=CHAR},
+      dlyp_mobile = #{dlypMobile,jdbcType=CHAR},
+      dlyp_telephony = #{dlypTelephony,jdbcType=CHAR},
+      dlyp_address_name = #{dlypAddressName,jdbcType=CHAR},
+      dlyp_area_2 = #{dlypArea2,jdbcType=INTEGER},
+      dlyp_area_3 = #{dlypArea3,jdbcType=INTEGER},
+      dlyp_area_info = #{dlypAreaInfo,jdbcType=VARCHAR},
+      dlyp_address = #{dlypAddress,jdbcType=VARCHAR},
+      dlyp_idcard = #{dlypIdcard,jdbcType=CHAR},
+      dlyp_idcard_image = #{dlypIdcardImage,jdbcType=VARCHAR},
+      dlyp_addtime = #{dlypAddtime,jdbcType=TIMESTAMP},
+      dlyp_state = #{dlypState,jdbcType=INTEGER},
+      dlyp_fail_reason = #{dlypFailReason,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where dlyp_id = #{dlypId,jdbcType=INTEGER}
+  </update>
+</mapper>

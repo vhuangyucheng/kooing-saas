@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.ad.TbAdvPositionMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.ad.TbAdvPosition" >
+    <id column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="ap_name" property="apName" jdbcType="CHAR" />
+    <result column="ap_intro" property="apIntro" jdbcType="VARCHAR" />
+    <result column="ap_class" property="apClass" jdbcType="INTEGER" />
+    <result column="ap_display" property="apDisplay" jdbcType="INTEGER" />
+    <result column="is_use" property="isUse" jdbcType="INTEGER" />
+    <result column="ap_width" property="apWidth" jdbcType="INTEGER" />
+    <result column="ap_height" property="apHeight" jdbcType="INTEGER" />
+    <result column="ap_price" property="apPrice" jdbcType="INTEGER" />
+    <result column="adv_num" property="advNum" jdbcType="INTEGER" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="default_content" property="defaultContent" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    position_id, uuid, app_id, ap_name, ap_intro, ap_class, ap_display, is_use, ap_width, 
+    ap_height, ap_price, adv_num, click_num, default_content, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_adv_position
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_adv_position
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.ad.TbAdvPosition" >
+    insert into tb_adv_position (position_id, uuid, app_id, 
+      ap_name, ap_intro, ap_class, 
+      ap_display, is_use, ap_width, 
+      ap_height, ap_price, adv_num, 
+      click_num, default_content, update_time
+      )
+    values (#{positionId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{apName,jdbcType=CHAR}, #{apIntro,jdbcType=VARCHAR}, #{apClass,jdbcType=INTEGER}, 
+      #{apDisplay,jdbcType=INTEGER}, #{isUse,jdbcType=INTEGER}, #{apWidth,jdbcType=INTEGER}, 
+      #{apHeight,jdbcType=INTEGER}, #{apPrice,jdbcType=INTEGER}, #{advNum,jdbcType=INTEGER}, 
+      #{clickNum,jdbcType=INTEGER}, #{defaultContent,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.ad.TbAdvPosition" >
+    insert into tb_adv_position
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="apName != null" >
+        ap_name,
+      </if>
+      <if test="apIntro != null" >
+        ap_intro,
+      </if>
+      <if test="apClass != null" >
+        ap_class,
+      </if>
+      <if test="apDisplay != null" >
+        ap_display,
+      </if>
+      <if test="isUse != null" >
+        is_use,
+      </if>
+      <if test="apWidth != null" >
+        ap_width,
+      </if>
+      <if test="apHeight != null" >
+        ap_height,
+      </if>
+      <if test="apPrice != null" >
+        ap_price,
+      </if>
+      <if test="advNum != null" >
+        adv_num,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="defaultContent != null" >
+        default_content,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="apName != null" >
+        #{apName,jdbcType=CHAR},
+      </if>
+      <if test="apIntro != null" >
+        #{apIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="apClass != null" >
+        #{apClass,jdbcType=INTEGER},
+      </if>
+      <if test="apDisplay != null" >
+        #{apDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null" >
+        #{isUse,jdbcType=INTEGER},
+      </if>
+      <if test="apWidth != null" >
+        #{apWidth,jdbcType=INTEGER},
+      </if>
+      <if test="apHeight != null" >
+        #{apHeight,jdbcType=INTEGER},
+      </if>
+      <if test="apPrice != null" >
+        #{apPrice,jdbcType=INTEGER},
+      </if>
+      <if test="advNum != null" >
+        #{advNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="defaultContent != null" >
+        #{defaultContent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.ad.TbAdvPosition" >
+    update tb_adv_position
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="apName != null" >
+        ap_name = #{apName,jdbcType=CHAR},
+      </if>
+      <if test="apIntro != null" >
+        ap_intro = #{apIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="apClass != null" >
+        ap_class = #{apClass,jdbcType=INTEGER},
+      </if>
+      <if test="apDisplay != null" >
+        ap_display = #{apDisplay,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null" >
+        is_use = #{isUse,jdbcType=INTEGER},
+      </if>
+      <if test="apWidth != null" >
+        ap_width = #{apWidth,jdbcType=INTEGER},
+      </if>
+      <if test="apHeight != null" >
+        ap_height = #{apHeight,jdbcType=INTEGER},
+      </if>
+      <if test="apPrice != null" >
+        ap_price = #{apPrice,jdbcType=INTEGER},
+      </if>
+      <if test="advNum != null" >
+        adv_num = #{advNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="defaultContent != null" >
+        default_content = #{defaultContent,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.ad.TbAdvPosition" >
+    update tb_adv_position
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      ap_name = #{apName,jdbcType=CHAR},
+      ap_intro = #{apIntro,jdbcType=VARCHAR},
+      ap_class = #{apClass,jdbcType=INTEGER},
+      ap_display = #{apDisplay,jdbcType=INTEGER},
+      is_use = #{isUse,jdbcType=INTEGER},
+      ap_width = #{apWidth,jdbcType=INTEGER},
+      ap_height = #{apHeight,jdbcType=INTEGER},
+      ap_price = #{apPrice,jdbcType=INTEGER},
+      adv_num = #{advNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      default_content = #{defaultContent,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where position_id = #{positionId,jdbcType=INTEGER}
+  </update>
+</mapper>

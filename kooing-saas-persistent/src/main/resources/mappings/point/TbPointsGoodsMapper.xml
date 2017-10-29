@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.point.TbPointsGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.point.TbPointsGoods" >
+    <result column="pgoods_id" property="pgoodsId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="pgoods_name" property="pgoodsName" jdbcType="VARCHAR" />
+    <result column="pgoods_price" property="pgoodsPrice" jdbcType="DECIMAL" />
+    <result column="pgoods_points" property="pgoodsPoints" jdbcType="INTEGER" />
+    <result column="pgoods_image" property="pgoodsImage" jdbcType="VARCHAR" />
+    <result column="pgoods_tag" property="pgoodsTag" jdbcType="VARCHAR" />
+    <result column="pgoods_serial" property="pgoodsSerial" jdbcType="VARCHAR" />
+    <result column="pgoods_storage" property="pgoodsStorage" jdbcType="INTEGER" />
+    <result column="pgoods_show" property="pgoodsShow" jdbcType="BIT" />
+    <result column="pgoods_commend" property="pgoodsCommend" jdbcType="BIT" />
+    <result column="pgoods_add_time" property="pgoodsAddTime" jdbcType="TIMESTAMP" />
+    <result column="pgoods_keywords" property="pgoodsKeywords" jdbcType="VARCHAR" />
+    <result column="pgoods_description" property="pgoodsDescription" jdbcType="VARCHAR" />
+    <result column="pgoods_state" property="pgoodsState" jdbcType="BIT" />
+    <result column="pgoods_close_reason" property="pgoodsCloseReason" jdbcType="VARCHAR" />
+    <result column="pgoods_salenum" property="pgoodsSalenum" jdbcType="INTEGER" />
+    <result column="pgoods_view" property="pgoodsView" jdbcType="INTEGER" />
+    <result column="pgoods_islimit" property="pgoodsIslimit" jdbcType="BIT" />
+    <result column="pgoods_limitnum" property="pgoodsLimitnum" jdbcType="INTEGER" />
+    <result column="pgoods_islimittime" property="pgoodsIslimittime" jdbcType="BIT" />
+    <result column="pgoods_limitmgrade" property="pgoodsLimitmgrade" jdbcType="INTEGER" />
+    <result column="pgoods_starttime" property="pgoodsStarttime" jdbcType="TIMESTAMP" />
+    <result column="pgoods_endtime" property="pgoodsEndtime" jdbcType="TIMESTAMP" />
+    <result column="pgoods_sort" property="pgoodsSort" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.model.mysql.point.TbPointsGoods" extends="BaseResultMap" >
+    <result column="pgoods_body" property="pgoodsBody" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    pgoods_body
+  </sql>
+  <insert id="insert" parameterType="com.kooing.model.mysql.point.TbPointsGoods" >
+    insert into tb_points_goods (pgoods_id, uuid, app_id, 
+      pgoods_name, pgoods_price, pgoods_points, 
+      pgoods_image, pgoods_tag, pgoods_serial, 
+      pgoods_storage, pgoods_show, pgoods_commend, 
+      pgoods_add_time, pgoods_keywords, pgoods_description, 
+      pgoods_state, pgoods_close_reason, pgoods_salenum, 
+      pgoods_view, pgoods_islimit, pgoods_limitnum, 
+      pgoods_islimittime, pgoods_limitmgrade, pgoods_starttime, 
+      pgoods_endtime, pgoods_sort, update_time, 
+      pgoods_body)
+    values (#{pgoodsId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{pgoodsName,jdbcType=VARCHAR}, #{pgoodsPrice,jdbcType=DECIMAL}, #{pgoodsPoints,jdbcType=INTEGER}, 
+      #{pgoodsImage,jdbcType=VARCHAR}, #{pgoodsTag,jdbcType=VARCHAR}, #{pgoodsSerial,jdbcType=VARCHAR}, 
+      #{pgoodsStorage,jdbcType=INTEGER}, #{pgoodsShow,jdbcType=BIT}, #{pgoodsCommend,jdbcType=BIT}, 
+      #{pgoodsAddTime,jdbcType=TIMESTAMP}, #{pgoodsKeywords,jdbcType=VARCHAR}, #{pgoodsDescription,jdbcType=VARCHAR}, 
+      #{pgoodsState,jdbcType=BIT}, #{pgoodsCloseReason,jdbcType=VARCHAR}, #{pgoodsSalenum,jdbcType=INTEGER}, 
+      #{pgoodsView,jdbcType=INTEGER}, #{pgoodsIslimit,jdbcType=BIT}, #{pgoodsLimitnum,jdbcType=INTEGER}, 
+      #{pgoodsIslimittime,jdbcType=BIT}, #{pgoodsLimitmgrade,jdbcType=INTEGER}, #{pgoodsStarttime,jdbcType=TIMESTAMP}, 
+      #{pgoodsEndtime,jdbcType=TIMESTAMP}, #{pgoodsSort,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{pgoodsBody,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.point.TbPointsGoods" >
+    insert into tb_points_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pgoodsId != null" >
+        pgoods_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="pgoodsName != null" >
+        pgoods_name,
+      </if>
+      <if test="pgoodsPrice != null" >
+        pgoods_price,
+      </if>
+      <if test="pgoodsPoints != null" >
+        pgoods_points,
+      </if>
+      <if test="pgoodsImage != null" >
+        pgoods_image,
+      </if>
+      <if test="pgoodsTag != null" >
+        pgoods_tag,
+      </if>
+      <if test="pgoodsSerial != null" >
+        pgoods_serial,
+      </if>
+      <if test="pgoodsStorage != null" >
+        pgoods_storage,
+      </if>
+      <if test="pgoodsShow != null" >
+        pgoods_show,
+      </if>
+      <if test="pgoodsCommend != null" >
+        pgoods_commend,
+      </if>
+      <if test="pgoodsAddTime != null" >
+        pgoods_add_time,
+      </if>
+      <if test="pgoodsKeywords != null" >
+        pgoods_keywords,
+      </if>
+      <if test="pgoodsDescription != null" >
+        pgoods_description,
+      </if>
+      <if test="pgoodsState != null" >
+        pgoods_state,
+      </if>
+      <if test="pgoodsCloseReason != null" >
+        pgoods_close_reason,
+      </if>
+      <if test="pgoodsSalenum != null" >
+        pgoods_salenum,
+      </if>
+      <if test="pgoodsView != null" >
+        pgoods_view,
+      </if>
+      <if test="pgoodsIslimit != null" >
+        pgoods_islimit,
+      </if>
+      <if test="pgoodsLimitnum != null" >
+        pgoods_limitnum,
+      </if>
+      <if test="pgoodsIslimittime != null" >
+        pgoods_islimittime,
+      </if>
+      <if test="pgoodsLimitmgrade != null" >
+        pgoods_limitmgrade,
+      </if>
+      <if test="pgoodsStarttime != null" >
+        pgoods_starttime,
+      </if>
+      <if test="pgoodsEndtime != null" >
+        pgoods_endtime,
+      </if>
+      <if test="pgoodsSort != null" >
+        pgoods_sort,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="pgoodsBody != null" >
+        pgoods_body,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pgoodsId != null" >
+        #{pgoodsId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsName != null" >
+        #{pgoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsPrice != null" >
+        #{pgoodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="pgoodsPoints != null" >
+        #{pgoodsPoints,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsImage != null" >
+        #{pgoodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsTag != null" >
+        #{pgoodsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsSerial != null" >
+        #{pgoodsSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsStorage != null" >
+        #{pgoodsStorage,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsShow != null" >
+        #{pgoodsShow,jdbcType=BIT},
+      </if>
+      <if test="pgoodsCommend != null" >
+        #{pgoodsCommend,jdbcType=BIT},
+      </if>
+      <if test="pgoodsAddTime != null" >
+        #{pgoodsAddTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pgoodsKeywords != null" >
+        #{pgoodsKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsDescription != null" >
+        #{pgoodsDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsState != null" >
+        #{pgoodsState,jdbcType=BIT},
+      </if>
+      <if test="pgoodsCloseReason != null" >
+        #{pgoodsCloseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="pgoodsSalenum != null" >
+        #{pgoodsSalenum,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsView != null" >
+        #{pgoodsView,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsIslimit != null" >
+        #{pgoodsIslimit,jdbcType=BIT},
+      </if>
+      <if test="pgoodsLimitnum != null" >
+        #{pgoodsLimitnum,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsIslimittime != null" >
+        #{pgoodsIslimittime,jdbcType=BIT},
+      </if>
+      <if test="pgoodsLimitmgrade != null" >
+        #{pgoodsLimitmgrade,jdbcType=INTEGER},
+      </if>
+      <if test="pgoodsStarttime != null" >
+        #{pgoodsStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pgoodsEndtime != null" >
+        #{pgoodsEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pgoodsSort != null" >
+        #{pgoodsSort,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pgoodsBody != null" >
+        #{pgoodsBody,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

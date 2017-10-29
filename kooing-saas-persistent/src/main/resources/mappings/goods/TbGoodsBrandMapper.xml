@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.goods.TbGoodsBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.goods.TbGoodsBrand" >
+    <id column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="brand_name" property="brandName" jdbcType="CHAR" />
+    <result column="brand_initial" property="brandInitial" jdbcType="CHAR" />
+    <result column="brand_class" property="brandClass" jdbcType="CHAR" />
+    <result column="brand_pic" property="brandPic" jdbcType="VARCHAR" />
+    <result column="brand_sort" property="brandSort" jdbcType="INTEGER" />
+    <result column="brand_recommend" property="brandRecommend" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="brand_apply" property="brandApply" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="show_type" property="showType" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    brand_id, uuid, app_id, brand_name, brand_initial, brand_class, brand_pic, brand_sort, 
+    brand_recommend, store_id, brand_apply, class_id, show_type, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_goods_brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_goods_brand
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.goods.TbGoodsBrand" >
+    insert into tb_goods_brand (brand_id, uuid, app_id, 
+      brand_name, brand_initial, brand_class, 
+      brand_pic, brand_sort, brand_recommend, 
+      store_id, brand_apply, class_id, 
+      show_type, update_time)
+    values (#{brandId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{brandName,jdbcType=CHAR}, #{brandInitial,jdbcType=CHAR}, #{brandClass,jdbcType=CHAR}, 
+      #{brandPic,jdbcType=VARCHAR}, #{brandSort,jdbcType=INTEGER}, #{brandRecommend,jdbcType=INTEGER}, 
+      #{storeId,jdbcType=INTEGER}, #{brandApply,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, 
+      #{showType,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.goods.TbGoodsBrand" >
+    insert into tb_goods_brand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandInitial != null" >
+        brand_initial,
+      </if>
+      <if test="brandClass != null" >
+        brand_class,
+      </if>
+      <if test="brandPic != null" >
+        brand_pic,
+      </if>
+      <if test="brandSort != null" >
+        brand_sort,
+      </if>
+      <if test="brandRecommend != null" >
+        brand_recommend,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="brandApply != null" >
+        brand_apply,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="showType != null" >
+        show_type,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=CHAR},
+      </if>
+      <if test="brandInitial != null" >
+        #{brandInitial,jdbcType=CHAR},
+      </if>
+      <if test="brandClass != null" >
+        #{brandClass,jdbcType=CHAR},
+      </if>
+      <if test="brandPic != null" >
+        #{brandPic,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSort != null" >
+        #{brandSort,jdbcType=INTEGER},
+      </if>
+      <if test="brandRecommend != null" >
+        #{brandRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="brandApply != null" >
+        #{brandApply,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        #{showType,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.goods.TbGoodsBrand" >
+    update tb_goods_brand
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=CHAR},
+      </if>
+      <if test="brandInitial != null" >
+        brand_initial = #{brandInitial,jdbcType=CHAR},
+      </if>
+      <if test="brandClass != null" >
+        brand_class = #{brandClass,jdbcType=CHAR},
+      </if>
+      <if test="brandPic != null" >
+        brand_pic = #{brandPic,jdbcType=VARCHAR},
+      </if>
+      <if test="brandSort != null" >
+        brand_sort = #{brandSort,jdbcType=INTEGER},
+      </if>
+      <if test="brandRecommend != null" >
+        brand_recommend = #{brandRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="brandApply != null" >
+        brand_apply = #{brandApply,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="showType != null" >
+        show_type = #{showType,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.goods.TbGoodsBrand" >
+    update tb_goods_brand
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      brand_name = #{brandName,jdbcType=CHAR},
+      brand_initial = #{brandInitial,jdbcType=CHAR},
+      brand_class = #{brandClass,jdbcType=CHAR},
+      brand_pic = #{brandPic,jdbcType=VARCHAR},
+      brand_sort = #{brandSort,jdbcType=INTEGER},
+      brand_recommend = #{brandRecommend,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      brand_apply = #{brandApply,jdbcType=INTEGER},
+      class_id = #{classId,jdbcType=INTEGER},
+      show_type = #{showType,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where brand_id = #{brandId,jdbcType=INTEGER}
+  </update>
+</mapper>

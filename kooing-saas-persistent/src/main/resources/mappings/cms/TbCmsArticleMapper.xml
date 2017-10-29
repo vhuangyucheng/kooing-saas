@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kooing.Interface.mysql.cms.TbCmsArticleMapper">
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <id column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_image" jdbcType="VARCHAR" property="articleImage" />
+    <result column="ac_id" jdbcType="INTEGER" property="acId" />
+    <result column="publisher_name" jdbcType="VARCHAR" property="publisherName" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="pic_describe" jdbcType="VARCHAR" property="picDescribe" />
+    <result column="new_source" jdbcType="VARCHAR" property="newSource" />
+    <result column="arctiny_image" jdbcType="VARCHAR" property="arctinyImage" />
+    <result column="article_state" jdbcType="INTEGER" property="articleState" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="posid" jdbcType="VARCHAR" property="posid" />
+    <result column="article_sort" jdbcType="INTEGER" property="articleSort" />
+    <result column="article_url" jdbcType="VARCHAR" property="articleUrl" />
+    <result column="info_url" jdbcType="VARCHAR" property="infoUrl" />
+    <result column="belong_class_name" jdbcType="VARCHAR" property="belongClassName" />
+    <result column="publisher_time" jdbcType="TIMESTAMP" property="publisherTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="click_num" jdbcType="INTEGER" property="clickNum" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    article_id, uuid, app_id, article_title, article_image, ac_id, publisher_name, arctiny_id, 
+    pic_describe, new_source, arctiny_image, article_state, weight, posid, article_sort, 
+    article_url, info_url, belong_class_name, publisher_time, update_time, collect_num, 
+    like_num, click_num, video_url
+  </sql>
+  <sql id="Blob_Column_List">
+    article_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article (article_id, uuid, app_id, 
+      article_title, article_image, ac_id, 
+      publisher_name, arctiny_id, pic_describe, 
+      new_source, arctiny_image, article_state, 
+      weight, posid, article_sort, 
+      article_url, info_url, belong_class_name, 
+      publisher_time, update_time, collect_num, 
+      like_num, click_num, video_url, 
+      article_content)
+    values (#{articleId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{articleTitle,jdbcType=VARCHAR}, #{articleImage,jdbcType=VARCHAR}, #{acId,jdbcType=INTEGER}, 
+      #{publisherName,jdbcType=VARCHAR}, #{arctinyId,jdbcType=INTEGER}, #{picDescribe,jdbcType=VARCHAR}, 
+      #{newSource,jdbcType=VARCHAR}, #{arctinyImage,jdbcType=VARCHAR}, #{articleState,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{posid,jdbcType=VARCHAR}, #{articleSort,jdbcType=INTEGER}, 
+      #{articleUrl,jdbcType=VARCHAR}, #{infoUrl,jdbcType=VARCHAR}, #{belongClassName,jdbcType=VARCHAR}, 
+      #{publisherTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{collectNum,jdbcType=INTEGER}, 
+      #{likeNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="articleImage != null">
+        article_image,
+      </if>
+      <if test="acId != null">
+        ac_id,
+      </if>
+      <if test="publisherName != null">
+        publisher_name,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="picDescribe != null">
+        pic_describe,
+      </if>
+      <if test="newSource != null">
+        new_source,
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image,
+      </if>
+      <if test="articleState != null">
+        article_state,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="posid != null">
+        posid,
+      </if>
+      <if test="articleSort != null">
+        article_sort,
+      </if>
+      <if test="articleUrl != null">
+        article_url,
+      </if>
+      <if test="infoUrl != null">
+        info_url,
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name,
+      </if>
+      <if test="publisherTime != null">
+        publisher_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="collectNum != null">
+        collect_num,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="clickNum != null">
+        click_num,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="articleContent != null">
+        article_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        article_image = #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        ac_id = #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        publisher_name = #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        new_source = #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        article_state = #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        posid = #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        article_sort = #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        article_url = #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        info_url = #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        collect_num = #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        article_content = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      article_content = #{articleContent,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <id column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_image" jdbcType="VARCHAR" property="articleImage" />
+    <result column="ac_id" jdbcType="INTEGER" property="acId" />
+    <result column="publisher_name" jdbcType="VARCHAR" property="publisherName" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="pic_describe" jdbcType="VARCHAR" property="picDescribe" />
+    <result column="new_source" jdbcType="VARCHAR" property="newSource" />
+    <result column="arctiny_image" jdbcType="VARCHAR" property="arctinyImage" />
+    <result column="article_state" jdbcType="INTEGER" property="articleState" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="posid" jdbcType="VARCHAR" property="posid" />
+    <result column="article_sort" jdbcType="INTEGER" property="articleSort" />
+    <result column="article_url" jdbcType="VARCHAR" property="articleUrl" />
+    <result column="info_url" jdbcType="VARCHAR" property="infoUrl" />
+    <result column="belong_class_name" jdbcType="VARCHAR" property="belongClassName" />
+    <result column="publisher_time" jdbcType="TIMESTAMP" property="publisherTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="click_num" jdbcType="INTEGER" property="clickNum" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    article_id, uuid, app_id, article_title, article_image, ac_id, publisher_name, arctiny_id, 
+    pic_describe, new_source, arctiny_image, article_state, weight, posid, article_sort, 
+    article_url, info_url, belong_class_name, publisher_time, update_time, collect_num, 
+    like_num, click_num, video_url
+  </sql>
+  <sql id="Blob_Column_List">
+    article_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article (article_id, uuid, app_id, 
+      article_title, article_image, ac_id, 
+      publisher_name, arctiny_id, pic_describe, 
+      new_source, arctiny_image, article_state, 
+      weight, posid, article_sort, 
+      article_url, info_url, belong_class_name, 
+      publisher_time, update_time, collect_num, 
+      like_num, click_num, video_url, 
+      article_content)
+    values (#{articleId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{articleTitle,jdbcType=VARCHAR}, #{articleImage,jdbcType=VARCHAR}, #{acId,jdbcType=INTEGER}, 
+      #{publisherName,jdbcType=VARCHAR}, #{arctinyId,jdbcType=INTEGER}, #{picDescribe,jdbcType=VARCHAR}, 
+      #{newSource,jdbcType=VARCHAR}, #{arctinyImage,jdbcType=VARCHAR}, #{articleState,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{posid,jdbcType=VARCHAR}, #{articleSort,jdbcType=INTEGER}, 
+      #{articleUrl,jdbcType=VARCHAR}, #{infoUrl,jdbcType=VARCHAR}, #{belongClassName,jdbcType=VARCHAR}, 
+      #{publisherTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{collectNum,jdbcType=INTEGER}, 
+      #{likeNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="articleImage != null">
+        article_image,
+      </if>
+      <if test="acId != null">
+        ac_id,
+      </if>
+      <if test="publisherName != null">
+        publisher_name,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="picDescribe != null">
+        pic_describe,
+      </if>
+      <if test="newSource != null">
+        new_source,
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image,
+      </if>
+      <if test="articleState != null">
+        article_state,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="posid != null">
+        posid,
+      </if>
+      <if test="articleSort != null">
+        article_sort,
+      </if>
+      <if test="articleUrl != null">
+        article_url,
+      </if>
+      <if test="infoUrl != null">
+        info_url,
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name,
+      </if>
+      <if test="publisherTime != null">
+        publisher_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="collectNum != null">
+        collect_num,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="clickNum != null">
+        click_num,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="articleContent != null">
+        article_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        article_image = #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        ac_id = #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        publisher_name = #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        new_source = #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        article_state = #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        posid = #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        article_sort = #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        article_url = #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        info_url = #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        collect_num = #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        article_content = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      article_content = #{articleContent,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <id column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_image" jdbcType="VARCHAR" property="articleImage" />
+    <result column="ac_id" jdbcType="INTEGER" property="acId" />
+    <result column="publisher_name" jdbcType="VARCHAR" property="publisherName" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="pic_describe" jdbcType="VARCHAR" property="picDescribe" />
+    <result column="new_source" jdbcType="VARCHAR" property="newSource" />
+    <result column="arctiny_image" jdbcType="VARCHAR" property="arctinyImage" />
+    <result column="article_state" jdbcType="INTEGER" property="articleState" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="posid" jdbcType="VARCHAR" property="posid" />
+    <result column="article_sort" jdbcType="INTEGER" property="articleSort" />
+    <result column="article_url" jdbcType="VARCHAR" property="articleUrl" />
+    <result column="info_url" jdbcType="VARCHAR" property="infoUrl" />
+    <result column="belong_class_name" jdbcType="VARCHAR" property="belongClassName" />
+    <result column="publisher_time" jdbcType="TIMESTAMP" property="publisherTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="collect_num" jdbcType="INTEGER" property="collectNum" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
+    <result column="click_num" jdbcType="INTEGER" property="clickNum" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsArticle">
+    <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    article_id, uuid, app_id, article_title, article_image, ac_id, publisher_name, arctiny_id, 
+    pic_describe, new_source, arctiny_image, article_state, weight, posid, article_sort, 
+    article_url, info_url, belong_class_name, publisher_time, update_time, collect_num, 
+    like_num, click_num, video_url
+  </sql>
+  <sql id="Blob_Column_List">
+    article_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article (article_id, uuid, app_id, 
+      article_title, article_image, ac_id, 
+      publisher_name, arctiny_id, pic_describe, 
+      new_source, arctiny_image, article_state, 
+      weight, posid, article_sort, 
+      article_url, info_url, belong_class_name, 
+      publisher_time, update_time, collect_num, 
+      like_num, click_num, video_url, 
+      article_content)
+    values (#{articleId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{articleTitle,jdbcType=VARCHAR}, #{articleImage,jdbcType=VARCHAR}, #{acId,jdbcType=INTEGER}, 
+      #{publisherName,jdbcType=VARCHAR}, #{arctinyId,jdbcType=INTEGER}, #{picDescribe,jdbcType=VARCHAR}, 
+      #{newSource,jdbcType=VARCHAR}, #{arctinyImage,jdbcType=VARCHAR}, #{articleState,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{posid,jdbcType=VARCHAR}, #{articleSort,jdbcType=INTEGER}, 
+      #{articleUrl,jdbcType=VARCHAR}, #{infoUrl,jdbcType=VARCHAR}, #{belongClassName,jdbcType=VARCHAR}, 
+      #{publisherTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{collectNum,jdbcType=INTEGER}, 
+      #{likeNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{articleContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    insert into tb_cms_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="articleImage != null">
+        article_image,
+      </if>
+      <if test="acId != null">
+        ac_id,
+      </if>
+      <if test="publisherName != null">
+        publisher_name,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="picDescribe != null">
+        pic_describe,
+      </if>
+      <if test="newSource != null">
+        new_source,
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image,
+      </if>
+      <if test="articleState != null">
+        article_state,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="posid != null">
+        posid,
+      </if>
+      <if test="articleSort != null">
+        article_sort,
+      </if>
+      <if test="articleUrl != null">
+        article_url,
+      </if>
+      <if test="infoUrl != null">
+        info_url,
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name,
+      </if>
+      <if test="publisherTime != null">
+        publisher_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="collectNum != null">
+        collect_num,
+      </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
+      <if test="clickNum != null">
+        click_num,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="articleContent != null">
+        article_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null">
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleImage != null">
+        article_image = #{articleImage,jdbcType=VARCHAR},
+      </if>
+      <if test="acId != null">
+        ac_id = #{acId,jdbcType=INTEGER},
+      </if>
+      <if test="publisherName != null">
+        publisher_name = #{publisherName,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="picDescribe != null">
+        pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="newSource != null">
+        new_source = #{newSource,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyImage != null">
+        arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="articleState != null">
+        article_state = #{articleState,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null">
+        posid = #{posid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleSort != null">
+        article_sort = #{articleSort,jdbcType=INTEGER},
+      </if>
+      <if test="articleUrl != null">
+        article_url = #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="infoUrl != null">
+        info_url = #{infoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="publisherTime != null">
+        publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="collectNum != null">
+        collect_num = #{collectNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null">
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContent != null">
+        article_content = #{articleContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      article_content = #{articleContent,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsArticle">
+    update tb_cms_article
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      article_title = #{articleTitle,jdbcType=VARCHAR},
+      article_image = #{articleImage,jdbcType=VARCHAR},
+      ac_id = #{acId,jdbcType=INTEGER},
+      publisher_name = #{publisherName,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      pic_describe = #{picDescribe,jdbcType=VARCHAR},
+      new_source = #{newSource,jdbcType=VARCHAR},
+      arctiny_image = #{arctinyImage,jdbcType=VARCHAR},
+      article_state = #{articleState,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      posid = #{posid,jdbcType=VARCHAR},
+      article_sort = #{articleSort,jdbcType=INTEGER},
+      article_url = #{articleUrl,jdbcType=VARCHAR},
+      info_url = #{infoUrl,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      publisher_time = #{publisherTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>

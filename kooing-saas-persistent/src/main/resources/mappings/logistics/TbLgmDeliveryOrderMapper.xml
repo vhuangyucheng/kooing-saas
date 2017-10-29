@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.logistics.TbLgmDeliveryOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.logistics.TbLgmDeliveryOrder" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="order_sn" property="orderSn" jdbcType="CHAR" />
+    <result column="dlyp_id" property="dlypId" jdbcType="INTEGER" />
+    <result column="shipping_code" property="shippingCode" jdbcType="CHAR" />
+    <result column="express_code" property="expressCode" jdbcType="CHAR" />
+    <result column="express_name" property="expressName" jdbcType="CHAR" />
+    <result column="reciver_name" property="reciverName" jdbcType="CHAR" />
+    <result column="reciver_telphone" property="reciverTelphone" jdbcType="CHAR" />
+    <result column="reciver_mobphone" property="reciverMobphone" jdbcType="CHAR" />
+    <result column="dlyo_state" property="dlyoState" jdbcType="INTEGER" />
+    <result column="dlyo_pickup_code" property="dlyoPickupCode" jdbcType="CHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, uuid, app_id, addtime, order_sn, dlyp_id, shipping_code, express_code, 
+    express_name, reciver_name, reciver_telphone, reciver_mobphone, dlyo_state, dlyo_pickup_code, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_lgm_delivery_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_lgm_delivery_order
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryOrder" >
+    insert into tb_lgm_delivery_order (order_id, uuid, app_id, 
+      addtime, order_sn, dlyp_id, 
+      shipping_code, express_code, express_name, 
+      reciver_name, reciver_telphone, reciver_mobphone, 
+      dlyo_state, dlyo_pickup_code, update_time
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{orderSn,jdbcType=CHAR}, #{dlypId,jdbcType=INTEGER}, 
+      #{shippingCode,jdbcType=CHAR}, #{expressCode,jdbcType=CHAR}, #{expressName,jdbcType=CHAR}, 
+      #{reciverName,jdbcType=CHAR}, #{reciverTelphone,jdbcType=CHAR}, #{reciverMobphone,jdbcType=CHAR}, 
+      #{dlyoState,jdbcType=INTEGER}, #{dlyoPickupCode,jdbcType=CHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryOrder" >
+    insert into tb_lgm_delivery_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="orderSn != null" >
+        order_sn,
+      </if>
+      <if test="dlypId != null" >
+        dlyp_id,
+      </if>
+      <if test="shippingCode != null" >
+        shipping_code,
+      </if>
+      <if test="expressCode != null" >
+        express_code,
+      </if>
+      <if test="expressName != null" >
+        express_name,
+      </if>
+      <if test="reciverName != null" >
+        reciver_name,
+      </if>
+      <if test="reciverTelphone != null" >
+        reciver_telphone,
+      </if>
+      <if test="reciverMobphone != null" >
+        reciver_mobphone,
+      </if>
+      <if test="dlyoState != null" >
+        dlyo_state,
+      </if>
+      <if test="dlyoPickupCode != null" >
+        dlyo_pickup_code,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSn != null" >
+        #{orderSn,jdbcType=CHAR},
+      </if>
+      <if test="dlypId != null" >
+        #{dlypId,jdbcType=INTEGER},
+      </if>
+      <if test="shippingCode != null" >
+        #{shippingCode,jdbcType=CHAR},
+      </if>
+      <if test="expressCode != null" >
+        #{expressCode,jdbcType=CHAR},
+      </if>
+      <if test="expressName != null" >
+        #{expressName,jdbcType=CHAR},
+      </if>
+      <if test="reciverName != null" >
+        #{reciverName,jdbcType=CHAR},
+      </if>
+      <if test="reciverTelphone != null" >
+        #{reciverTelphone,jdbcType=CHAR},
+      </if>
+      <if test="reciverMobphone != null" >
+        #{reciverMobphone,jdbcType=CHAR},
+      </if>
+      <if test="dlyoState != null" >
+        #{dlyoState,jdbcType=INTEGER},
+      </if>
+      <if test="dlyoPickupCode != null" >
+        #{dlyoPickupCode,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryOrder" >
+    update tb_lgm_delivery_order
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSn != null" >
+        order_sn = #{orderSn,jdbcType=CHAR},
+      </if>
+      <if test="dlypId != null" >
+        dlyp_id = #{dlypId,jdbcType=INTEGER},
+      </if>
+      <if test="shippingCode != null" >
+        shipping_code = #{shippingCode,jdbcType=CHAR},
+      </if>
+      <if test="expressCode != null" >
+        express_code = #{expressCode,jdbcType=CHAR},
+      </if>
+      <if test="expressName != null" >
+        express_name = #{expressName,jdbcType=CHAR},
+      </if>
+      <if test="reciverName != null" >
+        reciver_name = #{reciverName,jdbcType=CHAR},
+      </if>
+      <if test="reciverTelphone != null" >
+        reciver_telphone = #{reciverTelphone,jdbcType=CHAR},
+      </if>
+      <if test="reciverMobphone != null" >
+        reciver_mobphone = #{reciverMobphone,jdbcType=CHAR},
+      </if>
+      <if test="dlyoState != null" >
+        dlyo_state = #{dlyoState,jdbcType=INTEGER},
+      </if>
+      <if test="dlyoPickupCode != null" >
+        dlyo_pickup_code = #{dlyoPickupCode,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.logistics.TbLgmDeliveryOrder" >
+    update tb_lgm_delivery_order
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      order_sn = #{orderSn,jdbcType=CHAR},
+      dlyp_id = #{dlypId,jdbcType=INTEGER},
+      shipping_code = #{shippingCode,jdbcType=CHAR},
+      express_code = #{expressCode,jdbcType=CHAR},
+      express_name = #{expressName,jdbcType=CHAR},
+      reciver_name = #{reciverName,jdbcType=CHAR},
+      reciver_telphone = #{reciverTelphone,jdbcType=CHAR},
+      reciver_mobphone = #{reciverMobphone,jdbcType=CHAR},
+      dlyo_state = #{dlyoState,jdbcType=INTEGER},
+      dlyo_pickup_code = #{dlyoPickupCode,jdbcType=CHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

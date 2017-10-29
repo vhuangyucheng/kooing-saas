@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.shop.TbShopCostMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.shop.TbShopCost" >
+    <id column="cost_id" property="costId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="cost_store_id" property="costStoreId" jdbcType="INTEGER" />
+    <result column="cost_seller_id" property="costSellerId" jdbcType="INTEGER" />
+    <result column="cost_price" property="costPrice" jdbcType="INTEGER" />
+    <result column="cost_remark" property="costRemark" jdbcType="VARCHAR" />
+    <result column="cost_state" property="costState" jdbcType="INTEGER" />
+    <result column="cost_time" property="costTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cost_id, uuid, app_id, cost_store_id, cost_seller_id, cost_price, cost_remark, cost_state, 
+    cost_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop_cost
+    where cost_id = #{costId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop_cost
+    where cost_id = #{costId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.shop.TbShopCost" >
+    insert into tb_shop_cost (cost_id, uuid, app_id, 
+      cost_store_id, cost_seller_id, cost_price, 
+      cost_remark, cost_state, cost_time
+      )
+    values (#{costId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{costStoreId,jdbcType=INTEGER}, #{costSellerId,jdbcType=INTEGER}, #{costPrice,jdbcType=INTEGER}, 
+      #{costRemark,jdbcType=VARCHAR}, #{costState,jdbcType=INTEGER}, #{costTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.shop.TbShopCost" >
+    insert into tb_shop_cost
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="costId != null" >
+        cost_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="costStoreId != null" >
+        cost_store_id,
+      </if>
+      <if test="costSellerId != null" >
+        cost_seller_id,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
+      </if>
+      <if test="costRemark != null" >
+        cost_remark,
+      </if>
+      <if test="costState != null" >
+        cost_state,
+      </if>
+      <if test="costTime != null" >
+        cost_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="costId != null" >
+        #{costId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="costStoreId != null" >
+        #{costStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="costSellerId != null" >
+        #{costSellerId,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=INTEGER},
+      </if>
+      <if test="costRemark != null" >
+        #{costRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="costState != null" >
+        #{costState,jdbcType=INTEGER},
+      </if>
+      <if test="costTime != null" >
+        #{costTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.shop.TbShopCost" >
+    update tb_shop_cost
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="costStoreId != null" >
+        cost_store_id = #{costStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="costSellerId != null" >
+        cost_seller_id = #{costSellerId,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice,jdbcType=INTEGER},
+      </if>
+      <if test="costRemark != null" >
+        cost_remark = #{costRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="costState != null" >
+        cost_state = #{costState,jdbcType=INTEGER},
+      </if>
+      <if test="costTime != null" >
+        cost_time = #{costTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where cost_id = #{costId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.shop.TbShopCost" >
+    update tb_shop_cost
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      cost_store_id = #{costStoreId,jdbcType=INTEGER},
+      cost_seller_id = #{costSellerId,jdbcType=INTEGER},
+      cost_price = #{costPrice,jdbcType=INTEGER},
+      cost_remark = #{costRemark,jdbcType=VARCHAR},
+      cost_state = #{costState,jdbcType=INTEGER},
+      cost_time = #{costTime,jdbcType=TIMESTAMP}
+    where cost_id = #{costId,jdbcType=INTEGER}
+  </update>
+</mapper>

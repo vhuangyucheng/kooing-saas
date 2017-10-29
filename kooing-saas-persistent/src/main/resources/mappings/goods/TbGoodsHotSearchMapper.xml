@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.goods.TbGoodsHotSearchMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.goods.TbGoodsHotSearch" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="hot_words" property="hotWords" jdbcType="VARCHAR" />
+    <result column="count_nums" property="countNums" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, app_id, hot_words, count_nums, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_goods_hot_search
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_goods_hot_search
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.goods.TbGoodsHotSearch" >
+    insert into tb_goods_hot_search (id, uuid, app_id, 
+      hot_words, count_nums, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{appId,jdbcType=INTEGER}, 
+      #{hotWords,jdbcType=VARCHAR}, #{countNums,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.goods.TbGoodsHotSearch" >
+    insert into tb_goods_hot_search
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="hotWords != null" >
+        hot_words,
+      </if>
+      <if test="countNums != null" >
+        count_nums,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="hotWords != null" >
+        #{hotWords,jdbcType=VARCHAR},
+      </if>
+      <if test="countNums != null" >
+        #{countNums,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.goods.TbGoodsHotSearch" >
+    update tb_goods_hot_search
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="hotWords != null" >
+        hot_words = #{hotWords,jdbcType=VARCHAR},
+      </if>
+      <if test="countNums != null" >
+        count_nums = #{countNums,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.goods.TbGoodsHotSearch" >
+    update tb_goods_hot_search
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      hot_words = #{hotWords,jdbcType=VARCHAR},
+      count_nums = #{countNums,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

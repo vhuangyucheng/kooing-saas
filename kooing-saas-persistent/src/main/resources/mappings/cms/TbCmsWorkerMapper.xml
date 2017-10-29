@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kooing.Interface.mysql.cms.TbCmsWorkerMapper">
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsWorker">
+    <id column="worker_id" jdbcType="INTEGER" property="workerId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="worker_name" jdbcType="VARCHAR" property="workerName" />
+    <result column="worker_pic" jdbcType="VARCHAR" property="workerPic" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="worker_sort" jdbcType="INTEGER" property="workerSort" />
+    <result column="work_position" jdbcType="VARCHAR" property="workPosition" />
+    <result column="belong_class_name" jdbcType="VARCHAR" property="belongClassName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="arctype_id" jdbcType="INTEGER" property="arctypeId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsWorker">
+    <result column="worker_intro" jdbcType="LONGVARCHAR" property="workerIntro" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    worker_id, uuid, app_id, worker_name, worker_pic, arctiny_id, worker_sort, work_position, 
+    belong_class_name, update_time, arctype_id
+  </sql>
+  <sql id="Blob_Column_List">
+    worker_intro
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_worker
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_worker
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    insert into tb_cms_worker (worker_id, uuid, app_id, 
+      worker_name, worker_pic, arctiny_id, 
+      worker_sort, work_position, belong_class_name, 
+      update_time, arctype_id, worker_intro
+      )
+    values (#{workerId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{workerName,jdbcType=VARCHAR}, #{workerPic,jdbcType=VARCHAR}, #{arctinyId,jdbcType=INTEGER}, 
+      #{workerSort,jdbcType=INTEGER}, #{workPosition,jdbcType=VARCHAR}, #{belongClassName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{arctypeId,jdbcType=INTEGER}, #{workerIntro,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    insert into tb_cms_worker
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="workerId != null">
+        worker_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="workerName != null">
+        worker_name,
+      </if>
+      <if test="workerPic != null">
+        worker_pic,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="workerSort != null">
+        worker_sort,
+      </if>
+      <if test="workPosition != null">
+        work_position,
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="arctypeId != null">
+        arctype_id,
+      </if>
+      <if test="workerIntro != null">
+        worker_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="workerId != null">
+        #{workerId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="workerName != null">
+        #{workerName,jdbcType=VARCHAR},
+      </if>
+      <if test="workerPic != null">
+        #{workerPic,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="workerSort != null">
+        #{workerSort,jdbcType=INTEGER},
+      </if>
+      <if test="workPosition != null">
+        #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arctypeId != null">
+        #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="workerIntro != null">
+        #{workerIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="workerName != null">
+        worker_name = #{workerName,jdbcType=VARCHAR},
+      </if>
+      <if test="workerPic != null">
+        worker_pic = #{workerPic,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="workerSort != null">
+        worker_sort = #{workerSort,jdbcType=INTEGER},
+      </if>
+      <if test="workPosition != null">
+        work_position = #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arctypeId != null">
+        arctype_id = #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="workerIntro != null">
+        worker_intro = #{workerIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      worker_name = #{workerName,jdbcType=VARCHAR},
+      worker_pic = #{workerPic,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      worker_sort = #{workerSort,jdbcType=INTEGER},
+      work_position = #{workPosition,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      arctype_id = #{arctypeId,jdbcType=INTEGER},
+      worker_intro = #{workerIntro,jdbcType=LONGVARCHAR}
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      worker_name = #{workerName,jdbcType=VARCHAR},
+      worker_pic = #{workerPic,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      worker_sort = #{workerSort,jdbcType=INTEGER},
+      work_position = #{workPosition,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      arctype_id = #{arctypeId,jdbcType=INTEGER}
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsWorker">
+    <id column="worker_id" jdbcType="INTEGER" property="workerId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="worker_name" jdbcType="VARCHAR" property="workerName" />
+    <result column="worker_pic" jdbcType="VARCHAR" property="workerPic" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="worker_sort" jdbcType="INTEGER" property="workerSort" />
+    <result column="work_position" jdbcType="VARCHAR" property="workPosition" />
+    <result column="belong_class_name" jdbcType="VARCHAR" property="belongClassName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="arctype_id" jdbcType="INTEGER" property="arctypeId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsWorker">
+    <result column="worker_intro" jdbcType="LONGVARCHAR" property="workerIntro" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    worker_id, uuid, app_id, worker_name, worker_pic, arctiny_id, worker_sort, work_position, 
+    belong_class_name, update_time, arctype_id
+  </sql>
+  <sql id="Blob_Column_List">
+    worker_intro
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_worker
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_worker
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    insert into tb_cms_worker (worker_id, uuid, app_id, 
+      worker_name, worker_pic, arctiny_id, 
+      worker_sort, work_position, belong_class_name, 
+      update_time, arctype_id, worker_intro
+      )
+    values (#{workerId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{workerName,jdbcType=VARCHAR}, #{workerPic,jdbcType=VARCHAR}, #{arctinyId,jdbcType=INTEGER}, 
+      #{workerSort,jdbcType=INTEGER}, #{workPosition,jdbcType=VARCHAR}, #{belongClassName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{arctypeId,jdbcType=INTEGER}, #{workerIntro,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    insert into tb_cms_worker
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="workerId != null">
+        worker_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="workerName != null">
+        worker_name,
+      </if>
+      <if test="workerPic != null">
+        worker_pic,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="workerSort != null">
+        worker_sort,
+      </if>
+      <if test="workPosition != null">
+        work_position,
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="arctypeId != null">
+        arctype_id,
+      </if>
+      <if test="workerIntro != null">
+        worker_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="workerId != null">
+        #{workerId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="workerName != null">
+        #{workerName,jdbcType=VARCHAR},
+      </if>
+      <if test="workerPic != null">
+        #{workerPic,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="workerSort != null">
+        #{workerSort,jdbcType=INTEGER},
+      </if>
+      <if test="workPosition != null">
+        #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arctypeId != null">
+        #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="workerIntro != null">
+        #{workerIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="workerName != null">
+        worker_name = #{workerName,jdbcType=VARCHAR},
+      </if>
+      <if test="workerPic != null">
+        worker_pic = #{workerPic,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="workerSort != null">
+        worker_sort = #{workerSort,jdbcType=INTEGER},
+      </if>
+      <if test="workPosition != null">
+        work_position = #{workPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="belongClassName != null">
+        belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arctypeId != null">
+        arctype_id = #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="workerIntro != null">
+        worker_intro = #{workerIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      worker_name = #{workerName,jdbcType=VARCHAR},
+      worker_pic = #{workerPic,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      worker_sort = #{workerSort,jdbcType=INTEGER},
+      work_position = #{workPosition,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      arctype_id = #{arctypeId,jdbcType=INTEGER},
+      worker_intro = #{workerIntro,jdbcType=LONGVARCHAR}
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsWorker">
+    update tb_cms_worker
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      worker_name = #{workerName,jdbcType=VARCHAR},
+      worker_pic = #{workerPic,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      worker_sort = #{workerSort,jdbcType=INTEGER},
+      work_position = #{workPosition,jdbcType=VARCHAR},
+      belong_class_name = #{belongClassName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      arctype_id = #{arctypeId,jdbcType=INTEGER}
+    where worker_id = #{workerId,jdbcType=INTEGER}
+  </update>
+</mapper>

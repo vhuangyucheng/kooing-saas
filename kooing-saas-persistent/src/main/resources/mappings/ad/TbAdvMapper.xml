@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.ad.TbAdvMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.ad.TbAdv" >
+    <id column="adv_id" property="advId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="adv_title" property="advTitle" jdbcType="CHAR" />
+    <result column="adv_content" property="advContent" jdbcType="VARCHAR" />
+    <result column="adv_start_date" property="advStartDate" jdbcType="TIMESTAMP" />
+    <result column="adv_end_date" property="advEndDate" jdbcType="TIMESTAMP" />
+    <result column="slide_sort" property="slideSort" jdbcType="INTEGER" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="store_name" property="storeName" jdbcType="CHAR" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="is_allow" property="isAllow" jdbcType="INTEGER" />
+    <result column="buy_style" property="buyStyle" jdbcType="CHAR" />
+    <result column="goldpay" property="goldpay" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    adv_id, uuid, app_id, position_id, adv_title, adv_content, adv_start_date, adv_end_date, 
+    slide_sort, store_id, store_name, click_num, is_allow, buy_style, goldpay, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_adv
+    where adv_id = #{advId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_adv
+    where adv_id = #{advId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.ad.TbAdv" >
+    insert into tb_adv (adv_id, uuid, app_id, 
+      position_id, adv_title, adv_content, 
+      adv_start_date, adv_end_date, slide_sort, 
+      store_id, store_name, click_num, 
+      is_allow, buy_style, goldpay, 
+      update_time)
+    values (#{advId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{positionId,jdbcType=INTEGER}, #{advTitle,jdbcType=CHAR}, #{advContent,jdbcType=VARCHAR}, 
+      #{advStartDate,jdbcType=TIMESTAMP}, #{advEndDate,jdbcType=TIMESTAMP}, #{slideSort,jdbcType=INTEGER}, 
+      #{storeId,jdbcType=INTEGER}, #{storeName,jdbcType=CHAR}, #{clickNum,jdbcType=INTEGER}, 
+      #{isAllow,jdbcType=INTEGER}, #{buyStyle,jdbcType=CHAR}, #{goldpay,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.ad.TbAdv" >
+    insert into tb_adv
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="advId != null" >
+        adv_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="advTitle != null" >
+        adv_title,
+      </if>
+      <if test="advContent != null" >
+        adv_content,
+      </if>
+      <if test="advStartDate != null" >
+        adv_start_date,
+      </if>
+      <if test="advEndDate != null" >
+        adv_end_date,
+      </if>
+      <if test="slideSort != null" >
+        slide_sort,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="isAllow != null" >
+        is_allow,
+      </if>
+      <if test="buyStyle != null" >
+        buy_style,
+      </if>
+      <if test="goldpay != null" >
+        goldpay,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="advId != null" >
+        #{advId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="advTitle != null" >
+        #{advTitle,jdbcType=CHAR},
+      </if>
+      <if test="advContent != null" >
+        #{advContent,jdbcType=VARCHAR},
+      </if>
+      <if test="advStartDate != null" >
+        #{advStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="advEndDate != null" >
+        #{advEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="slideSort != null" >
+        #{slideSort,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="isAllow != null" >
+        #{isAllow,jdbcType=INTEGER},
+      </if>
+      <if test="buyStyle != null" >
+        #{buyStyle,jdbcType=CHAR},
+      </if>
+      <if test="goldpay != null" >
+        #{goldpay,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.ad.TbAdv" >
+    update tb_adv
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="advTitle != null" >
+        adv_title = #{advTitle,jdbcType=CHAR},
+      </if>
+      <if test="advContent != null" >
+        adv_content = #{advContent,jdbcType=VARCHAR},
+      </if>
+      <if test="advStartDate != null" >
+        adv_start_date = #{advStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="advEndDate != null" >
+        adv_end_date = #{advEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="slideSort != null" >
+        slide_sort = #{slideSort,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="isAllow != null" >
+        is_allow = #{isAllow,jdbcType=INTEGER},
+      </if>
+      <if test="buyStyle != null" >
+        buy_style = #{buyStyle,jdbcType=CHAR},
+      </if>
+      <if test="goldpay != null" >
+        goldpay = #{goldpay,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where adv_id = #{advId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.ad.TbAdv" >
+    update tb_adv
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      position_id = #{positionId,jdbcType=INTEGER},
+      adv_title = #{advTitle,jdbcType=CHAR},
+      adv_content = #{advContent,jdbcType=VARCHAR},
+      adv_start_date = #{advStartDate,jdbcType=TIMESTAMP},
+      adv_end_date = #{advEndDate,jdbcType=TIMESTAMP},
+      slide_sort = #{slideSort,jdbcType=INTEGER},
+      store_id = #{storeId,jdbcType=INTEGER},
+      store_name = #{storeName,jdbcType=CHAR},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      is_allow = #{isAllow,jdbcType=INTEGER},
+      buy_style = #{buyStyle,jdbcType=CHAR},
+      goldpay = #{goldpay,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where adv_id = #{advId,jdbcType=INTEGER}
+  </update>
+</mapper>

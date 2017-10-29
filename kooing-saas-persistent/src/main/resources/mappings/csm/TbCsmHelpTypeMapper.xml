@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.csm.TbCsmHelpTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.csm.TbCsmHelpType" >
+    <id column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="type_name" property="typeName" jdbcType="CHAR" />
+    <result column="type_sort" property="typeSort" jdbcType="BIT" />
+    <result column="help_code" property="helpCode" jdbcType="CHAR" />
+    <result column="help_show" property="helpShow" jdbcType="BIT" />
+    <result column="page_show" property="pageShow" jdbcType="BIT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    type_id, uuid, app_id, type_name, type_sort, help_code, help_show, page_show, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_csm_help_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_csm_help_type
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.csm.TbCsmHelpType" >
+    insert into tb_csm_help_type (type_id, uuid, app_id, 
+      type_name, type_sort, help_code, 
+      help_show, page_show, update_time
+      )
+    values (#{typeId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{typeName,jdbcType=CHAR}, #{typeSort,jdbcType=BIT}, #{helpCode,jdbcType=CHAR}, 
+      #{helpShow,jdbcType=BIT}, #{pageShow,jdbcType=BIT}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.csm.TbCsmHelpType" >
+    insert into tb_csm_help_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="typeName != null" >
+        type_name,
+      </if>
+      <if test="typeSort != null" >
+        type_sort,
+      </if>
+      <if test="helpCode != null" >
+        help_code,
+      </if>
+      <if test="helpShow != null" >
+        help_show,
+      </if>
+      <if test="pageShow != null" >
+        page_show,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=CHAR},
+      </if>
+      <if test="typeSort != null" >
+        #{typeSort,jdbcType=BIT},
+      </if>
+      <if test="helpCode != null" >
+        #{helpCode,jdbcType=CHAR},
+      </if>
+      <if test="helpShow != null" >
+        #{helpShow,jdbcType=BIT},
+      </if>
+      <if test="pageShow != null" >
+        #{pageShow,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.csm.TbCsmHelpType" >
+    update tb_csm_help_type
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        type_name = #{typeName,jdbcType=CHAR},
+      </if>
+      <if test="typeSort != null" >
+        type_sort = #{typeSort,jdbcType=BIT},
+      </if>
+      <if test="helpCode != null" >
+        help_code = #{helpCode,jdbcType=CHAR},
+      </if>
+      <if test="helpShow != null" >
+        help_show = #{helpShow,jdbcType=BIT},
+      </if>
+      <if test="pageShow != null" >
+        page_show = #{pageShow,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.csm.TbCsmHelpType" >
+    update tb_csm_help_type
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      type_name = #{typeName,jdbcType=CHAR},
+      type_sort = #{typeSort,jdbcType=BIT},
+      help_code = #{helpCode,jdbcType=CHAR},
+      help_show = #{helpShow,jdbcType=BIT},
+      page_show = #{pageShow,jdbcType=BIT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kooing.Interface.mysql.cms.TbCmsCompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    <id column="company_info_id" jdbcType="INTEGER" property="companyInfoId" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="company_tel" jdbcType="VARCHAR" property="companyTel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="arctype_id" jdbcType="INTEGER" property="arctypeId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    <result column="company_intro" jdbcType="LONGVARCHAR" property="companyIntro" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_info_id, app_id, uuid, post_code, company_tel, email, arctiny_id, company_address, 
+    update_time, logo, arctype_id
+  </sql>
+  <sql id="Blob_Column_List">
+    company_intro
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_company_info
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_company_info
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    insert into tb_cms_company_info (company_info_id, app_id, uuid, 
+      post_code, company_tel, email, 
+      arctiny_id, company_address, update_time, 
+      logo, arctype_id, company_intro
+      )
+    values (#{companyInfoId,jdbcType=INTEGER}, #{appId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{companyTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{arctinyId,jdbcType=INTEGER}, #{companyAddress,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{logo,jdbcType=VARCHAR}, #{arctypeId,jdbcType=INTEGER}, #{companyIntro,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    insert into tb_cms_company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyInfoId != null">
+        company_info_id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="companyTel != null">
+        company_tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="arctypeId != null">
+        arctype_id,
+      </if>
+      <if test="companyIntro != null">
+        company_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyInfoId != null">
+        #{companyInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="arctypeId != null">
+        #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyIntro != null">
+        #{companyIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        company_tel = #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="arctypeId != null">
+        arctype_id = #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyIntro != null">
+        company_intro = #{companyIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    set app_id = #{appId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      logo = #{logo,jdbcType=VARCHAR},
+      arctype_id = #{arctypeId,jdbcType=INTEGER},
+      company_intro = #{companyIntro,jdbcType=LONGVARCHAR}
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    set app_id = #{appId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      logo = #{logo,jdbcType=VARCHAR},
+      arctype_id = #{arctypeId,jdbcType=INTEGER}
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    <id column="company_info_id" jdbcType="INTEGER" property="companyInfoId" />
+    <result column="app_id" jdbcType="INTEGER" property="appId" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="company_tel" jdbcType="VARCHAR" property="companyTel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="arctiny_id" jdbcType="INTEGER" property="arctinyId" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="arctype_id" jdbcType="INTEGER" property="arctypeId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    <result column="company_intro" jdbcType="LONGVARCHAR" property="companyIntro" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_info_id, app_id, uuid, post_code, company_tel, email, arctiny_id, company_address, 
+    update_time, logo, arctype_id
+  </sql>
+  <sql id="Blob_Column_List">
+    company_intro
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_cms_company_info
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_cms_company_info
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    insert into tb_cms_company_info (company_info_id, app_id, uuid, 
+      post_code, company_tel, email, 
+      arctiny_id, company_address, update_time, 
+      logo, arctype_id, company_intro
+      )
+    values (#{companyInfoId,jdbcType=INTEGER}, #{appId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, 
+      #{postCode,jdbcType=VARCHAR}, #{companyTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{arctinyId,jdbcType=INTEGER}, #{companyAddress,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{logo,jdbcType=VARCHAR}, #{arctypeId,jdbcType=INTEGER}, #{companyIntro,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    insert into tb_cms_company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyInfoId != null">
+        company_info_id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="companyTel != null">
+        company_tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="arctypeId != null">
+        arctype_id,
+      </if>
+      <if test="companyIntro != null">
+        company_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyInfoId != null">
+        #{companyInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="arctypeId != null">
+        #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyIntro != null">
+        #{companyIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null">
+        company_tel = #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="arctinyId != null">
+        arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="arctypeId != null">
+        arctype_id = #{arctypeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyIntro != null">
+        company_intro = #{companyIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    set app_id = #{appId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      logo = #{logo,jdbcType=VARCHAR},
+      arctype_id = #{arctypeId,jdbcType=INTEGER},
+      company_intro = #{companyIntro,jdbcType=LONGVARCHAR}
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.cms.TbCmsCompanyInfo">
+    update tb_cms_company_info
+    set app_id = #{appId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      arctiny_id = #{arctinyId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      logo = #{logo,jdbcType=VARCHAR},
+      arctype_id = #{arctypeId,jdbcType=INTEGER}
+    where company_info_id = #{companyInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

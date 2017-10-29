@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.shop.TbShopSellerGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.shop.TbShopSellerGroup" >
+    <id column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="limits" property="limits" jdbcType="VARCHAR" />
+    <result column="smt_limits" property="smtLimits" jdbcType="VARCHAR" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    group_id, uuid, app_id, group_name, limits, smt_limits, store_id, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop_seller_group
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop_seller_group
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.shop.TbShopSellerGroup" >
+    insert into tb_shop_seller_group (group_id, uuid, app_id, 
+      group_name, limits, smt_limits, 
+      store_id, update_time)
+    values (#{groupId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{groupName,jdbcType=VARCHAR}, #{limits,jdbcType=VARCHAR}, #{smtLimits,jdbcType=VARCHAR}, 
+      #{storeId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.shop.TbShopSellerGroup" >
+    insert into tb_shop_seller_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="limits != null" >
+        limits,
+      </if>
+      <if test="smtLimits != null" >
+        smt_limits,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="limits != null" >
+        #{limits,jdbcType=VARCHAR},
+      </if>
+      <if test="smtLimits != null" >
+        #{smtLimits,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.shop.TbShopSellerGroup" >
+    update tb_shop_seller_group
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="limits != null" >
+        limits = #{limits,jdbcType=VARCHAR},
+      </if>
+      <if test="smtLimits != null" >
+        smt_limits = #{smtLimits,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.shop.TbShopSellerGroup" >
+    update tb_shop_seller_group
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      limits = #{limits,jdbcType=VARCHAR},
+      smt_limits = #{smtLimits,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where group_id = #{groupId,jdbcType=INTEGER}
+  </update>
+</mapper>

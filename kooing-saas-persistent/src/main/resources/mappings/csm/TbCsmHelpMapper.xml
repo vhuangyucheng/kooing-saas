@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.csm.TbCsmHelpMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.csm.TbCsmHelp" >
+    <id column="help_id" property="helpId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="help_sort" property="helpSort" jdbcType="BIT" />
+    <result column="help_title" property="helpTitle" jdbcType="CHAR" />
+    <result column="help_url" property="helpUrl" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="page_show" property="pageShow" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.model.mysql.csm.TbCsmHelp" extends="BaseResultMap" >
+    <result column="help_info" property="helpInfo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    help_id, uuid, app_id, help_sort, help_title, help_url, type_id, page_show, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    help_info
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_csm_help
+    where help_id = #{helpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_csm_help
+    where help_id = #{helpId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.csm.TbCsmHelp" >
+    insert into tb_csm_help (help_id, uuid, app_id, 
+      help_sort, help_title, help_url, 
+      type_id, page_show, update_time, 
+      help_info)
+    values (#{helpId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{helpSort,jdbcType=BIT}, #{helpTitle,jdbcType=CHAR}, #{helpUrl,jdbcType=VARCHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{pageShow,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{helpInfo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.csm.TbCsmHelp" >
+    insert into tb_csm_help
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="helpId != null" >
+        help_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="helpSort != null" >
+        help_sort,
+      </if>
+      <if test="helpTitle != null" >
+        help_title,
+      </if>
+      <if test="helpUrl != null" >
+        help_url,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="pageShow != null" >
+        page_show,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="helpInfo != null" >
+        help_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="helpId != null" >
+        #{helpId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="helpSort != null" >
+        #{helpSort,jdbcType=BIT},
+      </if>
+      <if test="helpTitle != null" >
+        #{helpTitle,jdbcType=CHAR},
+      </if>
+      <if test="helpUrl != null" >
+        #{helpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="pageShow != null" >
+        #{pageShow,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="helpInfo != null" >
+        #{helpInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.csm.TbCsmHelp" >
+    update tb_csm_help
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="helpSort != null" >
+        help_sort = #{helpSort,jdbcType=BIT},
+      </if>
+      <if test="helpTitle != null" >
+        help_title = #{helpTitle,jdbcType=CHAR},
+      </if>
+      <if test="helpUrl != null" >
+        help_url = #{helpUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="pageShow != null" >
+        page_show = #{pageShow,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="helpInfo != null" >
+        help_info = #{helpInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where help_id = #{helpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.csm.TbCsmHelp" >
+    update tb_csm_help
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      help_sort = #{helpSort,jdbcType=BIT},
+      help_title = #{helpTitle,jdbcType=CHAR},
+      help_url = #{helpUrl,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      page_show = #{pageShow,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      help_info = #{helpInfo,jdbcType=LONGVARCHAR}
+    where help_id = #{helpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.csm.TbCsmHelp" >
+    update tb_csm_help
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      help_sort = #{helpSort,jdbcType=BIT},
+      help_title = #{helpTitle,jdbcType=CHAR},
+      help_url = #{helpUrl,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      page_show = #{pageShow,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where help_id = #{helpId,jdbcType=INTEGER}
+  </update>
+</mapper>

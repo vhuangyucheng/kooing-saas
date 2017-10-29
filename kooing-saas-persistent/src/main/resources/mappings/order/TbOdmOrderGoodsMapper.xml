@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.order.TbOdmOrderGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.order.TbOdmOrderGoods" >
+    <id column="rec_id" property="recId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="goods_commonid" property="goodsCommonid" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="CHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="goods_marketprice" property="goodsMarketprice" jdbcType="DECIMAL" />
+    <result column="goods_costprice" property="goodsCostprice" jdbcType="DECIMAL" />
+    <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+    <result column="goods_spec" property="goodsSpec" jdbcType="VARCHAR" />
+    <result column="goods_image" property="goodsImage" jdbcType="VARCHAR" />
+    <result column="goods_pay_price" property="goodsPayPrice" jdbcType="DECIMAL" />
+    <result column="shipping_fee" property="shippingFee" jdbcType="DECIMAL" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="sup_id" property="supId" jdbcType="INTEGER" />
+    <result column="buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="goods_type" property="goodsType" jdbcType="INTEGER" />
+    <result column="promotions_id" property="promotionsId" jdbcType="INTEGER" />
+    <result column="commis_rate" property="commisRate" jdbcType="DECIMAL" />
+    <result column="gc_id" property="gcId" jdbcType="INTEGER" />
+    <result column="order_goods_state" property="orderGoodsState" jdbcType="CHAR" />
+    <result column="evaluation_state" property="evaluationState" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="reg_id" property="regId" jdbcType="INTEGER" />
+    <result column="order_activity_id" property="orderActivityId" jdbcType="INTEGER" />
+    <result column="handle_state" property="handleState" jdbcType="VARCHAR" />
+    <result column="discount_id" property="discountId" jdbcType="INTEGER" />
+    <result column="is_discount_goods" property="isDiscountGoods" jdbcType="CHAR" />
+    <result column="sale_discount" property="saleDiscount" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rec_id, uuid, app_id, order_id, goods_commonid, goods_id, goods_name, goods_price, 
+    goods_marketprice, goods_costprice, goods_num, goods_spec, goods_image, goods_pay_price, 
+    shipping_fee, store_id, sup_id, buyer_id, goods_type, promotions_id, commis_rate, 
+    gc_id, order_goods_state, evaluation_state, update_time, reg_id, order_activity_id, 
+    handle_state, discount_id, is_discount_goods, sale_discount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_odm_order_goods
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_odm_order_goods
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.order.TbOdmOrderGoods" >
+    insert into tb_odm_order_goods (rec_id, uuid, app_id, 
+      order_id, goods_commonid, goods_id, 
+      goods_name, goods_price, goods_marketprice, 
+      goods_costprice, goods_num, goods_spec, 
+      goods_image, goods_pay_price, shipping_fee, 
+      store_id, sup_id, buyer_id, 
+      goods_type, promotions_id, commis_rate, 
+      gc_id, order_goods_state, evaluation_state, 
+      update_time, reg_id, order_activity_id, 
+      handle_state, discount_id, is_discount_goods, 
+      sale_discount)
+    values (#{recId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{orderId,jdbcType=INTEGER}, #{goodsCommonid,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{goodsName,jdbcType=CHAR}, #{goodsPrice,jdbcType=DECIMAL}, #{goodsMarketprice,jdbcType=DECIMAL}, 
+      #{goodsCostprice,jdbcType=DECIMAL}, #{goodsNum,jdbcType=INTEGER}, #{goodsSpec,jdbcType=VARCHAR}, 
+      #{goodsImage,jdbcType=VARCHAR}, #{goodsPayPrice,jdbcType=DECIMAL}, #{shippingFee,jdbcType=DECIMAL}, 
+      #{storeId,jdbcType=INTEGER}, #{supId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, 
+      #{goodsType,jdbcType=INTEGER}, #{promotionsId,jdbcType=INTEGER}, #{commisRate,jdbcType=DECIMAL}, 
+      #{gcId,jdbcType=INTEGER}, #{orderGoodsState,jdbcType=CHAR}, #{evaluationState,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{regId,jdbcType=INTEGER}, #{orderActivityId,jdbcType=INTEGER}, 
+      #{handleState,jdbcType=VARCHAR}, #{discountId,jdbcType=INTEGER}, #{isDiscountGoods,jdbcType=CHAR}, 
+      #{saleDiscount,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.order.TbOdmOrderGoods" >
+    insert into tb_odm_order_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        rec_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="goodsCommonid != null" >
+        goods_commonid,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="goodsMarketprice != null" >
+        goods_marketprice,
+      </if>
+      <if test="goodsCostprice != null" >
+        goods_costprice,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsSpec != null" >
+        goods_spec,
+      </if>
+      <if test="goodsImage != null" >
+        goods_image,
+      </if>
+      <if test="goodsPayPrice != null" >
+        goods_pay_price,
+      </if>
+      <if test="shippingFee != null" >
+        shipping_fee,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="supId != null" >
+        sup_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+      <if test="promotionsId != null" >
+        promotions_id,
+      </if>
+      <if test="commisRate != null" >
+        commis_rate,
+      </if>
+      <if test="gcId != null" >
+        gc_id,
+      </if>
+      <if test="orderGoodsState != null" >
+        order_goods_state,
+      </if>
+      <if test="evaluationState != null" >
+        evaluation_state,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="regId != null" >
+        reg_id,
+      </if>
+      <if test="orderActivityId != null" >
+        order_activity_id,
+      </if>
+      <if test="handleState != null" >
+        handle_state,
+      </if>
+      <if test="discountId != null" >
+        discount_id,
+      </if>
+      <if test="isDiscountGoods != null" >
+        is_discount_goods,
+      </if>
+      <if test="saleDiscount != null" >
+        sale_discount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCommonid != null" >
+        #{goodsCommonid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=CHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsMarketprice != null" >
+        #{goodsMarketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsCostprice != null" >
+        #{goodsCostprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSpec != null" >
+        #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImage != null" >
+        #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPayPrice != null" >
+        #{goodsPayPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingFee != null" >
+        #{shippingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="supId != null" >
+        #{supId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="promotionsId != null" >
+        #{promotionsId,jdbcType=INTEGER},
+      </if>
+      <if test="commisRate != null" >
+        #{commisRate,jdbcType=DECIMAL},
+      </if>
+      <if test="gcId != null" >
+        #{gcId,jdbcType=INTEGER},
+      </if>
+      <if test="orderGoodsState != null" >
+        #{orderGoodsState,jdbcType=CHAR},
+      </if>
+      <if test="evaluationState != null" >
+        #{evaluationState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regId != null" >
+        #{regId,jdbcType=INTEGER},
+      </if>
+      <if test="orderActivityId != null" >
+        #{orderActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="handleState != null" >
+        #{handleState,jdbcType=VARCHAR},
+      </if>
+      <if test="discountId != null" >
+        #{discountId,jdbcType=INTEGER},
+      </if>
+      <if test="isDiscountGoods != null" >
+        #{isDiscountGoods,jdbcType=CHAR},
+      </if>
+      <if test="saleDiscount != null" >
+        #{saleDiscount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.order.TbOdmOrderGoods" >
+    update tb_odm_order_goods
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCommonid != null" >
+        goods_commonid = #{goodsCommonid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=CHAR},
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsMarketprice != null" >
+        goods_marketprice = #{goodsMarketprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsCostprice != null" >
+        goods_costprice = #{goodsCostprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSpec != null" >
+        goods_spec = #{goodsSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImage != null" >
+        goods_image = #{goodsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPayPrice != null" >
+        goods_pay_price = #{goodsPayPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shippingFee != null" >
+        shipping_fee = #{shippingFee,jdbcType=DECIMAL},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="supId != null" >
+        sup_id = #{supId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsType != null" >
+        goods_type = #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="promotionsId != null" >
+        promotions_id = #{promotionsId,jdbcType=INTEGER},
+      </if>
+      <if test="commisRate != null" >
+        commis_rate = #{commisRate,jdbcType=DECIMAL},
+      </if>
+      <if test="gcId != null" >
+        gc_id = #{gcId,jdbcType=INTEGER},
+      </if>
+      <if test="orderGoodsState != null" >
+        order_goods_state = #{orderGoodsState,jdbcType=CHAR},
+      </if>
+      <if test="evaluationState != null" >
+        evaluation_state = #{evaluationState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regId != null" >
+        reg_id = #{regId,jdbcType=INTEGER},
+      </if>
+      <if test="orderActivityId != null" >
+        order_activity_id = #{orderActivityId,jdbcType=INTEGER},
+      </if>
+      <if test="handleState != null" >
+        handle_state = #{handleState,jdbcType=VARCHAR},
+      </if>
+      <if test="discountId != null" >
+        discount_id = #{discountId,jdbcType=INTEGER},
+      </if>
+      <if test="isDiscountGoods != null" >
+        is_discount_goods = #{isDiscountGoods,jdbcType=CHAR},
+      </if>
+      <if test="saleDiscount != null" >
+        sale_discount = #{saleDiscount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.order.TbOdmOrderGoods" >
+    update tb_odm_order_goods
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      goods_commonid = #{goodsCommonid,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=CHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_marketprice = #{goodsMarketprice,jdbcType=DECIMAL},
+      goods_costprice = #{goodsCostprice,jdbcType=DECIMAL},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      goods_spec = #{goodsSpec,jdbcType=VARCHAR},
+      goods_image = #{goodsImage,jdbcType=VARCHAR},
+      goods_pay_price = #{goodsPayPrice,jdbcType=DECIMAL},
+      shipping_fee = #{shippingFee,jdbcType=DECIMAL},
+      store_id = #{storeId,jdbcType=INTEGER},
+      sup_id = #{supId,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      goods_type = #{goodsType,jdbcType=INTEGER},
+      promotions_id = #{promotionsId,jdbcType=INTEGER},
+      commis_rate = #{commisRate,jdbcType=DECIMAL},
+      gc_id = #{gcId,jdbcType=INTEGER},
+      order_goods_state = #{orderGoodsState,jdbcType=CHAR},
+      evaluation_state = #{evaluationState,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      reg_id = #{regId,jdbcType=INTEGER},
+      order_activity_id = #{orderActivityId,jdbcType=INTEGER},
+      handle_state = #{handleState,jdbcType=VARCHAR},
+      discount_id = #{discountId,jdbcType=INTEGER},
+      is_discount_goods = #{isDiscountGoods,jdbcType=CHAR},
+      sale_discount = #{saleDiscount,jdbcType=DOUBLE}
+    where rec_id = #{recId,jdbcType=INTEGER}
+  </update>
+</mapper>

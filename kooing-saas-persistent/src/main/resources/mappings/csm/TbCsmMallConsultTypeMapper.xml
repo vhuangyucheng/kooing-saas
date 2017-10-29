@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.csm.TbCsmMallConsultTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    <id column="mct_id" property="mctId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="mct_name" property="mctName" jdbcType="CHAR" />
+    <result column="mct_sort" property="mctSort" jdbcType="TINYINT" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.model.mysql.csm.TbCsmMallConsultType" extends="BaseResultMap" >
+    <result column="mct_introduce" property="mctIntroduce" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mct_id, uuid, app_id, mct_name, mct_sort, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    mct_introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_csm_mall_consult_type
+    where mct_id = #{mctId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_csm_mall_consult_type
+    where mct_id = #{mctId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    insert into tb_csm_mall_consult_type (mct_id, uuid, app_id, 
+      mct_name, mct_sort, update_time, 
+      mct_introduce)
+    values (#{mctId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{mctName,jdbcType=CHAR}, #{mctSort,jdbcType=TINYINT}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{mctIntroduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    insert into tb_csm_mall_consult_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mctId != null" >
+        mct_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="mctName != null" >
+        mct_name,
+      </if>
+      <if test="mctSort != null" >
+        mct_sort,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="mctIntroduce != null" >
+        mct_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mctId != null" >
+        #{mctId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="mctName != null" >
+        #{mctName,jdbcType=CHAR},
+      </if>
+      <if test="mctSort != null" >
+        #{mctSort,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mctIntroduce != null" >
+        #{mctIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    update tb_csm_mall_consult_type
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="mctName != null" >
+        mct_name = #{mctName,jdbcType=CHAR},
+      </if>
+      <if test="mctSort != null" >
+        mct_sort = #{mctSort,jdbcType=TINYINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mctIntroduce != null" >
+        mct_introduce = #{mctIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where mct_id = #{mctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    update tb_csm_mall_consult_type
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      mct_name = #{mctName,jdbcType=CHAR},
+      mct_sort = #{mctSort,jdbcType=TINYINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      mct_introduce = #{mctIntroduce,jdbcType=LONGVARCHAR}
+    where mct_id = #{mctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.csm.TbCsmMallConsultType" >
+    update tb_csm_mall_consult_type
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      mct_name = #{mctName,jdbcType=CHAR},
+      mct_sort = #{mctSort,jdbcType=TINYINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where mct_id = #{mctId,jdbcType=INTEGER}
+  </update>
+</mapper>

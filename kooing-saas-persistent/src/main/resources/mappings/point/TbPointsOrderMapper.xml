@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.point.TbPointsOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.point.TbPointsOrder" >
+    <id column="point_orderid" property="pointOrderid" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="point_ordersn" property="pointOrdersn" jdbcType="VARCHAR" />
+    <result column="point_buyerid" property="pointBuyerid" jdbcType="INTEGER" />
+    <result column="point_buyername" property="pointBuyername" jdbcType="VARCHAR" />
+    <result column="point_buyeremail" property="pointBuyeremail" jdbcType="VARCHAR" />
+    <result column="point_addtime" property="pointAddtime" jdbcType="TIMESTAMP" />
+    <result column="point_shippingtime" property="pointShippingtime" jdbcType="TIMESTAMP" />
+    <result column="point_shippingcode" property="pointShippingcode" jdbcType="VARCHAR" />
+    <result column="point_shipping_ecode" property="pointShippingEcode" jdbcType="VARCHAR" />
+    <result column="point_finnshedtime" property="pointFinnshedtime" jdbcType="TIMESTAMP" />
+    <result column="point_allpoint" property="pointAllpoint" jdbcType="INTEGER" />
+    <result column="point_ordermessage" property="pointOrdermessage" jdbcType="VARCHAR" />
+    <result column="point_orderstate" property="pointOrderstate" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    point_orderid, uuid, app_id, point_ordersn, point_buyerid, point_buyername, point_buyeremail, 
+    point_addtime, point_shippingtime, point_shippingcode, point_shipping_ecode, point_finnshedtime, 
+    point_allpoint, point_ordermessage, point_orderstate, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_points_order
+    where point_orderid = #{pointOrderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_points_order
+    where point_orderid = #{pointOrderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.point.TbPointsOrder" >
+    insert into tb_points_order (point_orderid, uuid, app_id, 
+      point_ordersn, point_buyerid, point_buyername, 
+      point_buyeremail, point_addtime, point_shippingtime, 
+      point_shippingcode, point_shipping_ecode, 
+      point_finnshedtime, point_allpoint, point_ordermessage, 
+      point_orderstate, update_time)
+    values (#{pointOrderid,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{pointOrdersn,jdbcType=VARCHAR}, #{pointBuyerid,jdbcType=INTEGER}, #{pointBuyername,jdbcType=VARCHAR}, 
+      #{pointBuyeremail,jdbcType=VARCHAR}, #{pointAddtime,jdbcType=TIMESTAMP}, #{pointShippingtime,jdbcType=TIMESTAMP}, 
+      #{pointShippingcode,jdbcType=VARCHAR}, #{pointShippingEcode,jdbcType=VARCHAR}, 
+      #{pointFinnshedtime,jdbcType=TIMESTAMP}, #{pointAllpoint,jdbcType=INTEGER}, #{pointOrdermessage,jdbcType=VARCHAR}, 
+      #{pointOrderstate,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.point.TbPointsOrder" >
+    insert into tb_points_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pointOrderid != null" >
+        point_orderid,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="pointOrdersn != null" >
+        point_ordersn,
+      </if>
+      <if test="pointBuyerid != null" >
+        point_buyerid,
+      </if>
+      <if test="pointBuyername != null" >
+        point_buyername,
+      </if>
+      <if test="pointBuyeremail != null" >
+        point_buyeremail,
+      </if>
+      <if test="pointAddtime != null" >
+        point_addtime,
+      </if>
+      <if test="pointShippingtime != null" >
+        point_shippingtime,
+      </if>
+      <if test="pointShippingcode != null" >
+        point_shippingcode,
+      </if>
+      <if test="pointShippingEcode != null" >
+        point_shipping_ecode,
+      </if>
+      <if test="pointFinnshedtime != null" >
+        point_finnshedtime,
+      </if>
+      <if test="pointAllpoint != null" >
+        point_allpoint,
+      </if>
+      <if test="pointOrdermessage != null" >
+        point_ordermessage,
+      </if>
+      <if test="pointOrderstate != null" >
+        point_orderstate,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pointOrderid != null" >
+        #{pointOrderid,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="pointOrdersn != null" >
+        #{pointOrdersn,jdbcType=VARCHAR},
+      </if>
+      <if test="pointBuyerid != null" >
+        #{pointBuyerid,jdbcType=INTEGER},
+      </if>
+      <if test="pointBuyername != null" >
+        #{pointBuyername,jdbcType=VARCHAR},
+      </if>
+      <if test="pointBuyeremail != null" >
+        #{pointBuyeremail,jdbcType=VARCHAR},
+      </if>
+      <if test="pointAddtime != null" >
+        #{pointAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointShippingtime != null" >
+        #{pointShippingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointShippingcode != null" >
+        #{pointShippingcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointShippingEcode != null" >
+        #{pointShippingEcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointFinnshedtime != null" >
+        #{pointFinnshedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointAllpoint != null" >
+        #{pointAllpoint,jdbcType=INTEGER},
+      </if>
+      <if test="pointOrdermessage != null" >
+        #{pointOrdermessage,jdbcType=VARCHAR},
+      </if>
+      <if test="pointOrderstate != null" >
+        #{pointOrderstate,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.point.TbPointsOrder" >
+    update tb_points_order
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="pointOrdersn != null" >
+        point_ordersn = #{pointOrdersn,jdbcType=VARCHAR},
+      </if>
+      <if test="pointBuyerid != null" >
+        point_buyerid = #{pointBuyerid,jdbcType=INTEGER},
+      </if>
+      <if test="pointBuyername != null" >
+        point_buyername = #{pointBuyername,jdbcType=VARCHAR},
+      </if>
+      <if test="pointBuyeremail != null" >
+        point_buyeremail = #{pointBuyeremail,jdbcType=VARCHAR},
+      </if>
+      <if test="pointAddtime != null" >
+        point_addtime = #{pointAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointShippingtime != null" >
+        point_shippingtime = #{pointShippingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointShippingcode != null" >
+        point_shippingcode = #{pointShippingcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointShippingEcode != null" >
+        point_shipping_ecode = #{pointShippingEcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointFinnshedtime != null" >
+        point_finnshedtime = #{pointFinnshedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pointAllpoint != null" >
+        point_allpoint = #{pointAllpoint,jdbcType=INTEGER},
+      </if>
+      <if test="pointOrdermessage != null" >
+        point_ordermessage = #{pointOrdermessage,jdbcType=VARCHAR},
+      </if>
+      <if test="pointOrderstate != null" >
+        point_orderstate = #{pointOrderstate,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where point_orderid = #{pointOrderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.point.TbPointsOrder" >
+    update tb_points_order
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      point_ordersn = #{pointOrdersn,jdbcType=VARCHAR},
+      point_buyerid = #{pointBuyerid,jdbcType=INTEGER},
+      point_buyername = #{pointBuyername,jdbcType=VARCHAR},
+      point_buyeremail = #{pointBuyeremail,jdbcType=VARCHAR},
+      point_addtime = #{pointAddtime,jdbcType=TIMESTAMP},
+      point_shippingtime = #{pointShippingtime,jdbcType=TIMESTAMP},
+      point_shippingcode = #{pointShippingcode,jdbcType=VARCHAR},
+      point_shipping_ecode = #{pointShippingEcode,jdbcType=VARCHAR},
+      point_finnshedtime = #{pointFinnshedtime,jdbcType=TIMESTAMP},
+      point_allpoint = #{pointAllpoint,jdbcType=INTEGER},
+      point_ordermessage = #{pointOrdermessage,jdbcType=VARCHAR},
+      point_orderstate = #{pointOrderstate,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where point_orderid = #{pointOrderid,jdbcType=INTEGER}
+  </update>
+</mapper>

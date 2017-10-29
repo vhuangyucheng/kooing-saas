@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.goods.TbShopTransportExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.goods.TbShopTransportExtend" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
+    <result column="top_area_id" property="topAreaId" jdbcType="VARCHAR" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="snum" property="snum" jdbcType="INTEGER" />
+    <result column="sprice" property="sprice" jdbcType="DECIMAL" />
+    <result column="xnum" property="xnum" jdbcType="INTEGER" />
+    <result column="xprice" property="xprice" jdbcType="DECIMAL" />
+    <result column="is_default" property="isDefault" jdbcType="INTEGER" />
+    <result column="transport_id" property="transportId" jdbcType="INTEGER" />
+    <result column="transport_title" property="transportTitle" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, app_id, area_id, top_area_id, area_name, snum, sprice, xnum, xprice, is_default, 
+    transport_id, transport_title, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop_transport_extend
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop_transport_extend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.goods.TbShopTransportExtend" >
+    insert into tb_shop_transport_extend (id, uuid, app_id, 
+      area_id, top_area_id, area_name, 
+      snum, sprice, xnum, 
+      xprice, is_default, transport_id, 
+      transport_title, update_time)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{areaId,jdbcType=VARCHAR}, #{topAreaId,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, 
+      #{snum,jdbcType=INTEGER}, #{sprice,jdbcType=DECIMAL}, #{xnum,jdbcType=INTEGER}, 
+      #{xprice,jdbcType=DECIMAL}, #{isDefault,jdbcType=INTEGER}, #{transportId,jdbcType=INTEGER}, 
+      #{transportTitle,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.goods.TbShopTransportExtend" >
+    insert into tb_shop_transport_extend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="topAreaId != null" >
+        top_area_id,
+      </if>
+      <if test="areaName != null" >
+        area_name,
+      </if>
+      <if test="snum != null" >
+        snum,
+      </if>
+      <if test="sprice != null" >
+        sprice,
+      </if>
+      <if test="xnum != null" >
+        xnum,
+      </if>
+      <if test="xprice != null" >
+        xprice,
+      </if>
+      <if test="isDefault != null" >
+        is_default,
+      </if>
+      <if test="transportId != null" >
+        transport_id,
+      </if>
+      <if test="transportTitle != null" >
+        transport_title,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="topAreaId != null" >
+        #{topAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="snum != null" >
+        #{snum,jdbcType=INTEGER},
+      </if>
+      <if test="sprice != null" >
+        #{sprice,jdbcType=DECIMAL},
+      </if>
+      <if test="xnum != null" >
+        #{xnum,jdbcType=INTEGER},
+      </if>
+      <if test="xprice != null" >
+        #{xprice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="transportId != null" >
+        #{transportId,jdbcType=INTEGER},
+      </if>
+      <if test="transportTitle != null" >
+        #{transportTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.goods.TbShopTransportExtend" >
+    update tb_shop_transport_extend
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        area_id = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="topAreaId != null" >
+        top_area_id = #{topAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="snum != null" >
+        snum = #{snum,jdbcType=INTEGER},
+      </if>
+      <if test="sprice != null" >
+        sprice = #{sprice,jdbcType=DECIMAL},
+      </if>
+      <if test="xnum != null" >
+        xnum = #{xnum,jdbcType=INTEGER},
+      </if>
+      <if test="xprice != null" >
+        xprice = #{xprice,jdbcType=DECIMAL},
+      </if>
+      <if test="isDefault != null" >
+        is_default = #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="transportId != null" >
+        transport_id = #{transportId,jdbcType=INTEGER},
+      </if>
+      <if test="transportTitle != null" >
+        transport_title = #{transportTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.goods.TbShopTransportExtend" >
+    update tb_shop_transport_extend
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=VARCHAR},
+      top_area_id = #{topAreaId,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      snum = #{snum,jdbcType=INTEGER},
+      sprice = #{sprice,jdbcType=DECIMAL},
+      xnum = #{xnum,jdbcType=INTEGER},
+      xprice = #{xprice,jdbcType=DECIMAL},
+      is_default = #{isDefault,jdbcType=INTEGER},
+      transport_id = #{transportId,jdbcType=INTEGER},
+      transport_title = #{transportTitle,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

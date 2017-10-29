@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.logistics.TbLgmExpressMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.logistics.TbLgmExpress" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="letter" property="letter" jdbcType="CHAR" />
+    <result column="is_common_use" property="isCommonUse" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="zt_state" property="ztState" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, app_id, name, state, code, letter, is_common_use, url, zt_state, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_lgm_express
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_lgm_express
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.logistics.TbLgmExpress" >
+    insert into tb_lgm_express (id, uuid, app_id, 
+      name, state, code, 
+      letter, is_common_use, url, 
+      zt_state, update_time)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{appId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
+      #{letter,jdbcType=CHAR}, #{isCommonUse,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{ztState,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.logistics.TbLgmExpress" >
+    insert into tb_lgm_express
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="letter != null" >
+        letter,
+      </if>
+      <if test="isCommonUse != null" >
+        is_common_use,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="ztState != null" >
+        zt_state,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="letter != null" >
+        #{letter,jdbcType=CHAR},
+      </if>
+      <if test="isCommonUse != null" >
+        #{isCommonUse,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="ztState != null" >
+        #{ztState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.logistics.TbLgmExpress" >
+    update tb_lgm_express
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="letter != null" >
+        letter = #{letter,jdbcType=CHAR},
+      </if>
+      <if test="isCommonUse != null" >
+        is_common_use = #{isCommonUse,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="ztState != null" >
+        zt_state = #{ztState,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.logistics.TbLgmExpress" >
+    update tb_lgm_express
+    set uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      letter = #{letter,jdbcType=CHAR},
+      is_common_use = #{isCommonUse,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      zt_state = #{ztState,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

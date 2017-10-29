@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.Interface.mysql.shop.TbShopJoininMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.model.mysql.shop.TbShopJoinin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <result column="member_name" property="memberName" jdbcType="CHAR" />
+    <result column="member_phone" property="memberPhone" jdbcType="CHAR" />
+    <result column="member_account" property="memberAccount" jdbcType="CHAR" />
+    <result column="member_password" property="memberPassword" jdbcType="CHAR" />
+    <result column="store_type" property="storeType" jdbcType="CHAR" />
+    <result column="member_address" property="memberAddress" jdbcType="CHAR" />
+    <result column="member_email" property="memberEmail" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="CHAR" />
+    <result column="idcard_front" property="idcardFront" jdbcType="CHAR" />
+    <result column="idcard_back" property="idcardBack" jdbcType="CHAR" />
+    <result column="idcard_hand_license" property="idcardHandLicense" jdbcType="CHAR" />
+    <result column="store_name" property="storeName" jdbcType="CHAR" />
+    <result column="store_class_ids" property="storeClassIds" jdbcType="VARCHAR" />
+    <result column="store_class_names" property="storeClassNames" jdbcType="VARCHAR" />
+    <result column="auth_state" property="authState" jdbcType="CHAR" />
+    <result column="auth_time" property="authTime" jdbcType="TIMESTAMP" />
+    <result column="joinin_state" property="joininState" jdbcType="CHAR" />
+    <result column="joinin_message" property="joininMessage" jdbcType="VARCHAR" />
+    <result column="joinin_year" property="joininYear" jdbcType="INTEGER" />
+    <result column="sg_name" property="sgName" jdbcType="CHAR" />
+    <result column="sg_id" property="sgId" jdbcType="INTEGER" />
+    <result column="sg_info" property="sgInfo" jdbcType="VARCHAR" />
+    <result column="sc_name" property="scName" jdbcType="CHAR" />
+    <result column="sc_id" property="scId" jdbcType="INTEGER" />
+    <result column="sc_bail" property="scBail" jdbcType="DECIMAL" />
+    <result column="store_class_commis_rates" property="storeClassCommisRates" jdbcType="CHAR" />
+    <result column="company_name" property="companyName" jdbcType="CHAR" />
+    <result column="company_province_id" property="companyProvinceId" jdbcType="INTEGER" />
+    <result column="company_city_id" property="companyCityId" jdbcType="INTEGER" />
+    <result column="company_area_id" property="companyAreaId" jdbcType="INTEGER" />
+    <result column="company_address" property="companyAddress" jdbcType="CHAR" />
+    <result column="company_address_detail" property="companyAddressDetail" jdbcType="CHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="CHAR" />
+    <result column="company_employee_count" property="companyEmployeeCount" jdbcType="INTEGER" />
+    <result column="company_registered_capital" property="companyRegisteredCapital" jdbcType="DECIMAL" />
+    <result column="business_licence_number" property="businessLicenceNumber" jdbcType="CHAR" />
+    <result column="business_licence_address" property="businessLicenceAddress" jdbcType="CHAR" />
+    <result column="business_licence_start" property="businessLicenceStart" jdbcType="TIMESTAMP" />
+    <result column="business_licence_end" property="businessLicenceEnd" jdbcType="TIMESTAMP" />
+    <result column="business_sphere" property="businessSphere" jdbcType="VARCHAR" />
+    <result column="business_licence_number_electronic" property="businessLicenceNumberElectronic" jdbcType="CHAR" />
+    <result column="organization_code" property="organizationCode" jdbcType="CHAR" />
+    <result column="organization_code_electronic" property="organizationCodeElectronic" jdbcType="CHAR" />
+    <result column="general_taxpayer" property="generalTaxpayer" jdbcType="CHAR" />
+    <result column="bank_account_name" property="bankAccountName" jdbcType="CHAR" />
+    <result column="bank_account_number" property="bankAccountNumber" jdbcType="CHAR" />
+    <result column="bank_name" property="bankName" jdbcType="CHAR" />
+    <result column="bank_code" property="bankCode" jdbcType="CHAR" />
+    <result column="bank_address" property="bankAddress" jdbcType="CHAR" />
+    <result column="bank_licence_electronic" property="bankLicenceElectronic" jdbcType="CHAR" />
+    <result column="is_settlement_account" property="isSettlementAccount" jdbcType="INTEGER" />
+    <result column="settlement_bank_account_name" property="settlementBankAccountName" jdbcType="CHAR" />
+    <result column="settlement_bank_account_number" property="settlementBankAccountNumber" jdbcType="CHAR" />
+    <result column="settlement_bank_name" property="settlementBankName" jdbcType="CHAR" />
+    <result column="settlement_bank_code" property="settlementBankCode" jdbcType="CHAR" />
+    <result column="settlement_bank_address" property="settlementBankAddress" jdbcType="CHAR" />
+    <result column="tax_registration_certificate" property="taxRegistrationCertificate" jdbcType="CHAR" />
+    <result column="taxpayer_id" property="taxpayerId" jdbcType="CHAR" />
+    <result column="tax_registration_certificate_electronic" property="taxRegistrationCertificateElectronic" jdbcType="CHAR" />
+    <result column="paying_money_certificate" property="payingMoneyCertificate" jdbcType="CHAR" />
+    <result column="paying_money_certificate_explain" property="payingMoneyCertificateExplain" jdbcType="CHAR" />
+    <result column="paying_amount" property="payingAmount" jdbcType="DECIMAL" />
+    <result column="pay_state" property="payState" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+    <result column="member_truename" property="memberTruename" jdbcType="CHAR" />
+    <result column="businessLicence_img" property="businesslicenceImg" jdbcType="CHAR" />
+    <result column="legalCertify_img" property="legalcertifyImg" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, member_id, uuid, app_id, member_name, member_phone, member_account, member_password, 
+    store_type, member_address, member_email, idcard, idcard_front, idcard_back, idcard_hand_license, 
+    store_name, store_class_ids, store_class_names, auth_state, auth_time, joinin_state, 
+    joinin_message, joinin_year, sg_name, sg_id, sg_info, sc_name, sc_id, sc_bail, store_class_commis_rates, 
+    company_name, company_province_id, company_city_id, company_area_id, company_address, 
+    company_address_detail, company_phone, company_employee_count, company_registered_capital, 
+    business_licence_number, business_licence_address, business_licence_start, business_licence_end, 
+    business_sphere, business_licence_number_electronic, organization_code, organization_code_electronic, 
+    general_taxpayer, bank_account_name, bank_account_number, bank_name, bank_code, bank_address, 
+    bank_licence_electronic, is_settlement_account, settlement_bank_account_name, settlement_bank_account_number, 
+    settlement_bank_name, settlement_bank_code, settlement_bank_address, tax_registration_certificate, 
+    taxpayer_id, tax_registration_certificate_electronic, paying_money_certificate, paying_money_certificate_explain, 
+    paying_amount, pay_state, create_time, update_time, expire_time, member_truename, 
+    businessLicence_img, legalCertify_img
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop_joinin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop_joinin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.model.mysql.shop.TbShopJoinin" >
+    insert into tb_shop_joinin (id, member_id, uuid, 
+      app_id, member_name, member_phone, 
+      member_account, member_password, store_type, 
+      member_address, member_email, idcard, 
+      idcard_front, idcard_back, idcard_hand_license, 
+      store_name, store_class_ids, store_class_names, 
+      auth_state, auth_time, joinin_state, 
+      joinin_message, joinin_year, sg_name, 
+      sg_id, sg_info, sc_name, 
+      sc_id, sc_bail, store_class_commis_rates, 
+      company_name, company_province_id, company_city_id, 
+      company_area_id, company_address, company_address_detail, 
+      company_phone, company_employee_count, company_registered_capital, 
+      business_licence_number, business_licence_address, 
+      business_licence_start, business_licence_end, 
+      business_sphere, business_licence_number_electronic, 
+      organization_code, organization_code_electronic, 
+      general_taxpayer, bank_account_name, bank_account_number, 
+      bank_name, bank_code, bank_address, 
+      bank_licence_electronic, is_settlement_account, 
+      settlement_bank_account_name, settlement_bank_account_number, 
+      settlement_bank_name, settlement_bank_code, settlement_bank_address, 
+      tax_registration_certificate, taxpayer_id, tax_registration_certificate_electronic, 
+      paying_money_certificate, paying_money_certificate_explain, 
+      paying_amount, pay_state, create_time, 
+      update_time, expire_time, member_truename, 
+      businessLicence_img, legalCertify_img)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, 
+      #{appId,jdbcType=INTEGER}, #{memberName,jdbcType=CHAR}, #{memberPhone,jdbcType=CHAR}, 
+      #{memberAccount,jdbcType=CHAR}, #{memberPassword,jdbcType=CHAR}, #{storeType,jdbcType=CHAR}, 
+      #{memberAddress,jdbcType=CHAR}, #{memberEmail,jdbcType=CHAR}, #{idcard,jdbcType=CHAR}, 
+      #{idcardFront,jdbcType=CHAR}, #{idcardBack,jdbcType=CHAR}, #{idcardHandLicense,jdbcType=CHAR}, 
+      #{storeName,jdbcType=CHAR}, #{storeClassIds,jdbcType=VARCHAR}, #{storeClassNames,jdbcType=VARCHAR}, 
+      #{authState,jdbcType=CHAR}, #{authTime,jdbcType=TIMESTAMP}, #{joininState,jdbcType=CHAR}, 
+      #{joininMessage,jdbcType=VARCHAR}, #{joininYear,jdbcType=INTEGER}, #{sgName,jdbcType=CHAR}, 
+      #{sgId,jdbcType=INTEGER}, #{sgInfo,jdbcType=VARCHAR}, #{scName,jdbcType=CHAR}, 
+      #{scId,jdbcType=INTEGER}, #{scBail,jdbcType=DECIMAL}, #{storeClassCommisRates,jdbcType=CHAR}, 
+      #{companyName,jdbcType=CHAR}, #{companyProvinceId,jdbcType=INTEGER}, #{companyCityId,jdbcType=INTEGER}, 
+      #{companyAreaId,jdbcType=INTEGER}, #{companyAddress,jdbcType=CHAR}, #{companyAddressDetail,jdbcType=CHAR}, 
+      #{companyPhone,jdbcType=CHAR}, #{companyEmployeeCount,jdbcType=INTEGER}, #{companyRegisteredCapital,jdbcType=DECIMAL}, 
+      #{businessLicenceNumber,jdbcType=CHAR}, #{businessLicenceAddress,jdbcType=CHAR}, 
+      #{businessLicenceStart,jdbcType=TIMESTAMP}, #{businessLicenceEnd,jdbcType=TIMESTAMP}, 
+      #{businessSphere,jdbcType=VARCHAR}, #{businessLicenceNumberElectronic,jdbcType=CHAR}, 
+      #{organizationCode,jdbcType=CHAR}, #{organizationCodeElectronic,jdbcType=CHAR}, 
+      #{generalTaxpayer,jdbcType=CHAR}, #{bankAccountName,jdbcType=CHAR}, #{bankAccountNumber,jdbcType=CHAR}, 
+      #{bankName,jdbcType=CHAR}, #{bankCode,jdbcType=CHAR}, #{bankAddress,jdbcType=CHAR}, 
+      #{bankLicenceElectronic,jdbcType=CHAR}, #{isSettlementAccount,jdbcType=INTEGER}, 
+      #{settlementBankAccountName,jdbcType=CHAR}, #{settlementBankAccountNumber,jdbcType=CHAR}, 
+      #{settlementBankName,jdbcType=CHAR}, #{settlementBankCode,jdbcType=CHAR}, #{settlementBankAddress,jdbcType=CHAR}, 
+      #{taxRegistrationCertificate,jdbcType=CHAR}, #{taxpayerId,jdbcType=CHAR}, #{taxRegistrationCertificateElectronic,jdbcType=CHAR}, 
+      #{payingMoneyCertificate,jdbcType=CHAR}, #{payingMoneyCertificateExplain,jdbcType=CHAR}, 
+      #{payingAmount,jdbcType=DECIMAL}, #{payState,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{expireTime,jdbcType=TIMESTAMP}, #{memberTruename,jdbcType=CHAR}, 
+      #{businesslicenceImg,jdbcType=CHAR}, #{legalcertifyImg,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.model.mysql.shop.TbShopJoinin" >
+    insert into tb_shop_joinin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="memberPhone != null" >
+        member_phone,
+      </if>
+      <if test="memberAccount != null" >
+        member_account,
+      </if>
+      <if test="memberPassword != null" >
+        member_password,
+      </if>
+      <if test="storeType != null" >
+        store_type,
+      </if>
+      <if test="memberAddress != null" >
+        member_address,
+      </if>
+      <if test="memberEmail != null" >
+        member_email,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="idcardFront != null" >
+        idcard_front,
+      </if>
+      <if test="idcardBack != null" >
+        idcard_back,
+      </if>
+      <if test="idcardHandLicense != null" >
+        idcard_hand_license,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="storeClassIds != null" >
+        store_class_ids,
+      </if>
+      <if test="storeClassNames != null" >
+        store_class_names,
+      </if>
+      <if test="authState != null" >
+        auth_state,
+      </if>
+      <if test="authTime != null" >
+        auth_time,
+      </if>
+      <if test="joininState != null" >
+        joinin_state,
+      </if>
+      <if test="joininMessage != null" >
+        joinin_message,
+      </if>
+      <if test="joininYear != null" >
+        joinin_year,
+      </if>
+      <if test="sgName != null" >
+        sg_name,
+      </if>
+      <if test="sgId != null" >
+        sg_id,
+      </if>
+      <if test="sgInfo != null" >
+        sg_info,
+      </if>
+      <if test="scName != null" >
+        sc_name,
+      </if>
+      <if test="scId != null" >
+        sc_id,
+      </if>
+      <if test="scBail != null" >
+        sc_bail,
+      </if>
+      <if test="storeClassCommisRates != null" >
+        store_class_commis_rates,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyProvinceId != null" >
+        company_province_id,
+      </if>
+      <if test="companyCityId != null" >
+        company_city_id,
+      </if>
+      <if test="companyAreaId != null" >
+        company_area_id,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="companyAddressDetail != null" >
+        company_address_detail,
+      </if>
+      <if test="companyPhone != null" >
+        company_phone,
+      </if>
+      <if test="companyEmployeeCount != null" >
+        company_employee_count,
+      </if>
+      <if test="companyRegisteredCapital != null" >
+        company_registered_capital,
+      </if>
+      <if test="businessLicenceNumber != null" >
+        business_licence_number,
+      </if>
+      <if test="businessLicenceAddress != null" >
+        business_licence_address,
+      </if>
+      <if test="businessLicenceStart != null" >
+        business_licence_start,
+      </if>
+      <if test="businessLicenceEnd != null" >
+        business_licence_end,
+      </if>
+      <if test="businessSphere != null" >
+        business_sphere,
+      </if>
+      <if test="businessLicenceNumberElectronic != null" >
+        business_licence_number_electronic,
+      </if>
+      <if test="organizationCode != null" >
+        organization_code,
+      </if>
+      <if test="organizationCodeElectronic != null" >
+        organization_code_electronic,
+      </if>
+      <if test="generalTaxpayer != null" >
+        general_taxpayer,
+      </if>
+      <if test="bankAccountName != null" >
+        bank_account_name,
+      </if>
+      <if test="bankAccountNumber != null" >
+        bank_account_number,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankCode != null" >
+        bank_code,
+      </if>
+      <if test="bankAddress != null" >
+        bank_address,
+      </if>
+      <if test="bankLicenceElectronic != null" >
+        bank_licence_electronic,
+      </if>
+      <if test="isSettlementAccount != null" >
+        is_settlement_account,
+      </if>
+      <if test="settlementBankAccountName != null" >
+        settlement_bank_account_name,
+      </if>
+      <if test="settlementBankAccountNumber != null" >
+        settlement_bank_account_number,
+      </if>
+      <if test="settlementBankName != null" >
+        settlement_bank_name,
+      </if>
+      <if test="settlementBankCode != null" >
+        settlement_bank_code,
+      </if>
+      <if test="settlementBankAddress != null" >
+        settlement_bank_address,
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        tax_registration_certificate,
+      </if>
+      <if test="taxpayerId != null" >
+        taxpayer_id,
+      </if>
+      <if test="taxRegistrationCertificateElectronic != null" >
+        tax_registration_certificate_electronic,
+      </if>
+      <if test="payingMoneyCertificate != null" >
+        paying_money_certificate,
+      </if>
+      <if test="payingMoneyCertificateExplain != null" >
+        paying_money_certificate_explain,
+      </if>
+      <if test="payingAmount != null" >
+        paying_amount,
+      </if>
+      <if test="payState != null" >
+        pay_state,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="expireTime != null" >
+        expire_time,
+      </if>
+      <if test="memberTruename != null" >
+        member_truename,
+      </if>
+      <if test="businesslicenceImg != null" >
+        businessLicence_img,
+      </if>
+      <if test="legalcertifyImg != null" >
+        legalCertify_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="memberPhone != null" >
+        #{memberPhone,jdbcType=CHAR},
+      </if>
+      <if test="memberAccount != null" >
+        #{memberAccount,jdbcType=CHAR},
+      </if>
+      <if test="memberPassword != null" >
+        #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="storeType != null" >
+        #{storeType,jdbcType=CHAR},
+      </if>
+      <if test="memberAddress != null" >
+        #{memberAddress,jdbcType=CHAR},
+      </if>
+      <if test="memberEmail != null" >
+        #{memberEmail,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="idcardFront != null" >
+        #{idcardFront,jdbcType=CHAR},
+      </if>
+      <if test="idcardBack != null" >
+        #{idcardBack,jdbcType=CHAR},
+      </if>
+      <if test="idcardHandLicense != null" >
+        #{idcardHandLicense,jdbcType=CHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="storeClassIds != null" >
+        #{storeClassIds,jdbcType=VARCHAR},
+      </if>
+      <if test="storeClassNames != null" >
+        #{storeClassNames,jdbcType=VARCHAR},
+      </if>
+      <if test="authState != null" >
+        #{authState,jdbcType=CHAR},
+      </if>
+      <if test="authTime != null" >
+        #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="joininState != null" >
+        #{joininState,jdbcType=CHAR},
+      </if>
+      <if test="joininMessage != null" >
+        #{joininMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="joininYear != null" >
+        #{joininYear,jdbcType=INTEGER},
+      </if>
+      <if test="sgName != null" >
+        #{sgName,jdbcType=CHAR},
+      </if>
+      <if test="sgId != null" >
+        #{sgId,jdbcType=INTEGER},
+      </if>
+      <if test="sgInfo != null" >
+        #{sgInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="scName != null" >
+        #{scName,jdbcType=CHAR},
+      </if>
+      <if test="scId != null" >
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scBail != null" >
+        #{scBail,jdbcType=DECIMAL},
+      </if>
+      <if test="storeClassCommisRates != null" >
+        #{storeClassCommisRates,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyProvinceId != null" >
+        #{companyProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCityId != null" >
+        #{companyCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAreaId != null" >
+        #{companyAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=CHAR},
+      </if>
+      <if test="companyAddressDetail != null" >
+        #{companyAddressDetail,jdbcType=CHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=CHAR},
+      </if>
+      <if test="companyEmployeeCount != null" >
+        #{companyEmployeeCount,jdbcType=INTEGER},
+      </if>
+      <if test="companyRegisteredCapital != null" >
+        #{companyRegisteredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="businessLicenceNumber != null" >
+        #{businessLicenceNumber,jdbcType=CHAR},
+      </if>
+      <if test="businessLicenceAddress != null" >
+        #{businessLicenceAddress,jdbcType=CHAR},
+      </if>
+      <if test="businessLicenceStart != null" >
+        #{businessLicenceStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessLicenceEnd != null" >
+        #{businessLicenceEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessSphere != null" >
+        #{businessSphere,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenceNumberElectronic != null" >
+        #{businessLicenceNumberElectronic,jdbcType=CHAR},
+      </if>
+      <if test="organizationCode != null" >
+        #{organizationCode,jdbcType=CHAR},
+      </if>
+      <if test="organizationCodeElectronic != null" >
+        #{organizationCodeElectronic,jdbcType=CHAR},
+      </if>
+      <if test="generalTaxpayer != null" >
+        #{generalTaxpayer,jdbcType=CHAR},
+      </if>
+      <if test="bankAccountName != null" >
+        #{bankAccountName,jdbcType=CHAR},
+      </if>
+      <if test="bankAccountNumber != null" >
+        #{bankAccountNumber,jdbcType=CHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=CHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=CHAR},
+      </if>
+      <if test="bankAddress != null" >
+        #{bankAddress,jdbcType=CHAR},
+      </if>
+      <if test="bankLicenceElectronic != null" >
+        #{bankLicenceElectronic,jdbcType=CHAR},
+      </if>
+      <if test="isSettlementAccount != null" >
+        #{isSettlementAccount,jdbcType=INTEGER},
+      </if>
+      <if test="settlementBankAccountName != null" >
+        #{settlementBankAccountName,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankAccountNumber != null" >
+        #{settlementBankAccountNumber,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankName != null" >
+        #{settlementBankName,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankCode != null" >
+        #{settlementBankCode,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankAddress != null" >
+        #{settlementBankAddress,jdbcType=CHAR},
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        #{taxRegistrationCertificate,jdbcType=CHAR},
+      </if>
+      <if test="taxpayerId != null" >
+        #{taxpayerId,jdbcType=CHAR},
+      </if>
+      <if test="taxRegistrationCertificateElectronic != null" >
+        #{taxRegistrationCertificateElectronic,jdbcType=CHAR},
+      </if>
+      <if test="payingMoneyCertificate != null" >
+        #{payingMoneyCertificate,jdbcType=CHAR},
+      </if>
+      <if test="payingMoneyCertificateExplain != null" >
+        #{payingMoneyCertificateExplain,jdbcType=CHAR},
+      </if>
+      <if test="payingAmount != null" >
+        #{payingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payState != null" >
+        #{payState,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberTruename != null" >
+        #{memberTruename,jdbcType=CHAR},
+      </if>
+      <if test="businesslicenceImg != null" >
+        #{businesslicenceImg,jdbcType=CHAR},
+      </if>
+      <if test="legalcertifyImg != null" >
+        #{legalcertifyImg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.model.mysql.shop.TbShopJoinin" >
+    update tb_shop_joinin
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=INTEGER},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="memberPhone != null" >
+        member_phone = #{memberPhone,jdbcType=CHAR},
+      </if>
+      <if test="memberAccount != null" >
+        member_account = #{memberAccount,jdbcType=CHAR},
+      </if>
+      <if test="memberPassword != null" >
+        member_password = #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="storeType != null" >
+        store_type = #{storeType,jdbcType=CHAR},
+      </if>
+      <if test="memberAddress != null" >
+        member_address = #{memberAddress,jdbcType=CHAR},
+      </if>
+      <if test="memberEmail != null" >
+        member_email = #{memberEmail,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="idcardFront != null" >
+        idcard_front = #{idcardFront,jdbcType=CHAR},
+      </if>
+      <if test="idcardBack != null" >
+        idcard_back = #{idcardBack,jdbcType=CHAR},
+      </if>
+      <if test="idcardHandLicense != null" >
+        idcard_hand_license = #{idcardHandLicense,jdbcType=CHAR},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="storeClassIds != null" >
+        store_class_ids = #{storeClassIds,jdbcType=VARCHAR},
+      </if>
+      <if test="storeClassNames != null" >
+        store_class_names = #{storeClassNames,jdbcType=VARCHAR},
+      </if>
+      <if test="authState != null" >
+        auth_state = #{authState,jdbcType=CHAR},
+      </if>
+      <if test="authTime != null" >
+        auth_time = #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="joininState != null" >
+        joinin_state = #{joininState,jdbcType=CHAR},
+      </if>
+      <if test="joininMessage != null" >
+        joinin_message = #{joininMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="joininYear != null" >
+        joinin_year = #{joininYear,jdbcType=INTEGER},
+      </if>
+      <if test="sgName != null" >
+        sg_name = #{sgName,jdbcType=CHAR},
+      </if>
+      <if test="sgId != null" >
+        sg_id = #{sgId,jdbcType=INTEGER},
+      </if>
+      <if test="sgInfo != null" >
+        sg_info = #{sgInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="scName != null" >
+        sc_name = #{scName,jdbcType=CHAR},
+      </if>
+      <if test="scId != null" >
+        sc_id = #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="scBail != null" >
+        sc_bail = #{scBail,jdbcType=DECIMAL},
+      </if>
+      <if test="storeClassCommisRates != null" >
+        store_class_commis_rates = #{storeClassCommisRates,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyProvinceId != null" >
+        company_province_id = #{companyProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCityId != null" >
+        company_city_id = #{companyCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAreaId != null" >
+        company_area_id = #{companyAreaId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=CHAR},
+      </if>
+      <if test="companyAddressDetail != null" >
+        company_address_detail = #{companyAddressDetail,jdbcType=CHAR},
+      </if>
+      <if test="companyPhone != null" >
+        company_phone = #{companyPhone,jdbcType=CHAR},
+      </if>
+      <if test="companyEmployeeCount != null" >
+        company_employee_count = #{companyEmployeeCount,jdbcType=INTEGER},
+      </if>
+      <if test="companyRegisteredCapital != null" >
+        company_registered_capital = #{companyRegisteredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="businessLicenceNumber != null" >
+        business_licence_number = #{businessLicenceNumber,jdbcType=CHAR},
+      </if>
+      <if test="businessLicenceAddress != null" >
+        business_licence_address = #{businessLicenceAddress,jdbcType=CHAR},
+      </if>
+      <if test="businessLicenceStart != null" >
+        business_licence_start = #{businessLicenceStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessLicenceEnd != null" >
+        business_licence_end = #{businessLicenceEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessSphere != null" >
+        business_sphere = #{businessSphere,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicenceNumberElectronic != null" >
+        business_licence_number_electronic = #{businessLicenceNumberElectronic,jdbcType=CHAR},
+      </if>
+      <if test="organizationCode != null" >
+        organization_code = #{organizationCode,jdbcType=CHAR},
+      </if>
+      <if test="organizationCodeElectronic != null" >
+        organization_code_electronic = #{organizationCodeElectronic,jdbcType=CHAR},
+      </if>
+      <if test="generalTaxpayer != null" >
+        general_taxpayer = #{generalTaxpayer,jdbcType=CHAR},
+      </if>
+      <if test="bankAccountName != null" >
+        bank_account_name = #{bankAccountName,jdbcType=CHAR},
+      </if>
+      <if test="bankAccountNumber != null" >
+        bank_account_number = #{bankAccountNumber,jdbcType=CHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=CHAR},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=CHAR},
+      </if>
+      <if test="bankAddress != null" >
+        bank_address = #{bankAddress,jdbcType=CHAR},
+      </if>
+      <if test="bankLicenceElectronic != null" >
+        bank_licence_electronic = #{bankLicenceElectronic,jdbcType=CHAR},
+      </if>
+      <if test="isSettlementAccount != null" >
+        is_settlement_account = #{isSettlementAccount,jdbcType=INTEGER},
+      </if>
+      <if test="settlementBankAccountName != null" >
+        settlement_bank_account_name = #{settlementBankAccountName,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankAccountNumber != null" >
+        settlement_bank_account_number = #{settlementBankAccountNumber,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankName != null" >
+        settlement_bank_name = #{settlementBankName,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankCode != null" >
+        settlement_bank_code = #{settlementBankCode,jdbcType=CHAR},
+      </if>
+      <if test="settlementBankAddress != null" >
+        settlement_bank_address = #{settlementBankAddress,jdbcType=CHAR},
+      </if>
+      <if test="taxRegistrationCertificate != null" >
+        tax_registration_certificate = #{taxRegistrationCertificate,jdbcType=CHAR},
+      </if>
+      <if test="taxpayerId != null" >
+        taxpayer_id = #{taxpayerId,jdbcType=CHAR},
+      </if>
+      <if test="taxRegistrationCertificateElectronic != null" >
+        tax_registration_certificate_electronic = #{taxRegistrationCertificateElectronic,jdbcType=CHAR},
+      </if>
+      <if test="payingMoneyCertificate != null" >
+        paying_money_certificate = #{payingMoneyCertificate,jdbcType=CHAR},
+      </if>
+      <if test="payingMoneyCertificateExplain != null" >
+        paying_money_certificate_explain = #{payingMoneyCertificateExplain,jdbcType=CHAR},
+      </if>
+      <if test="payingAmount != null" >
+        paying_amount = #{payingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payState != null" >
+        pay_state = #{payState,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null" >
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberTruename != null" >
+        member_truename = #{memberTruename,jdbcType=CHAR},
+      </if>
+      <if test="businesslicenceImg != null" >
+        businessLicence_img = #{businesslicenceImg,jdbcType=CHAR},
+      </if>
+      <if test="legalcertifyImg != null" >
+        legalCertify_img = #{legalcertifyImg,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.model.mysql.shop.TbShopJoinin" >
+    update tb_shop_joinin
+    set member_id = #{memberId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      app_id = #{appId,jdbcType=INTEGER},
+      member_name = #{memberName,jdbcType=CHAR},
+      member_phone = #{memberPhone,jdbcType=CHAR},
+      member_account = #{memberAccount,jdbcType=CHAR},
+      member_password = #{memberPassword,jdbcType=CHAR},
+      store_type = #{storeType,jdbcType=CHAR},
+      member_address = #{memberAddress,jdbcType=CHAR},
+      member_email = #{memberEmail,jdbcType=CHAR},
+      idcard = #{idcard,jdbcType=CHAR},
+      idcard_front = #{idcardFront,jdbcType=CHAR},
+      idcard_back = #{idcardBack,jdbcType=CHAR},
+      idcard_hand_license = #{idcardHandLicense,jdbcType=CHAR},
+      store_name = #{storeName,jdbcType=CHAR},
+      store_class_ids = #{storeClassIds,jdbcType=VARCHAR},
+      store_class_names = #{storeClassNames,jdbcType=VARCHAR},
+      auth_state = #{authState,jdbcType=CHAR},
+      auth_time = #{authTime,jdbcType=TIMESTAMP},
+      joinin_state = #{joininState,jdbcType=CHAR},
+      joinin_message = #{joininMessage,jdbcType=VARCHAR},
+      joinin_year = #{joininYear,jdbcType=INTEGER},
+      sg_name = #{sgName,jdbcType=CHAR},
+      sg_id = #{sgId,jdbcType=INTEGER},
+      sg_info = #{sgInfo,jdbcType=VARCHAR},
+      sc_name = #{scName,jdbcType=CHAR},
+      sc_id = #{scId,jdbcType=INTEGER},
+      sc_bail = #{scBail,jdbcType=DECIMAL},
+      store_class_commis_rates = #{storeClassCommisRates,jdbcType=CHAR},
+      company_name = #{companyName,jdbcType=CHAR},
+      company_province_id = #{companyProvinceId,jdbcType=INTEGER},
+      company_city_id = #{companyCityId,jdbcType=INTEGER},
+      company_area_id = #{companyAreaId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=CHAR},
+      company_address_detail = #{companyAddressDetail,jdbcType=CHAR},
+      company_phone = #{companyPhone,jdbcType=CHAR},
+      company_employee_count = #{companyEmployeeCount,jdbcType=INTEGER},
+      company_registered_capital = #{companyRegisteredCapital,jdbcType=DECIMAL},
+      business_licence_number = #{businessLicenceNumber,jdbcType=CHAR},
+      business_licence_address = #{businessLicenceAddress,jdbcType=CHAR},
+      business_licence_start = #{businessLicenceStart,jdbcType=TIMESTAMP},
+      business_licence_end = #{businessLicenceEnd,jdbcType=TIMESTAMP},
+      business_sphere = #{businessSphere,jdbcType=VARCHAR},
+      business_licence_number_electronic = #{businessLicenceNumberElectronic,jdbcType=CHAR},
+      organization_code = #{organizationCode,jdbcType=CHAR},
+      organization_code_electronic = #{organizationCodeElectronic,jdbcType=CHAR},
+      general_taxpayer = #{generalTaxpayer,jdbcType=CHAR},
+      bank_account_name = #{bankAccountName,jdbcType=CHAR},
+      bank_account_number = #{bankAccountNumber,jdbcType=CHAR},
+      bank_name = #{bankName,jdbcType=CHAR},
+      bank_code = #{bankCode,jdbcType=CHAR},
+      bank_address = #{bankAddress,jdbcType=CHAR},
+      bank_licence_electronic = #{bankLicenceElectronic,jdbcType=CHAR},
+      is_settlement_account = #{isSettlementAccount,jdbcType=INTEGER},
+      settlement_bank_account_name = #{settlementBankAccountName,jdbcType=CHAR},
+      settlement_bank_account_number = #{settlementBankAccountNumber,jdbcType=CHAR},
+      settlement_bank_name = #{settlementBankName,jdbcType=CHAR},
+      settlement_bank_code = #{settlementBankCode,jdbcType=CHAR},
+      settlement_bank_address = #{settlementBankAddress,jdbcType=CHAR},
+      tax_registration_certificate = #{taxRegistrationCertificate,jdbcType=CHAR},
+      taxpayer_id = #{taxpayerId,jdbcType=CHAR},
+      tax_registration_certificate_electronic = #{taxRegistrationCertificateElectronic,jdbcType=CHAR},
+      paying_money_certificate = #{payingMoneyCertificate,jdbcType=CHAR},
+      paying_money_certificate_explain = #{payingMoneyCertificateExplain,jdbcType=CHAR},
+      paying_amount = #{payingAmount,jdbcType=DECIMAL},
+      pay_state = #{payState,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      member_truename = #{memberTruename,jdbcType=CHAR},
+      businessLicence_img = #{businesslicenceImg,jdbcType=CHAR},
+      legalCertify_img = #{legalcertifyImg,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
