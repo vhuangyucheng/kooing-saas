@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.saas.persistent.dao.comment.TbShopsCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    <id column="goods_comment_id" property="goodsCommentId" jdbcType="BIGINT" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="comment_virtual" property="commentVirtual" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="member_avatar" property="memberAvatar" jdbcType="CHAR" />
+    <result column="comment_photo" property="commentPhoto" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.saas.persistent.model.comment.TbShopsComment" extends="BaseResultMap" >
+    <result column="comment_content" property="commentContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_comment_id, uuid, store_id, goods_id, comment_virtual, member_id, member_avatar, 
+    comment_photo
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_shops_comment
+    where goods_comment_id = #{goodsCommentId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shops_comment
+    where goods_comment_id = #{goodsCommentId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    insert into tb_shops_comment (goods_comment_id, uuid, store_id, 
+      goods_id, comment_virtual, member_id, 
+      member_avatar, comment_photo, comment_content
+      )
+    values (#{goodsCommentId,jdbcType=BIGINT}, #{uuid,jdbcType=CHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{goodsId,jdbcType=INTEGER}, #{commentVirtual,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
+      #{memberAvatar,jdbcType=CHAR}, #{commentPhoto,jdbcType=CHAR}, #{commentContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    insert into tb_shops_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsCommentId != null" >
+        goods_comment_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="commentVirtual != null" >
+        comment_virtual,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="memberAvatar != null" >
+        member_avatar,
+      </if>
+      <if test="commentPhoto != null" >
+        comment_photo,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsCommentId != null" >
+        #{goodsCommentId,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="commentVirtual != null" >
+        #{commentVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberAvatar != null" >
+        #{memberAvatar,jdbcType=CHAR},
+      </if>
+      <if test="commentPhoto != null" >
+        #{commentPhoto,jdbcType=CHAR},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    update tb_shops_comment
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="commentVirtual != null" >
+        comment_virtual = #{commentVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="memberAvatar != null" >
+        member_avatar = #{memberAvatar,jdbcType=CHAR},
+      </if>
+      <if test="commentPhoto != null" >
+        comment_photo = #{commentPhoto,jdbcType=CHAR},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where goods_comment_id = #{goodsCommentId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    update tb_shops_comment
+    set uuid = #{uuid,jdbcType=CHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      comment_virtual = #{commentVirtual,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      member_avatar = #{memberAvatar,jdbcType=CHAR},
+      comment_photo = #{commentPhoto,jdbcType=CHAR},
+      comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+    where goods_comment_id = #{goodsCommentId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.comment.TbShopsComment" >
+    update tb_shops_comment
+    set uuid = #{uuid,jdbcType=CHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      comment_virtual = #{commentVirtual,jdbcType=INTEGER},
+      member_id = #{memberId,jdbcType=INTEGER},
+      member_avatar = #{memberAvatar,jdbcType=CHAR},
+      comment_photo = #{commentPhoto,jdbcType=CHAR}
+    where goods_comment_id = #{goodsCommentId,jdbcType=BIGINT}
+  </update>
+</mapper>

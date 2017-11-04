@@ -23,9 +23,9 @@ public class Consumer {
         // 获取远程服务代理
         DemoService demoService = (DemoService)context2.getBean("demoService");
         // 执行远程方法
-        String hello = demoService.sayHello("world");
+//        String hello = demoService.sayHello("world");
         // 显示调用结果
-        System.out.println( hello );
+//        System.out.println( hello );
 
     }
 }

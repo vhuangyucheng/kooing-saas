@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.saas.persistent.dao.order.TbOdmOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.order.TbOdmOrder" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="uuid" property="uuid" jdbcType="INTEGER" />
+    <result column="order_sn" property="orderSn" jdbcType="CHAR" />
+    <result column="pay_sn" property="paySn" jdbcType="CHAR" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="store_name" property="storeName" jdbcType="CHAR" />
+    <result column="store_logo" property="storeLogo" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="buyer_name" property="buyerName" jdbcType="CHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="payment_code" property="paymentCode" jdbcType="CHAR" />
+    <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP" />
+    <result column="sales_amount" property="salesAmount" jdbcType="DECIMAL" />
+    <result column="freight" property="freight" jdbcType="DECIMAL" />
+    <result column="evaluation" property="evaluation" jdbcType="INTEGER" />
+    <result column="order_state" property="orderState" jdbcType="INTEGER" />
+    <result column="refund_state" property="refundState" jdbcType="INTEGER" />
+    <result column="refund_amount" property="refundAmount" jdbcType="DECIMAL" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="finished_time" property="finishedTime" jdbcType="TIMESTAMP" />
+    <result column="order_message" property="orderMessage" jdbcType="VARCHAR" />
+    <result column="evalseller_time" property="evalsellerTime" jdbcType="TIMESTAMP" />
+    <result column="evalseller_message" property="evalsellerMessage" jdbcType="VARCHAR" />
+    <result column="shipping_time" property="shippingTime" jdbcType="TIMESTAMP" />
+    <result column="buyer_address" property="buyerAddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, uuid, order_sn, pay_sn, store_id, store_name, store_logo, buyer_id, buyer_name, 
+    add_time, payment_code, payment_time, sales_amount, freight, evaluation, order_state, 
+    refund_state, refund_amount, order_amount, finished_time, order_message, evalseller_time, 
+    evalseller_message, shipping_time, buyer_address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_odm_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_odm_order
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrder" >
+    insert into tb_odm_order (order_id, uuid, order_sn, 
+      pay_sn, store_id, store_name, 
+      store_logo, buyer_id, buyer_name, 
+      add_time, payment_code, payment_time, 
+      sales_amount, freight, evaluation, 
+      order_state, refund_state, refund_amount, 
+      order_amount, finished_time, order_message, 
+      evalseller_time, evalseller_message, shipping_time, 
+      buyer_address)
+    values (#{orderId,jdbcType=BIGINT}, #{uuid,jdbcType=INTEGER}, #{orderSn,jdbcType=CHAR}, 
+      #{paySn,jdbcType=CHAR}, #{storeId,jdbcType=INTEGER}, #{storeName,jdbcType=CHAR}, 
+      #{storeLogo,jdbcType=VARCHAR}, #{buyerId,jdbcType=INTEGER}, #{buyerName,jdbcType=CHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{paymentCode,jdbcType=CHAR}, #{paymentTime,jdbcType=TIMESTAMP}, 
+      #{salesAmount,jdbcType=DECIMAL}, #{freight,jdbcType=DECIMAL}, #{evaluation,jdbcType=INTEGER}, 
+      #{orderState,jdbcType=INTEGER}, #{refundState,jdbcType=INTEGER}, #{refundAmount,jdbcType=DECIMAL}, 
+      #{orderAmount,jdbcType=DECIMAL}, #{finishedTime,jdbcType=TIMESTAMP}, #{orderMessage,jdbcType=VARCHAR}, 
+      #{evalsellerTime,jdbcType=TIMESTAMP}, #{evalsellerMessage,jdbcType=VARCHAR}, #{shippingTime,jdbcType=TIMESTAMP}, 
+      #{buyerAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrder" >
+    insert into tb_odm_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="orderSn != null" >
+        order_sn,
+      </if>
+      <if test="paySn != null" >
+        pay_sn,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="storeLogo != null" >
+        store_logo,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="buyerName != null" >
+        buyer_name,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="paymentCode != null" >
+        payment_code,
+      </if>
+      <if test="paymentTime != null" >
+        payment_time,
+      </if>
+      <if test="salesAmount != null" >
+        sales_amount,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="evaluation != null" >
+        evaluation,
+      </if>
+      <if test="orderState != null" >
+        order_state,
+      </if>
+      <if test="refundState != null" >
+        refund_state,
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount,
+      </if>
+      <if test="orderAmount != null" >
+        order_amount,
+      </if>
+      <if test="finishedTime != null" >
+        finished_time,
+      </if>
+      <if test="orderMessage != null" >
+        order_message,
+      </if>
+      <if test="evalsellerTime != null" >
+        evalseller_time,
+      </if>
+      <if test="evalsellerMessage != null" >
+        evalseller_message,
+      </if>
+      <if test="shippingTime != null" >
+        shipping_time,
+      </if>
+      <if test="buyerAddress != null" >
+        buyer_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        #{orderSn,jdbcType=CHAR},
+      </if>
+      <if test="paySn != null" >
+        #{paySn,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="storeLogo != null" >
+        #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null" >
+        #{buyerName,jdbcType=CHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentCode != null" >
+        #{paymentCode,jdbcType=CHAR},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salesAmount != null" >
+        #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluation != null" >
+        #{evaluation,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="refundState != null" >
+        #{refundState,jdbcType=INTEGER},
+      </if>
+      <if test="refundAmount != null" >
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null" >
+        #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="finishedTime != null" >
+        #{finishedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderMessage != null" >
+        #{orderMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="evalsellerTime != null" >
+        #{evalsellerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evalsellerMessage != null" >
+        #{evalsellerMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingTime != null" >
+        #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyerAddress != null" >
+        #{buyerAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrder" >
+    update tb_odm_order
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null" >
+        order_sn = #{orderSn,jdbcType=CHAR},
+      </if>
+      <if test="paySn != null" >
+        pay_sn = #{paySn,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="storeLogo != null" >
+        store_logo = #{storeLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null" >
+        buyer_name = #{buyerName,jdbcType=CHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentCode != null" >
+        payment_code = #{paymentCode,jdbcType=CHAR},
+      </if>
+      <if test="paymentTime != null" >
+        payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salesAmount != null" >
+        sales_amount = #{salesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=DECIMAL},
+      </if>
+      <if test="evaluation != null" >
+        evaluation = #{evaluation,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        order_state = #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="refundState != null" >
+        refund_state = #{refundState,jdbcType=INTEGER},
+      </if>
+      <if test="refundAmount != null" >
+        refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderAmount != null" >
+        order_amount = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="finishedTime != null" >
+        finished_time = #{finishedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderMessage != null" >
+        order_message = #{orderMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="evalsellerTime != null" >
+        evalseller_time = #{evalsellerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evalsellerMessage != null" >
+        evalseller_message = #{evalsellerMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="shippingTime != null" >
+        shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buyerAddress != null" >
+        buyer_address = #{buyerAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrder" >
+    update tb_odm_order
+    set uuid = #{uuid,jdbcType=INTEGER},
+      order_sn = #{orderSn,jdbcType=CHAR},
+      pay_sn = #{paySn,jdbcType=CHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      store_name = #{storeName,jdbcType=CHAR},
+      store_logo = #{storeLogo,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      buyer_name = #{buyerName,jdbcType=CHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      payment_code = #{paymentCode,jdbcType=CHAR},
+      payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      sales_amount = #{salesAmount,jdbcType=DECIMAL},
+      freight = #{freight,jdbcType=DECIMAL},
+      evaluation = #{evaluation,jdbcType=INTEGER},
+      order_state = #{orderState,jdbcType=INTEGER},
+      refund_state = #{refundState,jdbcType=INTEGER},
+      refund_amount = #{refundAmount,jdbcType=DECIMAL},
+      order_amount = #{orderAmount,jdbcType=DECIMAL},
+      finished_time = #{finishedTime,jdbcType=TIMESTAMP},
+      order_message = #{orderMessage,jdbcType=VARCHAR},
+      evalseller_time = #{evalsellerTime,jdbcType=TIMESTAMP},
+      evalseller_message = #{evalsellerMessage,jdbcType=VARCHAR},
+      shipping_time = #{shippingTime,jdbcType=TIMESTAMP},
+      buyer_address = #{buyerAddress,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+</mapper>

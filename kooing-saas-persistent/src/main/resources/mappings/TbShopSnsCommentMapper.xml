@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.saas.persistent.dao.comment.TbShopSnsCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    <id column="scomm_id" property="scommId" jdbcType="BIGINT" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="store_id" property="storeId" jdbcType="INTEGER" />
+    <result column="scomm_membername" property="scommMembername" jdbcType="CHAR" />
+    <result column="scomm_memberid" property="scommMemberid" jdbcType="INTEGER" />
+    <result column="scomm_time" property="scommTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="scomm_virtual" property="scommVirtual" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.kooing.saas.persistent.model.comment.TbShopSnsComment" extends="BaseResultMap" >
+    <result column="scomm_content" property="scommContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    scomm_id, uuid, store_id, scomm_membername, scomm_memberid, scomm_time, update_time, 
+    scomm_virtual
+  </sql>
+  <sql id="Blob_Column_List" >
+    scomm_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_shop_sns_comment
+    where scomm_id = #{scommId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shop_sns_comment
+    where scomm_id = #{scommId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    insert into tb_shop_sns_comment (scomm_id, uuid, store_id, 
+      scomm_membername, scomm_memberid, scomm_time, 
+      update_time, scomm_virtual, scomm_content
+      )
+    values (#{scommId,jdbcType=BIGINT}, #{uuid,jdbcType=CHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{scommMembername,jdbcType=CHAR}, #{scommMemberid,jdbcType=INTEGER}, #{scommTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{scommVirtual,jdbcType=INTEGER}, #{scommContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    insert into tb_shop_sns_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scommId != null" >
+        scomm_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="scommMembername != null" >
+        scomm_membername,
+      </if>
+      <if test="scommMemberid != null" >
+        scomm_memberid,
+      </if>
+      <if test="scommTime != null" >
+        scomm_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="scommVirtual != null" >
+        scomm_virtual,
+      </if>
+      <if test="scommContent != null" >
+        scomm_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scommId != null" >
+        #{scommId,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="scommMembername != null" >
+        #{scommMembername,jdbcType=CHAR},
+      </if>
+      <if test="scommMemberid != null" >
+        #{scommMemberid,jdbcType=INTEGER},
+      </if>
+      <if test="scommTime != null" >
+        #{scommTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scommVirtual != null" >
+        #{scommVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="scommContent != null" >
+        #{scommContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    update tb_shop_sns_comment
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="scommMembername != null" >
+        scomm_membername = #{scommMembername,jdbcType=CHAR},
+      </if>
+      <if test="scommMemberid != null" >
+        scomm_memberid = #{scommMemberid,jdbcType=INTEGER},
+      </if>
+      <if test="scommTime != null" >
+        scomm_time = #{scommTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="scommVirtual != null" >
+        scomm_virtual = #{scommVirtual,jdbcType=INTEGER},
+      </if>
+      <if test="scommContent != null" >
+        scomm_content = #{scommContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where scomm_id = #{scommId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    update tb_shop_sns_comment
+    set uuid = #{uuid,jdbcType=CHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      scomm_membername = #{scommMembername,jdbcType=CHAR},
+      scomm_memberid = #{scommMemberid,jdbcType=INTEGER},
+      scomm_time = #{scommTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      scomm_virtual = #{scommVirtual,jdbcType=INTEGER},
+      scomm_content = #{scommContent,jdbcType=LONGVARCHAR}
+    where scomm_id = #{scommId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.comment.TbShopSnsComment" >
+    update tb_shop_sns_comment
+    set uuid = #{uuid,jdbcType=CHAR},
+      store_id = #{storeId,jdbcType=INTEGER},
+      scomm_membername = #{scommMembername,jdbcType=CHAR},
+      scomm_memberid = #{scommMemberid,jdbcType=INTEGER},
+      scomm_time = #{scommTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      scomm_virtual = #{scommVirtual,jdbcType=INTEGER}
+    where scomm_id = #{scommId,jdbcType=BIGINT}
+  </update>
+</mapper>

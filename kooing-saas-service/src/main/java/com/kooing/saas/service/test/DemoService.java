@@ -4,6 +4,7 @@ import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * @author : kooing
@@ -16,5 +17,5 @@ public interface DemoService {
     @GET
     @Path("register")
     @Produces({ ContentType.APPLICATION_JSON_UTF_8 })
-    String sayHello(String name) throws Exception;
+    public List<String> sayHello(String name) throws Exception;
 }

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kooing.saas.persistent.dao.shop.TbShopJoininMapper" >
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.shop.TbShopJoinin" >
+    <id column="shop_joinin_id" property="shopJoininId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="member_name" property="memberName" jdbcType="CHAR" />
+    <result column="member_phone" property="memberPhone" jdbcType="CHAR" />
+    <result column="member_account" property="memberAccount" jdbcType="CHAR" />
+    <result column="member_password" property="memberPassword" jdbcType="CHAR" />
+    <result column="store_type" property="storeType" jdbcType="INTEGER" />
+    <result column="member_address" property="memberAddress" jdbcType="CHAR" />
+    <result column="member_email" property="memberEmail" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="CHAR" />
+    <result column="idcard_front" property="idcardFront" jdbcType="CHAR" />
+    <result column="idcard_back" property="idcardBack" jdbcType="CHAR" />
+    <result column="idcard_hand_license" property="idcardHandLicense" jdbcType="CHAR" />
+    <result column="store_name" property="storeName" jdbcType="CHAR" />
+    <result column="auth_state" property="authState" jdbcType="INTEGER" />
+    <result column="auth_time" property="authTime" jdbcType="TIMESTAMP" />
+    <result column="company_name" property="companyName" jdbcType="CHAR" />
+    <result column="company_province_id" property="companyProvinceId" jdbcType="INTEGER" />
+    <result column="company_city_id" property="companyCityId" jdbcType="INTEGER" />
+    <result column="company_address" property="companyAddress" jdbcType="CHAR" />
+    <result column="company_phone" property="companyPhone" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shop_joinin_id, member_id, uuid, member_name, member_phone, member_account, member_password, 
+    store_type, member_address, member_email, idcard, idcard_front, idcard_back, idcard_hand_license, 
+    store_name, auth_state, auth_time, company_name, company_province_id, company_city_id, 
+    company_address, company_phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop_joinin
+    where shop_joinin_id = #{shopJoininId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_shop_joinin
+    where shop_joinin_id = #{shopJoininId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kooing.saas.persistent.model.shop.TbShopJoinin" >
+    insert into tb_shop_joinin (shop_joinin_id, member_id, uuid, 
+      member_name, member_phone, member_account, 
+      member_password, store_type, member_address, 
+      member_email, idcard, idcard_front, 
+      idcard_back, idcard_hand_license, store_name, 
+      auth_state, auth_time, company_name, 
+      company_province_id, company_city_id, company_address, 
+      company_phone)
+    values (#{shopJoininId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, 
+      #{memberName,jdbcType=CHAR}, #{memberPhone,jdbcType=CHAR}, #{memberAccount,jdbcType=CHAR}, 
+      #{memberPassword,jdbcType=CHAR}, #{storeType,jdbcType=INTEGER}, #{memberAddress,jdbcType=CHAR}, 
+      #{memberEmail,jdbcType=CHAR}, #{idcard,jdbcType=CHAR}, #{idcardFront,jdbcType=CHAR}, 
+      #{idcardBack,jdbcType=CHAR}, #{idcardHandLicense,jdbcType=CHAR}, #{storeName,jdbcType=CHAR}, 
+      #{authState,jdbcType=INTEGER}, #{authTime,jdbcType=TIMESTAMP}, #{companyName,jdbcType=CHAR}, 
+      #{companyProvinceId,jdbcType=INTEGER}, #{companyCityId,jdbcType=INTEGER}, #{companyAddress,jdbcType=CHAR}, 
+      #{companyPhone,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kooing.saas.persistent.model.shop.TbShopJoinin" >
+    insert into tb_shop_joinin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopJoininId != null" >
+        shop_joinin_id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="memberPhone != null" >
+        member_phone,
+      </if>
+      <if test="memberAccount != null" >
+        member_account,
+      </if>
+      <if test="memberPassword != null" >
+        member_password,
+      </if>
+      <if test="storeType != null" >
+        store_type,
+      </if>
+      <if test="memberAddress != null" >
+        member_address,
+      </if>
+      <if test="memberEmail != null" >
+        member_email,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="idcardFront != null" >
+        idcard_front,
+      </if>
+      <if test="idcardBack != null" >
+        idcard_back,
+      </if>
+      <if test="idcardHandLicense != null" >
+        idcard_hand_license,
+      </if>
+      <if test="storeName != null" >
+        store_name,
+      </if>
+      <if test="authState != null" >
+        auth_state,
+      </if>
+      <if test="authTime != null" >
+        auth_time,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyProvinceId != null" >
+        company_province_id,
+      </if>
+      <if test="companyCityId != null" >
+        company_city_id,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="companyPhone != null" >
+        company_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopJoininId != null" >
+        #{shopJoininId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="memberPhone != null" >
+        #{memberPhone,jdbcType=CHAR},
+      </if>
+      <if test="memberAccount != null" >
+        #{memberAccount,jdbcType=CHAR},
+      </if>
+      <if test="memberPassword != null" >
+        #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="storeType != null" >
+        #{storeType,jdbcType=INTEGER},
+      </if>
+      <if test="memberAddress != null" >
+        #{memberAddress,jdbcType=CHAR},
+      </if>
+      <if test="memberEmail != null" >
+        #{memberEmail,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="idcardFront != null" >
+        #{idcardFront,jdbcType=CHAR},
+      </if>
+      <if test="idcardBack != null" >
+        #{idcardBack,jdbcType=CHAR},
+      </if>
+      <if test="idcardHandLicense != null" >
+        #{idcardHandLicense,jdbcType=CHAR},
+      </if>
+      <if test="storeName != null" >
+        #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="authState != null" >
+        #{authState,jdbcType=INTEGER},
+      </if>
+      <if test="authTime != null" >
+        #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyProvinceId != null" >
+        #{companyProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCityId != null" >
+        #{companyCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=CHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kooing.saas.persistent.model.shop.TbShopJoinin" >
+    update tb_shop_joinin
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=CHAR},
+      </if>
+      <if test="memberPhone != null" >
+        member_phone = #{memberPhone,jdbcType=CHAR},
+      </if>
+      <if test="memberAccount != null" >
+        member_account = #{memberAccount,jdbcType=CHAR},
+      </if>
+      <if test="memberPassword != null" >
+        member_password = #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="storeType != null" >
+        store_type = #{storeType,jdbcType=INTEGER},
+      </if>
+      <if test="memberAddress != null" >
+        member_address = #{memberAddress,jdbcType=CHAR},
+      </if>
+      <if test="memberEmail != null" >
+        member_email = #{memberEmail,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="idcardFront != null" >
+        idcard_front = #{idcardFront,jdbcType=CHAR},
+      </if>
+      <if test="idcardBack != null" >
+        idcard_back = #{idcardBack,jdbcType=CHAR},
+      </if>
+      <if test="idcardHandLicense != null" >
+        idcard_hand_license = #{idcardHandLicense,jdbcType=CHAR},
+      </if>
+      <if test="storeName != null" >
+        store_name = #{storeName,jdbcType=CHAR},
+      </if>
+      <if test="authState != null" >
+        auth_state = #{authState,jdbcType=INTEGER},
+      </if>
+      <if test="authTime != null" >
+        auth_time = #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="companyProvinceId != null" >
+        company_province_id = #{companyProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCityId != null" >
+        company_city_id = #{companyCityId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=CHAR},
+      </if>
+      <if test="companyPhone != null" >
+        company_phone = #{companyPhone,jdbcType=CHAR},
+      </if>
+    </set>
+    where shop_joinin_id = #{shopJoininId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.shop.TbShopJoinin" >
+    update tb_shop_joinin
+    set member_id = #{memberId,jdbcType=INTEGER},
+      uuid = #{uuid,jdbcType=CHAR},
+      member_name = #{memberName,jdbcType=CHAR},
+      member_phone = #{memberPhone,jdbcType=CHAR},
+      member_account = #{memberAccount,jdbcType=CHAR},
+      member_password = #{memberPassword,jdbcType=CHAR},
+      store_type = #{storeType,jdbcType=INTEGER},
+      member_address = #{memberAddress,jdbcType=CHAR},
+      member_email = #{memberEmail,jdbcType=CHAR},
+      idcard = #{idcard,jdbcType=CHAR},
+      idcard_front = #{idcardFront,jdbcType=CHAR},
+      idcard_back = #{idcardBack,jdbcType=CHAR},
+      idcard_hand_license = #{idcardHandLicense,jdbcType=CHAR},
+      store_name = #{storeName,jdbcType=CHAR},
+      auth_state = #{authState,jdbcType=INTEGER},
+      auth_time = #{authTime,jdbcType=TIMESTAMP},
+      company_name = #{companyName,jdbcType=CHAR},
+      company_province_id = #{companyProvinceId,jdbcType=INTEGER},
+      company_city_id = #{companyCityId,jdbcType=INTEGER},
+      company_address = #{companyAddress,jdbcType=CHAR},
+      company_phone = #{companyPhone,jdbcType=CHAR}
+    where shop_joinin_id = #{shopJoininId,jdbcType=INTEGER}
+  </update>
+</mapper>
