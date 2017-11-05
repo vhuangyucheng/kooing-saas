@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/kooing-saas.iml" filepath="$PROJECT_DIR$/.idea/kooing-saas.iml" />
       <module fileurl="file://$PROJECT_DIR$/kooing-saas.iml" filepath="$PROJECT_DIR$/kooing-saas.iml" />
       <module fileurl="file://$PROJECT_DIR$/kooing-saas-params/kooing-saas-params.iml" filepath="$PROJECT_DIR$/kooing-saas-params/kooing-saas-params.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kooing-saas-params/kooing-saas-params.iml" filepath="$PROJECT_DIR$/kooing-saas-params/kooing-saas-params.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kooing-saas-persistent/kooing-saas-persistent.iml" filepath="$PROJECT_DIR$/kooing-saas-persistent/kooing-saas-persistent.iml" />
       <module fileurl="file://$PROJECT_DIR$/kooing-saas-persistent/kooing-saas-persistent.iml" filepath="$PROJECT_DIR$/kooing-saas-persistent/kooing-saas-persistent.iml" />
       <module fileurl="file://$PROJECT_DIR$/kooing-saas-service/kooing-saas-service.iml" filepath="$PROJECT_DIR$/kooing-saas-service/kooing-saas-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kooing-saas-service/kooing-saas-service.iml" filepath="$PROJECT_DIR$/kooing-saas-service/kooing-saas-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kooing-saas-service-api/kooing-saas-service-api.iml" filepath="$PROJECT_DIR$/kooing-saas-service-api/kooing-saas-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/kooing-saas-service-api/kooing-saas-service-api.iml" filepath="$PROJECT_DIR$/kooing-saas-service-api/kooing-saas-service-api.iml" />
     </modules>
   </component>
