@@ -3,21 +3,28 @@ package com.kooing.saas.service.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.kooing.framework.param.common.request.DataReq;
 import com.kooing.framework.param.common.response.CommResp;
 import com.kooing.framework.param.common.response.SuccessResp;
 import com.kooing.saas.persistent.dao.member.TbUrsMemberMapper;
 import com.kooing.saas.persistent.model.member.TbUrsMember;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
+
+import static com.github.pagehelper.page.PageMethod.startPage;
 
 /**
  * @author : kooing
  * @Date : 2017/10/18 - 15:03
  * @Desription :
- * @update by :
+ * @update by
  */
+@Slf4j
 public class DemoServiceImpl implements DemoService {
     @Resource
     TbUrsMemberMapper tbUrsMemberMapper;
@@ -27,12 +34,13 @@ public class DemoServiceImpl implements DemoService {
 //        if(true){
 //            throw new CommonException("-1","test");
 //        }
-        List<TbUrsMember> list = new ArrayList<>();
-        TbUrsMember a = tbUrsMemberMapper.selectByPrimaryKey(new Long((long)3));
-        TbUrsMember c = data.getBody();
-        list.add(a);
-        list.add(c);
-
+        PageHelper.startPage(1, 4);
+        List<TbUrsMember> list = tbUrsMemberMapper.getMemberList(data.getBody());
+        PageInfo page = new PageInfo(list);
+        long a = page.getTotal();
+        int b = page.getPages();
+        log.info(">>>>>>>>>" + a);
+        log.info(">>>>>>>>>" + b);
         return new SuccessResp<List<TbUrsMember>>("0", "ok", list);
     }
 }

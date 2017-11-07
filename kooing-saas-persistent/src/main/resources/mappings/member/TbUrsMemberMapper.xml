@@ -504,4 +504,34 @@
       member_virtual = #{memberVirtual,jdbcType=INTEGER}
     where member_id = #{memberId,jdbcType=BIGINT}
   </update>
+  <select id="getMemberList" parameterType="com.kooing.saas.persistent.model.member.TbUrsMember" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_urs_member
+    <where>
+      <if test="memberName != null">
+        member_name LIKE concat(concat('%',#{memberName}),'%')
+      </if>
+      <if test="memberSex != null">
+        AND member_sex LIKE concat(concat('%',#{memberSex}),'%')
+      </if>
+      <if test="idcard != null">
+        AND idcard LIKE concat(concat('%',#{idcard}),'%')
+      </if>
+      <if test="memberMobile != null">
+        AND member_mobile LIKE concat(concat('%',#{memberMobile}),'%')
+      </if>
+      <if test="memberGrade != null">
+        AND member_grade LIKE concat(concat('%',#{memberGrade}),'%')
+      </if>
+      <if test="storeId != null">
+        AND store_id LIKE concat(concat('%',#{storeId}),'%')
+      </if>
+      <if test="memberVirtual != null">
+        AND member_virtual LIKE concat(concat('%',#{memberVirtual}),'%')
+      </if>
+    </where>
+  </select>
 </mapper>
