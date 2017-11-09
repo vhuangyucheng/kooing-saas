@@ -5,7 +5,7 @@ import java.util.Date;
 public class TbUrsMember {
     private Long memberId;
 
-    private String uuid;
+    private String uuid ;
 
     private String memberName;
 

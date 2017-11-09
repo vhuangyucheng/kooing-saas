@@ -3,7 +3,6 @@ package com.kooing.saas.service.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kooing.framework.param.common.request.DataReq;
@@ -12,11 +11,9 @@ import com.kooing.framework.param.common.response.SuccessResp;
 import com.kooing.saas.persistent.dao.member.TbUrsMemberMapper;
 import com.kooing.saas.persistent.model.member.TbUrsMember;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 
-import static com.github.pagehelper.page.PageMethod.startPage;
 
 /**
  * @author : kooing

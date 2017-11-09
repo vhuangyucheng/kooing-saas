@@ -13,5 +13,11 @@
     <name>${project.artifactId}  [${project.version}]</name>
     <description>kooing-saas-persistent</description>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.kooing.saas</groupId>
+            <artifactId>kooing-saas-persistent</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

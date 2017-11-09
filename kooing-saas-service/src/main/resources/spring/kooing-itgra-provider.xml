@@ -16,4 +16,5 @@
 
     <!--<dubbo:protocol name="dubbo" port="29014"/>-->
     <dubbo:service protocol="rest" interface="com.kooing.saas.service.test.DemoService" ref="demoService"/>
+    <dubbo:service protocol="rest" interface="com.kooing.saas.api.member.TbUrsMemberApi" ref="tbUerMemberImpl"/>
 </beans>
