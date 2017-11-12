@@ -1,7 +1,12 @@
 package com.kooing.saas.persistent.dao.goods;
 
+import com.kooing.saas.persistent.model.goods.TbGoods;
 import com.kooing.saas.persistent.model.goods.TbGoodsClass;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface TbGoodsClassMapper {
     int deleteByPrimaryKey(Integer gcId);
 
@@ -14,4 +19,6 @@ public interface TbGoodsClassMapper {
     int updateByPrimaryKeySelective(TbGoodsClass record);
 
     int updateByPrimaryKey(TbGoodsClass record);
+
+    List<List<TbGoodsClass>> getTbGoodsClassParentList(Integer storeId);
 }

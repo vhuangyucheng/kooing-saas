@@ -4,7 +4,6 @@ import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.kooing.framework.param.common.request.DataReq;
 import com.kooing.framework.param.common.response.CommResp;
 import com.kooing.saas.persistent.model.goods.TbGoods;
-import com.kooing.saas.persistent.model.member.TbUrsMember;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -40,6 +39,26 @@ public interface TbGoodsApi {
      * @return      : code,message,pagination,list
      */
     @POST
-    @Path("GoodsList")
+    @Path("goodsList")
     public CommResp<List<TbGoods>> goodsList(DataReq<TbGoods> data) throws Exception;
+
+    /**
+     * @author      : kooing
+     * @Date        : 2017/11/12 19:50
+     * @Desription  : 根据主键删除
+     * @return      : code,message,null
+     */
+    @POST
+    @Path("deleteGoods")
+    public CommResp<List<TbGoods>> deleteGoods(DataReq<TbGoods> data) throws  Exception;
+
+    /**
+     * @author      : kooing
+     * @Date        : 2017/11/12 20:14
+     * @Desription  : 根据主键修改商品
+     * @return      : code，message，null
+     */
+    @POST
+    @Path("updateGoods")
+    public CommResp<List<TbGoods>> updateGoods(DataReq<TbGoods> data) throws Exception;
 }

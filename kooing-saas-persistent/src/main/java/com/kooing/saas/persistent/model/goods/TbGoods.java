@@ -1,5 +1,7 @@
 package com.kooing.saas.persistent.model.goods;
 
+import java.util.Date;
+
 public class TbGoods {
     private Long goodsId;
 
@@ -50,6 +52,20 @@ public class TbGoods {
     private String goodsShare;
 
     private Integer isPromotion;
+
+    private String gcName;
+
+    private Date goodsTime;
+
+    private Integer goodsSale;
+
+    public Integer getGoodsSale() {
+        return goodsSale;
+    }
+
+    public void setGoodsSale(Integer goodsSale) {
+        this.goodsSale = goodsSale;
+    }
 
     public Long getGoodsId() {
         return goodsId;
@@ -249,5 +265,21 @@ public class TbGoods {
 
     public void setIsPromotion(Integer isPromotion) {
         this.isPromotion = isPromotion;
+    }
+
+    public String getGcName() {
+        return gcName;
+    }
+
+    public void setGcName(String gcName) {
+        this.gcName = gcName == null ? null : gcName.trim();
+    }
+
+    public Date getGoodsTime() {
+        return goodsTime;
+    }
+
+    public void setGoodsTime(Date goodsTime) {
+        this.goodsTime = goodsTime;
     }
 }

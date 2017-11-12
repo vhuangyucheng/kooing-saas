@@ -2,6 +2,9 @@ package com.kooing.saas.service.goods;
 
 import com.kooing.framework.param.common.request.DataReq;
 import com.kooing.framework.param.common.response.CommResp;
+import com.kooing.framework.param.common.response.PageUtil;
+import com.kooing.framework.param.common.response.Pagination;
+import com.kooing.framework.param.common.response.SuccessResp;
 import com.kooing.saas.api.goods.TbGoodsApi;
 import com.kooing.saas.persistent.dao.goods.TbGoodsMapper;
 import com.kooing.saas.persistent.model.goods.TbGoods;
@@ -9,7 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author : kooing
@@ -18,18 +23,38 @@ import java.util.List;
  * @update by :
  */
 @Slf4j
-@Service(value = "TbGoodsImpl")
+@Service(value = "tbGoodsImpl")
 public class TbGoodsImpl implements TbGoodsApi {
     @Autowired
     TbGoodsMapper tbGoodsMapper;
 
-    @Override
-    public CommResp<List<TbGoods>> addGoods(DataReq<TbGoods> data) throws Exception {
-        return null;
-    }
 
     @Override
     public CommResp<List<TbGoods>> goodsList(DataReq<TbGoods> data) throws Exception {
-        return null;
+        PageUtil.startPage(data);
+        List<TbGoods> list = tbGoodsMapper.getGoodsList(data.getBody(), data.getHeader().getOrderBy(), data.getHeader().getDesc());
+        Pagination pagination = new Pagination(list);
+        return new SuccessResp<List<TbGoods>>("0", "ok", pagination, list);
+    }
+
+    @Override
+    public CommResp<List<TbGoods>> deleteGoods(DataReq<TbGoods> data) throws Exception {
+        tbGoodsMapper.deleteByPrimaryKey(data.getBody().getGoodsId());
+        return new SuccessResp<List<TbGoods>>("0", "ok", null);
+    }
+
+    @Override
+    public CommResp<List<TbGoods>> updateGoods(DataReq<TbGoods> data) throws Exception {
+        tbGoodsMapper.updateByPrimaryKeySelective(data.getBody());
+        return new SuccessResp<List<TbGoods>>("0", "ok", null);
+    }
+
+    @Override
+    public CommResp<List<TbGoods>> addGoods(DataReq<TbGoods> data) throws Exception {
+        TbGoods tbGoods = data.getBody();
+        tbGoods.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
+        tbGoods.setGoodsTime(new Date(System.currentTimeMillis()));
+        tbGoodsMapper.insertSelective(tbGoods);
+        return new SuccessResp<List<TbGoods>>("0", "ok", null);
     }
 }

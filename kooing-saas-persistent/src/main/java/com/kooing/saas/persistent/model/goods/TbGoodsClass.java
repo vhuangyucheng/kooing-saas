@@ -9,6 +9,8 @@ public class TbGoodsClass {
 
     private Integer gcParentId;
 
+    private Integer storeId;
+
     public Integer getGcId() {
         return gcId;
     }
@@ -39,5 +41,13 @@ public class TbGoodsClass {
 
     public void setGcParentId(Integer gcParentId) {
         this.gcParentId = gcParentId;
+    }
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 }
