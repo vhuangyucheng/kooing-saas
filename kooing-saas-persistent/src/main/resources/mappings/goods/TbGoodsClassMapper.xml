@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kooing.saas.persistent.dao.goods.TbGoodsClassMapper">
-  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.goods.TbGoodsClass">
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.goods.response.TbGoodsClassResp">
     <id column="gc_id" jdbcType="INTEGER" property="gcId" />
     <result column="uuid" jdbcType="CHAR" property="uuid" />
     <result column="gc_name" jdbcType="CHAR" property="gcName" />
@@ -90,15 +90,22 @@
       store_id = #{storeId,jdbcType=INTEGER}
     where gc_id = #{gcId,jdbcType=INTEGER}
   </update>
-  <select id="getTbGoodsClassParentList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select gc_id
+  <select id="getTbGoodsClassParentList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
     from tb_goods_class
     <where>
       and gc_parent_id=0
       and store_id=#{storeId}
     </where>
   </select>
-  <select id="getTbGoodsChildList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-
+  <select id="getTbGoodsClassChildList"  resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from tb_goods_class
+    <where>
+      AND gc_parent_id=#{gcId}
+      and store_id=#{storeId}
+    </where>
   </select>
 </mapper>

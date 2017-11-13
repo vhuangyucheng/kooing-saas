@@ -2,6 +2,8 @@ package com.kooing.saas.persistent.dao.goods;
 
 import com.kooing.saas.persistent.model.goods.TbGoods;
 import com.kooing.saas.persistent.model.goods.TbGoodsClass;
+import com.kooing.saas.persistent.model.goods.response.TbGoodsClassResp;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +22,7 @@ public interface TbGoodsClassMapper {
 
     int updateByPrimaryKey(TbGoodsClass record);
 
-    List<List<TbGoodsClass>> getTbGoodsClassParentList(Integer storeId);
+    List<TbGoodsClassResp> getTbGoodsClassParentList(@Param("storeId")Integer storeId);
+
+    List<TbGoodsClassResp> getTbGoodsClassChildList(@Param("gcId") Integer gcId, @Param("storeId") Integer storeId);
 }

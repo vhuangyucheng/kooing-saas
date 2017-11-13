@@ -38,23 +38,23 @@ public class TbGoodsImpl implements TbGoodsApi {
     }
 
     @Override
-    public CommResp<List<TbGoods>> deleteGoods(DataReq<TbGoods> data) throws Exception {
+    public CommResp<Object> deleteGoods(DataReq<TbGoods> data) throws Exception {
         tbGoodsMapper.deleteByPrimaryKey(data.getBody().getGoodsId());
-        return new SuccessResp<List<TbGoods>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 
     @Override
-    public CommResp<List<TbGoods>> updateGoods(DataReq<TbGoods> data) throws Exception {
+    public CommResp<Object> updateGoods(DataReq<TbGoods> data) throws Exception {
         tbGoodsMapper.updateByPrimaryKeySelective(data.getBody());
-        return new SuccessResp<List<TbGoods>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 
     @Override
-    public CommResp<List<TbGoods>> addGoods(DataReq<TbGoods> data) throws Exception {
+    public CommResp<Object> addGoods(DataReq<TbGoods> data) throws Exception {
         TbGoods tbGoods = data.getBody();
         tbGoods.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
         tbGoods.setGoodsTime(new Date(System.currentTimeMillis()));
         tbGoodsMapper.insertSelective(tbGoods);
-        return new SuccessResp<List<TbGoods>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 }

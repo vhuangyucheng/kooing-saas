@@ -1,8 +1,9 @@
 package com.kooing.saas.persistent.model.goods;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbGoods {
+public class TbGoods implements Serializable{
     private Long goodsId;
 
     private String uuid;

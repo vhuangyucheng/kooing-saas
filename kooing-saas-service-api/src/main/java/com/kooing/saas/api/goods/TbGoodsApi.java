@@ -30,7 +30,7 @@ public interface TbGoodsApi {
      */
     @POST
     @Path("addGoods")
-    public CommResp<List<TbGoods>> addGoods(DataReq<TbGoods> data) throws Exception;
+    public CommResp<Object> addGoods(DataReq<TbGoods> data) throws Exception;
 
     /**
      * @author      : kooing
@@ -50,7 +50,7 @@ public interface TbGoodsApi {
      */
     @POST
     @Path("deleteGoods")
-    public CommResp<List<TbGoods>> deleteGoods(DataReq<TbGoods> data) throws  Exception;
+    public CommResp<Object> deleteGoods(DataReq<TbGoods> data) throws  Exception;
 
     /**
      * @author      : kooing
@@ -60,5 +60,5 @@ public interface TbGoodsApi {
      */
     @POST
     @Path("updateGoods")
-    public CommResp<List<TbGoods>> updateGoods(DataReq<TbGoods> data) throws Exception;
+    public CommResp<Object> updateGoods(DataReq<TbGoods> data) throws Exception;
 }

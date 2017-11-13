@@ -18,4 +18,5 @@
     <dubbo:service protocol="rest" interface="com.kooing.saas.service.test.DemoService" ref="demoService"/>
     <dubbo:service protocol="rest" interface="com.kooing.saas.api.member.TbUrsMemberApi" ref="tbUerMemberImpl"/>
     <dubbo:service protocol="rest" interface="com.kooing.saas.api.goods.TbGoodsApi" ref="tbGoodsImpl"/>
+    <dubbo:service protocol="rest" interface="com.kooing.saas.api.goods.TbGoodsClassApi" ref="tbGoodsClassImpl"/>
 </beans>

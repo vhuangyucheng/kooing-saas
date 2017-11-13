@@ -12,6 +12,7 @@ import com.kooing.saas.api.member.TbUrsMemberApi;
 import com.kooing.saas.persistent.dao.member.TbUrsMemberMapper;
 import com.kooing.saas.persistent.model.member.TbUrsMember;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,23 +41,23 @@ public class TbUrsMemberImpl implements TbUrsMemberApi {
     }
 
     @Override
-    public CommResp<List<TbUrsMember>> addMember(DataReq<TbUrsMember> data) throws Exception {
+    public CommResp<Object> addMember(DataReq<TbUrsMember> data) throws Exception {
         TbUrsMember tbUrsMember = data.getBody();
         tbUrsMember.setUuid(UUID.randomUUID().toString().replaceAll("-", ""));
         tbUrsMember.setMemberRegisterTime(new Date(System.currentTimeMillis()));
         tbUrsMemberMapper.insertSelective(tbUrsMember);
-        return new SuccessResp<List<TbUrsMember>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 
     @Override
-    public CommResp<List<TbUrsMember>> deleteMember(DataReq<TbUrsMember> data) throws Exception {
+    public CommResp<Object> deleteMember(DataReq<TbUrsMember> data) throws Exception {
         tbUrsMemberMapper.deleteByPrimaryKey(data.getBody().getMemberId());
-        return new SuccessResp<List<TbUrsMember>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 
     @Override
-    public CommResp<List<TbUrsMember>> updataMember(DataReq<TbUrsMember> data) throws Exception {
+    public CommResp<Object> updataMember(DataReq<TbUrsMember> data) throws Exception {
         tbUrsMemberMapper.updateByPrimaryKeySelective(data.getBody());
-        return new SuccessResp<List<TbUrsMember>>("0", "ok", null);
+        return new SuccessResp<Object>(null);
     }
 }
