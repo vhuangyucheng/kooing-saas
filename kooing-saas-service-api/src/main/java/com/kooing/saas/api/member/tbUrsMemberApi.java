@@ -40,7 +40,7 @@ public interface TbUrsMemberApi {
      */
     @POST
     @Path("addMember")
-    public CommResp<List<TbUrsMember>> addMember(DataReq<TbUrsMember> data) throws Exception;
+    public CommResp<Object> addMember(DataReq<TbUrsMember> data) throws Exception;
 
     /**
      * @author      : kooing
@@ -50,7 +50,7 @@ public interface TbUrsMemberApi {
      */
     @POST
     @Path("deleteMember")
-    public CommResp<List<TbUrsMember>> deleteMember(DataReq<TbUrsMember> data) throws Exception;
+    public CommResp<Object> deleteMember(DataReq<TbUrsMember> data) throws Exception;
 
     /**
      * @author      : kooing
@@ -60,5 +60,5 @@ public interface TbUrsMemberApi {
      */
     @POST
     @Path("updataMember")
-    public CommResp<List<TbUrsMember>> updataMember(DataReq<TbUrsMember> data) throws Exception;
+    public CommResp<Object> updataMember(DataReq<TbUrsMember> data) throws Exception;
 }

@@ -21,11 +21,6 @@
         </dependency>
         <dependency>
             <groupId>com.kooing.saas</groupId>
-            <artifactId>kooing-saas-params</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.kooing.saas</groupId>
             <artifactId>kooing-saas-persistent</artifactId>
             <version>${project.version}</version>
         </dependency>

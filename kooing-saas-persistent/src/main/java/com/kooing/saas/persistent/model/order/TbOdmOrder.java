@@ -52,7 +52,11 @@ public class TbOdmOrder {
 
     private Date shippingTime;
 
-    private String buyerAddress;
+    private Integer orderType;
+
+    private BigDecimal salesModify;
+
+    private String buyerPhone;
 
     public Long getOrderId() {
         return orderId;
@@ -246,11 +250,27 @@ public class TbOdmOrder {
         this.shippingTime = shippingTime;
     }
 
-    public String getBuyerAddress() {
-        return buyerAddress;
+    public Integer getOrderType() {
+        return orderType;
     }
 
-    public void setBuyerAddress(String buyerAddress) {
-        this.buyerAddress = buyerAddress == null ? null : buyerAddress.trim();
+    public void setOrderType(Integer orderType) {
+        this.orderType = orderType;
+    }
+
+    public BigDecimal getSalesModify() {
+        return salesModify;
+    }
+
+    public void setSalesModify(BigDecimal salesModify) {
+        this.salesModify = salesModify;
+    }
+
+    public String getBuyerPhone() {
+        return buyerPhone;
+    }
+
+    public void setBuyerPhone(String buyerPhone) {
+        this.buyerPhone = buyerPhone == null ? null : buyerPhone.trim();
     }
 }
