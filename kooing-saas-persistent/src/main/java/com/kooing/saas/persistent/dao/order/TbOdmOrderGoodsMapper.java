@@ -1,7 +1,10 @@
 package com.kooing.saas.persistent.dao.order;
 
 import com.kooing.saas.persistent.model.order.TbOdmOrderGoods;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface TbOdmOrderGoodsMapper {
     int deleteByPrimaryKey(Long recId);
 
@@ -14,4 +17,6 @@ public interface TbOdmOrderGoodsMapper {
     int updateByPrimaryKeySelective(TbOdmOrderGoods record);
 
     int updateByPrimaryKey(TbOdmOrderGoods record);
+
+    List<TbOdmOrderGoods> getGoodsList(Integer orderId);
 }

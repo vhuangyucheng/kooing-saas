@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kooing.saas.persistent.dao.order.TbOdmOrderMapper">
-  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.order.TbOdmOrder">
+  <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.order.response.TbOdmOrderResp">
     <id column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="uuid" jdbcType="INTEGER" property="uuid" />
     <result column="order_sn" jdbcType="CHAR" property="orderSn" />
@@ -354,7 +354,7 @@
   <select id="getOrderList" resultMap="BaseResultMap" parameterType="com.kooing.saas.persistent.model.order.request.TbOdmOrderReq">
     SELECT 
     <include refid="Base_Column_List"/>
-    FROM
+    FROM tb_odm_order
     <where>
       <if test="orderSn != null">
         and order_sn LIKE concat(concat('%',#{orderSn}),'%')
@@ -366,10 +366,13 @@
         and payment_code = #{paymentCode}
       </if>
       <if test="beginTime != null">
-        and add_time &gt= #{beginTime}
+        <![CDATA[ and add_time >= #{beginTime} ]]>
       </if>
       <if test="endTime != null">
-        and add_time &lt= #{endTime}
+        <![CDATA[ and add_time <= #{endTime} ]]>
+      </if>
+      <if test="storeId != null">
+        and store_id = #{storeId}
       </if>
     </where>
   </select>

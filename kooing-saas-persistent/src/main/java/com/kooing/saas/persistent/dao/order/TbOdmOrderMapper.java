@@ -2,6 +2,7 @@ package com.kooing.saas.persistent.dao.order;
 
 import com.kooing.saas.persistent.model.order.TbOdmOrder;
 import com.kooing.saas.persistent.model.order.request.TbOdmOrderReq;
+import com.kooing.saas.persistent.model.order.response.TbOdmOrderResp;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface TbOdmOrderMapper {
 
     int updateByPrimaryKey(TbOdmOrder record);
 
-    List<TbOdmOrder> getOrderList(TbOdmOrderReq tbOdmOrderReq);
+    List<TbOdmOrderResp> getOrderList(TbOdmOrderReq tbOdmOrderReq);
 }

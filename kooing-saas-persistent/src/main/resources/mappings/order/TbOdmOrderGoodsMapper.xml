@@ -161,4 +161,12 @@
       is_promotion = #{isPromotion,jdbcType=INTEGER}
     where rec_id = #{recId,jdbcType=BIGINT}
   </update>
+  <select id="getGoodsList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from tb_odm_order_goods
+    <where>
+        AND order_id = #{orderId,jdbcType=INTEGER}
+    </where>
+  </select>
 </mapper>
