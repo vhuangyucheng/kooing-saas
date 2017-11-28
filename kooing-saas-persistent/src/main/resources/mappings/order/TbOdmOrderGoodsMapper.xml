@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.order.TbOdmOrderGoods">
     <id column="rec_id" jdbcType="BIGINT" property="recId" />
     <result column="uuid" jdbcType="CHAR" property="uuid" />
-    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_id" jdbcType="CHAR" property="orderId" />
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
     <result column="goods_name" jdbcType="CHAR" property="goodsName" />
     <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
@@ -33,7 +33,7 @@
       goods_id, goods_name, goods_price, 
       goods_promotion_price, goods_num, store_id, 
       buyer_id, is_promotion)
-    values (#{recId,jdbcType=BIGINT}, #{uuid,jdbcType=CHAR}, #{orderId,jdbcType=INTEGER}, 
+    values (#{recId,jdbcType=CHAR}, #{uuid,jdbcType=CHAR}, #{orderId,jdbcType=CHAR},
       #{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=CHAR}, #{goodsPrice,jdbcType=DECIMAL}, 
       #{goodsPromotionPrice,jdbcType=DECIMAL}, #{goodsNum,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, 
       #{buyerId,jdbcType=INTEGER}, #{isPromotion,jdbcType=INTEGER})
@@ -118,7 +118,7 @@
         uuid = #{uuid,jdbcType=CHAR},
       </if>
       <if test="orderId != null">
-        order_id = #{orderId,jdbcType=INTEGER},
+        order_id = #{orderId,jdbcType=CHAR},
       </if>
       <if test="goodsId != null">
         goods_id = #{goodsId,jdbcType=INTEGER},
@@ -150,7 +150,7 @@
   <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrderGoods">
     update tb_odm_order_goods
     set uuid = #{uuid,jdbcType=CHAR},
-      order_id = #{orderId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=CHAR},
       goods_id = #{goodsId,jdbcType=INTEGER},
       goods_name = #{goodsName,jdbcType=CHAR},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
@@ -166,7 +166,13 @@
     <include refid="Base_Column_List" />
     from tb_odm_order_goods
     <where>
-        AND order_id = #{orderId,jdbcType=INTEGER}
+        AND order_id = #{orderId,jdbcType=CHAR}
     </where>
   </select>
+  <delete id="deleteByOrderSn" parameterType="java.lang.String">
+    DELETE FROM  tb_odm_order_goods
+    <where>
+      and order_id=#{orderSn,jdbcType=CHAR}
+    </where>
+  </delete>
 </mapper>

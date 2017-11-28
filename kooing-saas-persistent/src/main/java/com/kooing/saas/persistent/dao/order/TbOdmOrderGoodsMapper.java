@@ -19,4 +19,6 @@ public interface TbOdmOrderGoodsMapper {
     int updateByPrimaryKey(TbOdmOrderGoods record);
 
     List<TbOdmOrderGoods> getGoodsList(Integer orderId);
+
+    int deleteByOrderSn(String orderSn);
 }

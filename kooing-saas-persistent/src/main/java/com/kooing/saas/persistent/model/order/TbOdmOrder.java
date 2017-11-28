@@ -6,7 +6,7 @@ import java.util.Date;
 public class TbOdmOrder {
     private Long orderId;
 
-    private Integer uuid;
+    private String uuid;
 
     private String orderSn;
 
@@ -66,11 +66,11 @@ public class TbOdmOrder {
         this.orderId = orderId;
     }
 
-    public Integer getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(Integer uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

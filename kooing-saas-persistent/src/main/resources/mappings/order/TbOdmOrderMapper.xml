@@ -3,7 +3,7 @@
 <mapper namespace="com.kooing.saas.persistent.dao.order.TbOdmOrderMapper">
   <resultMap id="BaseResultMap" type="com.kooing.saas.persistent.model.order.response.TbOdmOrderResp">
     <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="uuid" jdbcType="INTEGER" property="uuid" />
+    <result column="uuid" jdbcType="CHAR" property="uuid" />
     <result column="order_sn" jdbcType="CHAR" property="orderSn" />
     <result column="pay_sn" jdbcType="CHAR" property="paySn" />
     <result column="store_id" jdbcType="INTEGER" property="storeId" />
@@ -57,7 +57,7 @@
       evalseller_time, evalseller_message, shipping_time, 
       order_type, sales_modify, buyer_phone
       )
-    values (#{orderId,jdbcType=BIGINT}, #{uuid,jdbcType=INTEGER}, #{orderSn,jdbcType=CHAR}, 
+    values (#{orderId,jdbcType=BIGINT}, #{uuid,jdbcType=CHAR}, #{orderSn,jdbcType=CHAR},
       #{paySn,jdbcType=CHAR}, #{storeId,jdbcType=INTEGER}, #{storeName,jdbcType=CHAR}, 
       #{storeLogo,jdbcType=VARCHAR}, #{buyerId,jdbcType=INTEGER}, #{buyerName,jdbcType=CHAR}, 
       #{addTime,jdbcType=TIMESTAMP}, #{paymentCode,jdbcType=CHAR}, #{paymentTime,jdbcType=TIMESTAMP}, 
@@ -158,7 +158,7 @@
         #{orderId,jdbcType=BIGINT},
       </if>
       <if test="uuid != null">
-        #{uuid,jdbcType=INTEGER},
+        #{uuid,jdbcType=CHAR},
       </if>
       <if test="orderSn != null">
         #{orderSn,jdbcType=CHAR},
@@ -241,7 +241,7 @@
     update tb_odm_order
     <set>
       <if test="uuid != null">
-        uuid = #{uuid,jdbcType=INTEGER},
+        uuid = #{uuid,jdbcType=CHAR},
       </if>
       <if test="orderSn != null">
         order_sn = #{orderSn,jdbcType=CHAR},
@@ -323,7 +323,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kooing.saas.persistent.model.order.TbOdmOrder">
     update tb_odm_order
-    set uuid = #{uuid,jdbcType=INTEGER},
+    set uuid = #{uuid,jdbcType=CHAR},
       order_sn = #{orderSn,jdbcType=CHAR},
       pay_sn = #{paySn,jdbcType=CHAR},
       store_id = #{storeId,jdbcType=INTEGER},

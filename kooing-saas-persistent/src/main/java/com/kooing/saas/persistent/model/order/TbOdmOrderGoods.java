@@ -7,7 +7,7 @@ public class TbOdmOrderGoods {
 
     private String uuid;
 
-    private Integer orderId;
+    private String orderId;
 
     private Integer goodsId;
 
@@ -41,11 +41,11 @@ public class TbOdmOrderGoods {
         this.uuid = uuid == null ? null : uuid.trim();
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
