@@ -22,4 +22,6 @@ public interface TbUrsMemberMapper {
     int updateByPrimaryKey(TbUrsMember record);
 
     List<TbUrsMember> getMemberList(TbUrsMember member);
+
+    TbUrsMember findMember(TbUrsMember member);
 }
