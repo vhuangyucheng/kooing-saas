@@ -4,6 +4,7 @@ import com.alibaba.dubbo.common.json.JSON;
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.kooing.framework.param.common.request.DataReq;
 import com.kooing.framework.utils.Utility.JwtUtil;
+import com.kooing.saas.persistent.dao.login.TbAccessMapper;
 import com.kooing.saas.persistent.dao.login.TbRoleAccessMapper;
 import com.kooing.saas.persistent.dao.login.TbRoleMemberMapper;
 import com.kooing.saas.persistent.model.login.TbAccess;
@@ -14,6 +15,7 @@ import com.kooing.saas.persistent.model.member.TbUrsMember;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.container.ContainerRequestContext;
@@ -33,13 +35,14 @@ import java.util.List;
  * @update by :
  */
 @Slf4j
+@Service(value = "jwtFilter")
 public class JwtFilter implements ContainerRequestFilter {
     @Autowired
     TbRoleMemberMapper tbRoleMemberMapper;
     @Autowired
     TbRoleAccessMapper tbRoleAccessMapper;
     @Autowired
-    TbAccess tbAccess;
+    TbAccessMapper tbAccessMapper;
 
     /**
      * @return :
@@ -55,13 +58,17 @@ public class JwtFilter implements ContainerRequestFilter {
         if ("/login/login".equals(requestContext.getUriInfo().getPath())) {
             return;
         }
+        //把json数据流截取
         String json = this.inputStreamToString(requestContext.getEntityStream());
         JSONObject jsonObj = JSONObject.fromObject(json);
         String header_json = jsonObj.getString("header");
         JSONObject jsonObj2 = JSONObject.fromObject(header_json);
         String token = jsonObj2.getString("token");
+        //检验令牌
         String memberId = JwtUtil.checkToken(token);
-        boolean accessFlag = isAccess(memberId);
+        //检验权限
+        boolean accessFlag = isAccess(memberId, requestContext.getUriInfo().getPath());
+        //归还json数据流
         requestContext.setEntityStream(new ByteArrayInputStream(json.getBytes()));
     }
 
@@ -87,18 +94,29 @@ public class JwtFilter implements ContainerRequestFilter {
      * @Desription  : 获得权限urlList，在判断是否有权限
      * @return      :boolean
      */
-    boolean isAccess(String memberId){
+    boolean isAccess(String memberId, String path){
         /** 权限urlList*/
-        List<TbRoleAccess> tempList = new ArrayList<>();
+        List<TbRoleAccess> roleAccessesList = new ArrayList<>();
         List<Integer> urlTempList = new ArrayList<>();
-        List<String> accessList = new ArrayList<>();
-        boolean flag;
+        List<String> accessList ;
+        boolean flag = false;
+        //通过会员-角色表，获得角色list
         List<TbRoleMember> tbRoleMemberList = tbRoleMemberMapper.getRoleList(Integer.parseInt(memberId));
+        //通过角色-权限表，获得权限list
         for(TbRoleMember tbRoleMember : tbRoleMemberList){
-            tempList.addAll(tbRoleAccessMapper.getUrlList(tbRoleMember.getRoleId()));
+            roleAccessesList.addAll(tbRoleAccessMapper.getUrlList(tbRoleMember.getRoleId()));
         }
-        for(TbRoleAccess tbRoleAccess : tempList){
+        //把权限list的id放在一个list，就不用多次查询数据库
+        for(TbRoleAccess tbRoleAccess : roleAccessesList){
             urlTempList.add(tbRoleAccess.getAccessId());
         }
+        accessList = tbAccessMapper.getUrlList(urlTempList);
+        for(String access : accessList){
+            if(access.equals(path)){
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 }

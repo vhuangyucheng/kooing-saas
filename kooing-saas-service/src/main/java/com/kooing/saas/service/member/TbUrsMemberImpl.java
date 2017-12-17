@@ -9,6 +9,7 @@ import com.kooing.framework.param.common.response.PageUtil;
 import com.kooing.framework.param.common.response.Pagination;
 import com.kooing.framework.param.common.response.SuccessResp;
 import com.kooing.saas.api.member.TbUrsMemberApi;
+import com.kooing.saas.persistent.dao.login.TbRoleMemberMapper;
 import com.kooing.saas.persistent.dao.member.TbUrsMemberMapper;
 import com.kooing.saas.persistent.model.member.TbUrsMember;
 import lombok.extern.slf4j.Slf4j;

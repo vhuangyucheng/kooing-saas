@@ -7,11 +7,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import lombok.extern.slf4j.Slf4j;
+import redis.clients.jedis.Jedis;
 
 
 import java.lang.reflect.Method;
 import java.security.Key;
-import java.util.Date;
+import java.util.*;
 
 /**
  * @author : kooing
@@ -22,24 +23,12 @@ import java.util.Date;
 @Slf4j
 public class Test {
     public static void main(String[] args) {
-//        String token = JwtUtil.getToken(2);
-//        log.info(token);
-//        String id = JwtUtil.checkToken("dddd");
-//        log.info(id);
-        try{
-            Class tbRoleMember =Class.forName("com.kooing.saas.persistent.model.login.TbRoleMember");
-            Object tbRoleMemberObject = tbRoleMember.newInstance();
-            Class tbRoleMemberMapper =Class.forName("com.kooing.saas.persistent.dao.login.TbRoleMemberMapper");
-            Object tbRoleMemberMapperObject = tbRoleMember.newInstance();
-            Method tbRoleMemberSet = tbRoleMember.getDeclaredMethod("setMemberId", new Class[]{Integer.class});
-            tbRoleMemberSet.invoke(tbRoleMemberObject, 1);
-            log.info(tbRoleMemberObject.toString());
-            Method selectByPrimaryKey = tbRoleMemberMapper.getDeclaredMethod("findRole", new Class[]{int.class});
-            tbRoleMemberObject = selectByPrimaryKey.invoke(tbRoleMemberMapperObject,1);
-            log.info(tbRoleMemberObject.toString());
-        }catch (Exception e){
-            log.error(e.toString());
-        }
+        //连接本地的 Redis 服务
+        Jedis jedis = new Jedis("localhost");
+        System.out.println("连接成功");
+        List<String> list = new ArrayList<>();
+        list.add("aa");
+        list.add("bb");
     }
 
 }

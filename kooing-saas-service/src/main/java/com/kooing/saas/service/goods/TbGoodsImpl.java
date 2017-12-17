@@ -8,6 +8,7 @@ import com.kooing.framework.param.common.response.SuccessResp;
 import com.kooing.saas.api.goods.TbGoodsApi;
 import com.kooing.saas.persistent.dao.goods.TbGoodsMapper;
 import com.kooing.saas.persistent.model.goods.TbGoods;
+import com.kooing.saas.persistent.model.goods.request.TbGoodsReq;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,9 @@ public class TbGoodsImpl implements TbGoodsApi {
 
 
     @Override
-    public CommResp<List<TbGoods>> goodsList(DataReq<TbGoods> data) throws Exception {
+    public CommResp<List<TbGoods>> goodsList(DataReq<TbGoodsReq> data) throws Exception {
         PageUtil.startPage(data);
-        List<TbGoods> list = tbGoodsMapper.getGoodsList(data.getBody(), data.getHeader().getOrderBy(), data.getHeader().getDesc());
+        List<TbGoods> list = tbGoodsMapper.getGoodsList(data.getBody());
         Pagination pagination = new Pagination(list);
         return new SuccessResp<List<TbGoods>>("0", "ok", pagination, list);
     }

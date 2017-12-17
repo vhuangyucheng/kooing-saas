@@ -20,4 +20,13 @@ public interface TbAccessMapper {
     int updateByPrimaryKey(TbAccess record);
 
     List<String> getUrlList(List<Integer> accessId);
+
+
+    /**
+     * @author      : kooing
+     * @Date        : 2017/12/16 19:55
+     * @Desription  : 新的多表链接查询，不把查询放在java
+     * @return      :
+     */
+    List<String> getAccessUrl(Integer memberId);
 }

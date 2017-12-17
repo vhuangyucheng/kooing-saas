@@ -12,8 +12,7 @@
 
     <dubbo:protocol name="rest" port="8081" server="jetty" charset="UTF-8"
         extension="com.alibaba.dubbo.rpc.protocol.rest.support.LoggingFilter,
-        com.kooing.saas.service.filter.Jwt2Filter,
-        com.kooing.saas.service.filter.JwtFilter,
+        com.kooing.framework.filter.RedisFilter,
         com.kooing.framework.exception.CustomExceptionMapper"/>
 
     <!--<dubbo:protocol name="dubbo" port="29014"/>-->

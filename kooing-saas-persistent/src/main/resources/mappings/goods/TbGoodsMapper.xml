@@ -362,22 +362,22 @@
       goods_sale = #{goodsSale,jdbcType=INTEGER }
     where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
-  <select id="getGoodsList" resultMap="BaseResultMap">
+  <select id="getGoodsList" resultMap="BaseResultMap" resultType="com.kooing.saas.persistent.model.goods.request.TbGoodsReq">
     SELECT
     <include refid="Base_Column_List"/>
     FROM tb_goods
     <where>
-      <if test="TbGoods.goodsName != null">
-        and goods_name LIKE concat(concat('%',#{TbGoods.goodsName}),'%')
+      <if test="goodsName != null">
+        and goods_name LIKE concat(concat('%',#{goodsName}),'%')
       </if>
-      <if test="TbGoods.goodsVerify != null">
-        and goods_verify = #{TbGoods.goodsVerify}
+      <if test="goodsVerify != null">
+        and goods_verify = #{goodsVerify}
       </if>
-      <if test="TbGoods.gcName != null">
-        and gc_name = #{TbGoods.gcName}
+      <if test="gcName != null">
+        and gc_name = #{gcName}
       </if>
-      <if test="TbGoods.storeId != null">
-        and store_id = #{TbGoods.storeId}
+      <if test="storeId != null">
+        and store_id = #{storeId}
       </if>
     </where>
     ORDER BY ${orderBy} ${desc}

@@ -4,6 +4,7 @@ import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import com.kooing.framework.param.common.request.DataReq;
 import com.kooing.framework.param.common.response.CommResp;
 import com.kooing.saas.persistent.model.goods.TbGoods;
+import com.kooing.saas.persistent.model.goods.request.TbGoodsReq;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -40,7 +41,7 @@ public interface TbGoodsApi {
      */
     @POST
     @Path("goodsList")
-    public CommResp<List<TbGoods>> goodsList(DataReq<TbGoods> data) throws Exception;
+    public CommResp<List<TbGoods>> goodsList(DataReq<TbGoodsReq> data) throws Exception;
 
     /**
      * @author      : kooing

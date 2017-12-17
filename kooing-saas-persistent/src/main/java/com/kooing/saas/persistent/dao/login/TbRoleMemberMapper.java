@@ -20,5 +20,5 @@ public interface TbRoleMemberMapper {
 
     int updateByPrimaryKey(TbRoleMember record);
 
-    List<TbRoleMember> getRoleList(int member);
+    List<TbRoleMember> getRoleList(Integer memberId);
 }
